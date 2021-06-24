@@ -1,0 +1,170 @@
+% !TEX program = xelatex
+% !BIB program = biber
+\documentclass[a4paper,11pt]{book}
+
+\usepackage[italian]{babel}
+\usepackage{graphicx}
+\usepackage{float}
+\usepackage{amsmath}
+\usepackage[hidelinks]{hyperref}
+\usepackage[italian]{cleveref}
+\usepackage[dvipsnames]{xcolor}
+\usepackage{xparse}
+\usepackage[compact]{titlesec}
+\usepackage[official]{eurosym}
+\usepackage{zref}
+\usepackage{appendix}
+\usepackage{subfiles}
+\usepackage{marginnote}
+\usepackage{tikz}
+\usepackage{mathdots}
+\usepackage{yhmath}
+\usepackage{cancel}
+\usepackage{siunitx}
+\usepackage{array}
+\usepackage{multirow}
+\usepackage{amssymb}
+\usepackage{tabularx}
+\usepackage{booktabs}
+\usepackage{mathrsfs}
+\usepackage{mathptmx}
+\usepackage{tcolorbox}
+\usepackage{unicode-math}
+\usepackage{makecell}
+\usepackage{pst-node}
+\usepackage{fmtcount}
+\usepackage{longtable}
+\usepackage{enumitem}
+\usepackage{etoolbox}
+\usepackage{quotes}
+\usepackage{fancyhdr}
+\usepackage[left=3cm, right=3cm, bottom=3cm, top=3cm]{geometry}
+\usepackage{setspace}
+\usepackage{verbatim}
+\usepackage{listings}
+\usepackage[hang,small,sf,font=scriptsize, labelfont=bf]{caption}
+\usepackage{subcaption}
+\usepackage[stable]{footmisc}
+\usepackage{algorithm}
+\usepackage{algpseudocode}
+\usepackage[style=english]{csquotes}
+\usepackage[
+  backend=biber
+  ]{biblatex}
+
+\renewcommand\lstlistingname{Listato}
+
+
+\setmainfont{TeX Gyre Termes}
+\setmathfont{Asana Math}
+\setmonofont[Scale=0.9]{Source Code Pro}
+
+\hypersetup{
+    colorlinks,
+    citecolor=black,
+    filecolor=black,
+    linkcolor=black,
+    urlcolor=black
+}
+
+
+\lstset{
+  basicstyle=\ttfamily,
+  columns=fullflexible,
+  frame=none,
+  breaklines=true,
+  postbreak=\mbox{\textcolor{red}{$\hookrightarrow$}\space},
+  showstringspaces=false,
+}
+
+\lstdefinelanguage{Kotlin}{
+  comment=[l]{//},
+  commentstyle={\color{gray}\ttfamily},
+  emph={filter, first, firstOrNull, forEach, lazy, map, mapNotNull, println, with, let, apply},
+  emphstyle={\color{OrangeRed}},
+  identifierstyle=\color{black},
+  keywords={!in, !is, abstract, actual, annotation, as, as?, break, by, catch, class, companion, const, constructor, continue, crossinline, data, delegate, do, dynamic, else, enum, expect, external, false, field, file, final, finally, for, fun, get, if, import, in, infix, init, inline, inner, interface, internal, is, lateinit, noinline, null, object, open, operator, out, override, package, param, private, property, protected, public, receiveris, reified, return, return@, sealed, set, setparam, super, suspend, tailrec, this, throw, true, try, typealias, typeof, val, var, vararg, when, where, while},
+  keywordstyle={\color{NavyBlue}\bfseries},
+  morecomment=[s]{/*}{*/},
+  morestring=[b]",
+  morestring=[s]{"""*}{*"""},
+  ndkeywords={@Deprecated, @JvmField, @JvmName, @JvmOverloads, @JvmStatic, @JvmSynthetic, Array, Byte, Double, Float, Int, Integer, Iterable, Long, Runnable, Short, String},
+  ndkeywordstyle={\color{BurntOrange}\bfseries},
+  sensitive=true,
+  stringstyle={\color{ForestGreen}\ttfamily},
+}
+
+\addbibresource{citations.bib}
+
+\begin{document}
+
+\begin{titlepage}
+\begin{center}
+\includegraphics[height=2.22cm]{images/unipd_800_logotipo_sigillo.pdf}  \hfill \includegraphics[height=2.22cm]{images/dei_sigillo_logotipe.pdf}  \\
+
+\vspace{0.8cm}
+\textsc{\LARGE Università degli Studi di Padova}\\
+\vspace{0.45cm}
+\textsc{\large Dipartimento di Ingegneria dell'Informazione}\\
+\vspace{0.4cm}
+\textsc{\large Corso di Laurea Triennale in}\\
+\textsc{\large Ingegneria Informatica}\\
+\vfill
+% Title
+{ \LARGE \bfseries Transfer learning per selezionare gli informative-frame in una laringoscopia usando learned features ​
+}\\
+\vfill
+\textit{\large Relatore:} \hfill \textit{\large Laureando:}\\
+\textsc{\large Loris Nanni} \hfill \textsc{Bortolin Simone}\\
+\hfill \textsc{1188553}\\
+
+\vfill
+% Bottom of the page
+{\large Anno Accademico 2020/2021}
+\end{center}
+\end{titlepage}
+
+\thispagestyle{empty} %pagina bianca dopo il titolo
+\cleardoublepage
+
+\pagenumbering{roman} %numerazione romana per l'indice, l'abstract e i ringraziamenti
+\thispagestyle{empty}
+
+\clearpage{\pagestyle{plain}\cleardoublepage}
+\input{abstract.tex}
+
+\clearpage{\pagestyle{plain}\cleardoublepage}
+\pdfbookmark{\listfigurename}{tof}
+\tableofcontents %Indice
+
+\clearpage{\pagestyle{plain}\cleardoublepage}
+\pdfbookmark{\listfigurename}{lof}
+\listoffigures
+
+\clearpage{\pagestyle{plain}\cleardoublepage}
+\pdfbookmark{\listtablename}{lot}
+\listoftables
+
+\clearpage{\pagestyle{plain}\cleardoublepage} %Numerazione araba per i capitoli
+\pagenumbering{arabic}
+
+\clearpage{\pagestyle{plain}\cleardoublepage} 
+\subfile{introduzione.tex} 
+
+\clearpage{\pagestyle{plain}\cleardoublepage} 
+\subfile{transfer-learning.tex} 
+
+\clearpage{\pagestyle{plain}\cleardoublepage} 
+\subfile{frame.tex} 
+
+\clearpage{\pagestyle{plain}\cleardoublepage}
+
+
+\nocite{*}
+
+\printbibliography[
+heading=bibintoc,
+title={Bibliografia}
+]
+
+\end{document}
