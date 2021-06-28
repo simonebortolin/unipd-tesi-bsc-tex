@@ -51,9 +51,11 @@
 \usepackage[
   backend=biber
   ]{biblatex}
+  \usepackage{glossaries}
 
 \renewcommand\lstlistingname{Listato}
 
+\linespread{1.5}
 
 \setmainfont{TeX Gyre Termes}
 \setmathfont{Asana Math}
@@ -96,13 +98,16 @@
 
 \addbibresource{citations.bib}
 
+\input{glossary.tex}
+
+
 \begin{document}
 
 \begin{titlepage}
 \begin{center}
 \includegraphics[height=2.22cm]{images/unipd_800_logotipo_sigillo.pdf}  \hfill \includegraphics[height=2.22cm]{images/dei_sigillo_logotipe.pdf}  \\
 
-\vspace{0.8cm}
+\vspace{2cm}
 \textsc{\LARGE Università degli Studi di Padova}\\
 \vspace{0.45cm}
 \textsc{\large Dipartimento di Ingegneria dell'Informazione}\\
@@ -115,7 +120,7 @@
 }\\
 \vfill
 \textit{\large Relatore:} \hfill \textit{\large Laureando:}\\
-\textsc{\large Prof. Loris Nanni} \hfill \textsc{Bortolin Simone}\\
+\textsc{\large Prof. Nanni Loris} \hfill \textsc{Bortolin Simone}\\
 \hfill \textsc{1188553}\\
 
 \vfill
@@ -130,8 +135,9 @@
 \pagenumbering{roman} %numerazione romana per l'indice, l'abstract e i ringraziamenti
 \thispagestyle{empty}
 
+
 \clearpage{\pagestyle{plain}\cleardoublepage}
-\input{abstract.tex}
+\subfile{abstract.tex}
 
 \clearpage{\pagestyle{plain}\cleardoublepage}
 \pdfbookmark{\listfigurename}{tof}
@@ -157,9 +163,14 @@
 \clearpage{\pagestyle{plain}\cleardoublepage} 
 \subfile{frame.tex} 
 
+\clearpage{\pagestyle{plain}\cleardoublepage} 
+\subfile{addestramento-rete-neurale.tex} 
+
 \clearpage{\pagestyle{plain}\cleardoublepage}
 
+\printglossary[title=Glossario]
 
+\clearpage{\pagestyle{plain}\cleardoublepage}
 \nocite{*}
 
 \printbibliography[
