@@ -2,8 +2,15 @@
 
 
 Come già menzionato nei capitoli precedenti l’idea è quella di allenare una  CNN per la classificazione dei frame di una laringoscopia attravero il transfer learning impiegando la tecnica del
-fine-tuning nelle due varianti (One Round Tuning e Two Round Tuning)  su una rete pre-allenata chiamata AlexNet  organizzata nel seguente modo: costituita da 8 livelli di cui 5 di convoluzione e 3 fully-connected, utilizza la funzione
-di attivazione ReLu, con dimensione delle immagini in input è di \(227\times 227\), l'architettura completa con le dimensioni dei layer di convoluzione è illustrata in \cref{fig:alexnet}\cite{alexnet}.  
+fine-tuning nelle due varianti (One Round Tuning e Two Round Tuning)  su una rete pre-allenata chiamata AlexNet.
+
+\section{AlexNet}\label{alexnet}
+AlexNet è la rete che ha rivoluzionato la computer vision nel 2012, essa è una CNN sviluppada
+da Goffrey Hinton e Alex Krizhevsky dell’università di Toronto vince (con ampio margine)
+l’ImageNet challenge: object classification and detection su milioni di immagini e 1000 classi.
+
+La rete AlexNet è organizzata nel seguente modo: costituita da 8 livelli di cui 5 di \gls{convoluzione} e 3 \gls{fully-connected}, utilizza la funzione
+di attivazione \gls{ReLu}, con dimensione delle immagini in input è di \(227\times 227\), l'architettura completa con le dimensioni dei layer di \gls{convoluzione} è illustrata in \cref{fig:alexnet}\cite{alexnet}.  
 
 \begin{figure}[ht]
     \centering
