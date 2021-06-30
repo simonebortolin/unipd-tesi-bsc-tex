@@ -10,10 +10,13 @@
     
 \begin{Abstract}
 \begin{changemargin}{1cm}{1cm}
-In questa tesi si introducono alcuni metodi innovativi di preprocessing di immagini per effettuare data augmentation per creare nuove ensemble a partire da quelle esistenti in combinazione con un metodo di addesstramento di tipo two round tuning al fine di ottimizzare le prestazioni di una \
+In questa tesi si introducono alcuni metodi di preprocessing di immagini e data augmentation per creare nuove ensemble a partire da quelle esistenti in combinazione con un metodo di addesstramento di tipo two round tuning al fine di massimizzare le prestazioni di una \gls{cnn}.
 
-In particolare useremo il transfer learning per effettuare una selezione degli  informative-frame in una laringoscopia.
+In particolare useremo il transfer learning riutilizzando  una \gls{cnn} preaddestrata per effettuare una selezione degli  informative-frame in una laringoscopia. Una buona selezione degli informative-frame permette di ottimizzare le elaborazioni e la visione da parte dei medici e tecnici competenti.
 
+Tutto questo viene fatto attraverso una rete \gls{cnn} di tipo deep preaddestrata con l'uso del trasnfer learning, data augmentation e preprocessing.
+
+In particolare oltre ai classici metodi di rotazione e mirroring dell'immagine viene utilizzato pure una DCT e varie tecniche di preprocessing per dare in pasto alla rete una immagine più dove è maggiormente analizzabile.
 
 \end{changemargin}
 \end{Abstract}
