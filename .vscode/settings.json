@@ -1,3 +1,42 @@
 {
-    "editor.wordWrap": "on"
+    "editor.wordWrap": "on",
+    "latex-workshop.latex.recipes":[
+        {
+            "name": "xelatex, biber, makeglossaries, xelatex (2x)",
+            "tools": [
+                "latexmk",
+                "biber",
+                "makeglossaries",
+                "latexmk",
+                "latexmk"
+            ]
+        },
+    ],
+    "latex-workshop.latex.tools":[
+        {
+            "name": "latexmk",
+            "command": "latexmk",
+            "args": [
+                "-xelatex",
+                "-synctex=1",
+                "-interaction=nonstopmode",
+                "-file-line-error",
+                "%DOC%"
+            ]
+        },
+        {
+            "name": "makeglossaries",
+            "command": "makeglossaries",
+            "args": [
+              "%DOCFILE%"
+            ]
+        },
+        {
+            "name": "biber",
+            "command": "biber",
+            "args": [
+                "%DOCFILE%"
+            ]
+        }
+    ],
 }

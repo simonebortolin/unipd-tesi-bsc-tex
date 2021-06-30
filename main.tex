@@ -1,5 +1,3 @@
-% !TEX program = xelatex
-% !BIB program = biber
 \documentclass[a4paper,11pt]{book}
 
 \usepackage[italian]{babel}
@@ -30,6 +28,7 @@
 \usepackage{mathptmx}
 \usepackage{tcolorbox}
 \usepackage{unicode-math}
+\usepackage{mathtools}
 \usepackage{makecell}
 \usepackage{pst-node}
 \usepackage{fmtcount}
@@ -51,7 +50,7 @@
 \usepackage[
   backend=biber
   ]{biblatex}
-  \usepackage{glossaries}
+\usepackage{glossaries}
 
 \renewcommand\lstlistingname{Listato}
 
@@ -98,8 +97,7 @@
 
 \addbibresource{citations.bib}
 
-\input{glossary.tex}
-
+\subfile{glossary.tex}
 
 \begin{document}
 
@@ -151,6 +149,7 @@
 \pdfbookmark{\listtablename}{lot}
 \listoftables
 
+
 \clearpage{\pagestyle{plain}\cleardoublepage} %Numerazione araba per i capitoli
 \pagenumbering{arabic}
 
@@ -170,7 +169,6 @@
 \subfile{addestramento-rete-neurale.tex} 
 
 \clearpage{\pagestyle{plain}\cleardoublepage}
-
 \printglossary[title=Glossario]
 
 \clearpage{\pagestyle{plain}\cleardoublepage}
