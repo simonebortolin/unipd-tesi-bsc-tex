@@ -2,11 +2,11 @@
 
 Con Transfer Learning si intente l'azione di riutilizzare una rete preaddestrata, per esempio con un milione di immagini in mille classi, per altri scopi, senza dover riaddrestrare la rete da zero. Ma ovviamente senza riaddestrare la rete, la classificazione di una immagine, ovviamente, non darà il risultato sperato, quindi almento in parte la rete è da addestrare.
 
-\section{Riutilizzo di una CNN preaddestrata}\label{riutilizzo-di-una-cnn-preaddestrata}
+\section{Riutilizzo di una \gls{cnn} preaddestrata}\label{riutilizzo-di-una-cnn-preaddestrata}
 
-Per riutilizzare una rete preaddestrata si parte dalla rete già addestrata ed estriamo alcuni livelli a bassa dimensionalità (quelli di classificazione finale) e li usiamo la rete come un feacture extractor  e posso usare, per esempio una SVM per la classificazione, oppure posso riaggiungere i layer originali, ma a differenza di questo i layer sono non addestrati e senza i relativi pesi (Fine-Tuning). Questo è utile in quanto il training di CNN complesse (es. AlexNet) su dataset di grandi dimensioni (es. ImageNet) può richiedere giorni-settimane di tempo macchina anche se eseguito su Hardware dedicato. Ma una volta che la rete è stata addestrata, il tempo richiesto per la classificazione di un nuovo pattern (propagazione forward) è in genere molto più veloce\cite{yosinski_tl}\cite{unibo_maltoni_ml}.
+Per riutilizzare una rete preaddestrata si parte dalla rete già addestrata ed estriamo alcuni livelli a bassa dimensionalità (quelli di classificazione finale) e li usiamo la rete come un feacture extractor  e posso usare, per esempio una SVM per la classificazione, oppure posso riaggiungere i layer originali, ma a differenza di questo i layer sono non addestrati e senza i relativi pesi (Fine-Tuning). Questo è utile in quanto il training di \gls{cnn} complesse (es. AlexNet) su dataset di grandi dimensioni (es. ImageNet) può richiedere giorni-settimane di tempo macchina anche se eseguito su Hardware dedicato. Ma una volta che la rete è stata addestrata, il tempo richiesto per la classificazione di un nuovo pattern (propagazione forward) è in genere molto più veloce\cite{yosinski_tl}\cite{unibo_maltoni_ml}.
 
-In genere è da sottolineare che imparare da zero porta a risultati migliori, ma richiede una potenza di calcolo molto più  elevata oltre che dei dataset molto grandi, per evitare l'\gls{overfitting}. È importante sottolineare che l'addestramento di una CNN funziona molto bene su grandi insiemi di dati, tuttavia su piccoli insiemi di dati non riesce a raggiungere guadagni significativi e proprio in questo caso viene utilizzato il transfer learning\cite{joel_tl}.
+In genere è da sottolineare che imparare da zero porta a risultati migliori, ma richiede una potenza di calcolo molto più  elevata oltre che dei dataset molto grandi, per evitare l'\gls{overfitting}. È importante sottolineare che l'addestramento di una \gls{cnn} funziona molto bene su grandi insiemi di dati, tuttavia su piccoli insiemi di dati non riesce a raggiungere guadagni significativi e proprio in questo caso viene utilizzato il transfer learning\cite{joel_tl}.
 
 Questo è un metodo molto utilizzato nella computer vision, permette l'uso della conoscenza acquisita per un
 compito per risolvere quelli correlati in quanto si basa sul fatto che
@@ -54,7 +54,7 @@ Se la velocità di apprendimento è troppo alta i risultati peggiorano a casua d
 
 La fase di pre-elaborazione è essenziale nelle immagini dei tessuti per rimuovere diversi tipi di rumori, questo vale ancora di più nel caso di transfer learning in quando i dataset di allenamento sono in genere molto inferiori di quello originale oltre che le classi hanno un significato meno generale\cite{joel_tl} in particolare i metodi di preprocessing di immagini sono trattati in \cref{data-preprocessing}.
 
-Inoltre per ottenere prestazioni più elevate nell'accuratezza, la CNN richiede grandi insiemi di dati in quanto le performance della CNN con piccoli set di dati si deteriora  a causa dell'\gls{overfitting}\cite{joel_tl} in particolare i metodi di data augmentation di immagini sono trattati in \cref{data-augmentation}.
+Inoltre per ottenere prestazioni più elevate nell'accuratezza, la \gls{cnn} richiede grandi insiemi di dati in quanto le performance della \gls{cnn} con piccoli set di dati si deteriora  a causa dell'\gls{overfitting}\cite{joel_tl} in particolare i metodi di data augmentation di immagini sono trattati in \cref{data-augmentation}.
 
 
 

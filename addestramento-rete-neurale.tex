@@ -1,11 +1,11 @@
 \chapter{Addestramento rete neurale}\label{addestramento-rete-neurale}
 
 
-Come già menzionato nei capitoli precedenti l’idea è quella di allenare una  CNN per la classificazione dei frame di una laringoscopia attravero il transfer learning impiegando la tecnica del
+Come già menzionato nei capitoli precedenti l’idea è quella di allenare una \gls{cnn} per la classificazione dei frame di una laringoscopia attravero il transfer learning impiegando la tecnica del
 fine-tuning nelle due varianti (One Round Tuning e Two Round Tuning)  su una rete pre-allenata chiamata AlexNet.
 
 \section{AlexNet}\label{alexnet}
-AlexNet è la rete che ha rivoluzionato la computer vision nel 2012, essa è una CNN sviluppada
+AlexNet è la rete che ha rivoluzionato la computer vision nel 2012, essa è una \gls{cnn} sviluppada
 da Goffrey Hinton e Alex Krizhevsky dell’università di Toronto vince (con ampio margine)
 l’ImageNet challenge: object classification and detection su milioni di immagini e 1000 classi.
 
@@ -15,7 +15,7 @@ di attivazione \gls{ReLu}, con dimensione delle immagini in input è di \(227\ti
 \begin{figure}[ht]
     \centering
     \includegraphics[width=0.7\textwidth]{addestramento-rete-neurale/alexnet.png}
-    \caption{Architettura della CNN AlexNet}
+    \caption{Architettura della \gls{cnn} AlexNet}
     \label{fig:alexnet}
 \end{figure}
 
@@ -23,6 +23,6 @@ La rete AlexNet utilizzata è già allenata per il riconoscimento di 1000 classi
 
 \section{Allenamento 1R}\label{allenamento-1r}
 
-La sperimentazione inizia con l'allenamento della CNN in con un fine-tuning standard e classico, nel senso rimpiazzo gli ultimi 3 layer e poi rialleno la rete. È da prestare attenzione a i vali iperparametri, come \Gls{LearningRate} e \Gls{MiniBatchSize}.
+La sperimentazione inizia con l'allenamento della \gls{cnn} in con un fine-tuning standard e classico, nel senso rimpiazzo gli ultimi 3 layer e poi rialleno la rete. È da prestare attenzione a i vali iperparametri, come \Gls{LearningRate} e \Gls{MiniBatchSize}.
 
 \section{Allenamento 2R}\label{allenamento-2r}

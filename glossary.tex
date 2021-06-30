@@ -1,5 +1,29 @@
 \makeglossaries
 
+\longnewglossaryentry{cnn}
+{
+    name={CNN},
+    first={Convolutional neural network (CNN)},
+    long={Convolutional neural network}
+}{
+    Una rete neurale convoluzionale (ConvNet/CNN) è un algoritmo di Deep Learning che prendere in input un'immagine, ai vari input vengono assegnati i pesi e un bias in modo che la rete sia in grado di cogliere gli aspetti e gli oggetti dell'immagine ed essere in grado di differenziare gli uni dagli altri.
+
+    La pre-elaborazione richiesta in una CNN è molto più bassa rispetto ad altri algoritmi di classificazione. Mentre nei metodi primitivi i filtri sono costruiti a mano, con abbastanza addestramento, le CNN hanno la capacità di imparare questi filtri.
+
+    L'architettura di una CNN è molto simile a quella del modello di connettività dei neuroni nel cervello umano ed è stata ispirata all'organizzazione della corteccia visiva. I singoli neuroni rispondono agli stimoli solo in una regione ristretta del campo visivo noto come campo recettivo. Un insieme di tali campi si sovrappone per coprire l'intera area visiva.
+
+    La prima rete deep a funzionare era AlexNet nel 2012, ma già nel 1998 le CNN ottengono buone prestazioni in problemi di
+    piccole dimensioni (es. riconoscimento caratteri, riconoscimento
+    oggetti a bassa risoluzione), ma bisogna attendere il 2012
+    (AlexNet) per un radicale cambio di passo.
+
+    I problemi di una CNN nel 1998 non erano tanto in ambito matematico, problema che è stato risolto in maniera semplice, ma bensì la disponibilità di dataset e la potenza di calcolo per gestiere ed elaborare i dataset.
+
+    In particolare nelle reti CNN, a differenza di quelle classiche l'accuratezza aumenta all'aumentare del dataset, e a differenza di una rete shallow dove il  plaeau è facilmente raggiungbile in una deep ci sono vari studi che indicano che non si raggiunge e la rete migliora sempre    (un asintoto orrizontale che determina la impossibilità di allenare meglio la rete).
+
+    In particolare il problema matematico era relativo al problema della Vanishing (or exploding) gradient che impediva l'allenamento di reti profonde. Infatti se io moltiplico tante volte un numero raggiungo un valore prossimo allo zero il risultato non cambia e la rete neurale non modifica i relativi pesi una volta raggiunto il minimo la rete neurale esce. Ma la rete neurale a ogni addestramento deve modificare i proprio pesi,  perciò non si riesce ad avere un addestramento stabile o ad avere un minimo, per esempio dopo aver raggiunto il minimo  è possibile che il valore si modifica andando a peggiorare le performance.
+}
+
 \newglossaryentry{overfitting}
 {
     name=overfitting,
@@ -9,35 +33,35 @@
 {
     name=fully-connected,
     description={I livelli completamente connessi in una rete neurale sono quei livelli in cui tutti gli input di
-    un livello sono collegati a ogni unità di attivazione del livello successivo. Normalmente nei modelli di
-    apprendimento automatico più diffusi, gli ultimi livelli sono livelli completamente connessi
-    che compilano i dati estratti dai livelli precedenti per formare l’output finale. È il secondo
-    livello più dispendioso in termini di tempo, dopo il Convolution Layer}
+            un livello sono collegati a ogni unità di attivazione del livello successivo. Normalmente nei modelli di
+            apprendimento automatico più diffusi, gli ultimi livelli sono livelli completamente connessi
+            che compilano i dati estratti dai livelli precedenti per formare l’output finale. È il secondo
+            livello più dispendioso in termini di tempo, dopo il Convolution Layer}
 }
 \longnewglossaryentry{convoluzione}
 {
-    name=convoluzione}{Essa  è una operazione tipica dell'elaborazione dei segnali e più in generale delle immagini, che nel caso di un una immagine discreta è:\[ \mathbf { I } * \mathbf{F} [ i , j ] = \sum _ { y = 1 } ^ { m } \sum _ { x = 1 } ^ { m } \left( \mathbf { I } \left[ i + \left\lceil \frac { m } { 2 } \right\rceil - y , j + \left\lceil \frac { m } { 2 } \right] - x \right] \cdot \mathbf { F } [ y , x ] \right) \]
+    name=convoluzione}{È una operazione tipica dell'elaborazione dei segnali e più in generale delle immagini, che nel caso di un una immagine discreta è:\[ \mathbf { I } * \mathbf{F} [ i , j ] = \sum _ { y = 1 } ^ { m } \sum _ { x = 1 } ^ { m } \left( \mathbf { I } \left[ i + \left\lceil \frac { m } { 2 } \right\rceil - y , j + \left\lceil \frac { m } { 2 } \right] - x \right] \cdot \mathbf { F } [ y , x ] \right) \]
     Dove \(\mathbf{F}\) è il filtro definito sulla griglia \(m \times m\), \(\mathbf{I}\) è la nostra matrice immagine, e \(\mathbf { I } * \mathbf{F}\) sono i nostri pixel filtrati.
 
     La Complessità
-    computazionale  della convoluzione è 
-    piuttosto elevata: data 
+    computazionale  della convoluzione è
+    piuttosto elevata: data
     un’immagine di \(n\times n\)
     pixel e un filtro di
     \(m\times m\)
-    elementi, la 
-    convoluzione 
+    elementi, la
+    convoluzione
     richiede \(m^2 n^2\)
     moltiplicazioni e
-    altrettante somme. 
-    
-    La soluzione è lavorare nello spazio di Fourier, ricordando che la FFT (Fast Fourier Transform) si ottiene con un procedimento \(O(n \log n)\), ricordando che dati \( f \) e \( g \) due funzioni la cui convoluzione è indicata da \( f * g \). Sia \( \mathcal { F } \) roperatore trasformata di Fourier,  \( \mathcal { F } \{ f \} \) e \( \mathcal { F } \{ g \} \) sono le trasformate di \( f \) e \( g \) rispettivamente. Allora:
-    \( \mathcal { F } \{ f * g \} = \mathcal { F } \{ f \} \cdot \mathcal { F } \{ g \} \)}
+    altrettante somme.
 
-    
+    La soluzione è lavorare nello spazio di Fourier, ricordando che la FFT (Fast Fourier Transform) si ottiene con un procedimento \(O(n \log n)\), ricordando che dati \( f \) e \( g \) due funzioni la cui convoluzione è indicata da \( f * g \). Sia \( \mathcal { F } \) l'operatore trasformata di Fourier,  \( \mathcal { F } \{ f \} \) e \( \mathcal { F } \{ g \} \) sono le trasformate di \( f \) e \( g \) rispettivamente. Allora:
+    \( \mathcal { F } \{ f * g \} = \mathcal { F } \{ f \} \cdot \mathcal { F } \{ g \} \).}
+
+
 \longnewglossaryentry{stride} {
     name=stride} {Lo stride regola la dimensione tra pixel di ingresso e pixel in uscita, in particolare quando un filtro viene fatto scorrere sul volume di input, invece di spostarsi con passiunitari (di 1 neurone) si può utilizzare un passo (o stride) maggiore. Questa operazioneriduce la dimensione delle feature map nel volume di output e conseguentemente il numerodi connessioni. Lo stride è spesso impostato su un numero intero, anziché su una frazione oun decimale.
-    
+
     Sui livelli iniziali della rete per piccoli stride (es. 2, 4), è possibile ottenere un elevatoguadagno in eﬀicienza a discapito di una leggera penalizzazione in accuratezza.}
 
 \newglossaryentry{padding} {
@@ -55,18 +79,18 @@
     description={La funzione di attivazione ReLu (Rectified Linear) è nata per risolvere alcuni problemi delle funzioni di attivazione usate nelle reti MLP, come la sigmoide, in quanto essa da problemi nella retroprograzione del gradiente. La funzione è definita come \(f(x) = \max (0, x)\)}
 }
 
-\longnewglossaryentry{LearningRate}{name={learning rate}}{La learning rate, o velocità di apprendimento è un parametro di ottimizzazione in un algoritmo di ottimizzazione, normalmente il gradient descent optimization algorithm. Il learning rate è un iperparametro che determina quanto modificare i pesi in base all'attuale errore. La scelta del tasso di apprendimento è impegnativa in quanto un valore troppo piccolo può comportare un lungo processo di allenamento che potrebbe bloccarsi, mentre un valore troppo grande può comportare l'apprendimento di una serie di pesi non ottimale troppo velocemente o un processo di allenamento instabile. 
+\longnewglossaryentry{LearningRate}{name={learning rate}}{La learning rate, o velocità di apprendimento è un parametro di ottimizzazione in un algoritmo di ottimizzazione, normalmente il gradient descent optimization algorithm. Il learning rate è un iperparametro che determina quanto modificare i pesi in base all'attuale errore. La scelta del tasso di apprendimento è impegnativa in quanto un valore troppo piccolo può comportare un lungo processo di allenamento che potrebbe bloccarsi, mentre un valore troppo grande può comportare l'apprendimento di una serie di pesi non ottimale troppo velocemente o un processo di allenamento instabile.
 
-La velocità di apprendimento può essere l'iperparametro più importante durante la configurazione della rete neurale. Pertanto è fondamentale sapere come indagare gli effetti del tasso di apprendimento sulle prestazioni del modello e costruire un'intuizione sulla dinamica del tasso di apprendimento sul comportamento del modello.}
+    La velocità di apprendimento può essere l'iperparametro più importante durante la configurazione della rete neurale. Pertanto è fondamentale sapere come indagare gli effetti del tasso di apprendimento sulle prestazioni del modello e costruire un'intuizione sulla dinamica del tasso di apprendimento sul comportamento del modello.}
 
 \longnewglossaryentry{MiniBatchSize}{name={Mini-batch Size}}{
-    La dimensione del batch definisce il numero di campioni che verranno analizzati attraverso la rete in un turno. 
-    
-    Ad esempio, supponiamo che tu abbia 1050 campioni di addestramento e desideri impostare un valore batch size uguale a 100. L'algoritmo prende i primi 100 campioni (dal 1° al 100° dal set di dati di addestramento e addestra la rete. Successivamente, prende i secondi 100 campioni (dal 101° al 200°) e addestra nuovamente la rete. Possiamo continuare a eseguire questa procedura finché non abbiamo propagato tutti i campioni attraverso la rete. Il problema potrebbe verificarsi con l'ultima serie di campioni. Nel nostro esempio, abbiamo usato 1050 che non è divisibile per 100 senza resto. La soluzione più semplice è ottenere gli ultimi 50 campioni e addestrare la rete. Si parla di Mini-batch quando la dimensione del batch è molto piccola. 
-    
+    La dimensione del batch definisce il numero di campioni che verranno analizzati attraverso la rete in un turno.
+
+    Ad esempio, supponiamo che tu abbia 1050 campioni di addestramento e desideri impostare un valore batch size uguale a 100. L'algoritmo prende i primi 100 campioni (dal 1° al 100° dal set di dati di addestramento e addestra la rete. Successivamente, prende i secondi 100 campioni (dal 101° al 200°) e addestra nuovamente la rete. Possiamo continuare a eseguire questa procedura finché non abbiamo propagato tutti i campioni attraverso la rete. Il problema potrebbe verificarsi con l'ultima serie di campioni. Nel nostro esempio, abbiamo usato 1050 che non è divisibile per 100 senza resto. La soluzione più semplice è ottenere gli ultimi 50 campioni e addestrare la rete. Si parla di Mini-batch quando la dimensione del batch è molto piccola.
+
     I vantaggi dell'uso di una batch size minore al numero totale dei campioni:
-\begin{itemize}
-    \item Poiché si addestra la rete utilizzando meno campioni, la procedura di addestramento complessiva richiede meno memoria. Ciò è particolarmente importante se non sei in grado di inserire l'intero set di dati nella memoria della tua macchina.
-    \item In genere le reti si addestrano più velocemente con i mini-batch. Questo perché aggiorniamo i pesi dopo ogni propagazione. Nel nostro esempio abbiamo propagato 11 batch (10 di loro avevano 100 campioni e 1 aveva 50 campioni) e dopo ciascuno di essi abbiamo aggiornato i parametri della nostra rete. Se usassimo tutti i campioni durante la propagazione, faremmo solo 1 aggiornamento per il parametro di rete.
-\end{itemize}
-È da sottolineare che più piccolo è il batch, meno accurata sarà la stima del gradiente.}
+    \begin{itemize}
+        \item Poiché si addestra la rete utilizzando meno campioni, la procedura di addestramento complessiva richiede meno memoria. Ciò è particolarmente importante se non sei in grado di inserire l'intero set di dati nella memoria della tua macchina.
+        \item In genere le reti si addestrano più velocemente con i mini-batch. Questo perché aggiorniamo i pesi dopo ogni propagazione. Nel nostro esempio abbiamo propagato 11 batch (10 di loro avevano 100 campioni e 1 aveva 50 campioni) e dopo ciascuno di essi abbiamo aggiornato i parametri della nostra rete. Se usassimo tutti i campioni durante la propagazione, faremmo solo 1 aggiornamento per il parametro di rete.
+    \end{itemize}
+    È da sottolineare che più piccolo è il batch, meno accurata sarà la stima del gradiente.}
