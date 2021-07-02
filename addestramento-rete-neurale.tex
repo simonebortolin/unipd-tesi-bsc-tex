@@ -6,10 +6,10 @@ fine-tuning nelle due varianti (One Round Tuning e Two Round Tuning)  su una ret
 
 \section{AlexNet}\label{alexnet}
 AlexNet è la rete che ha rivoluzionato la computer vision nel 2012, essa è una \gls{cnn} sviluppada
-da Goffrey Hinton e Alex Krizhevsky dell’università di Toronto vince (con ampio margine)
+da Goffrey Hinton e Alex Krizhevsky dell’università di Toronto vince, con ampio margine, 
 l’ImageNet challenge: object classification and detection su milioni di immagini e 1000 classi.
 
-La rete AlexNet è organizzata nel seguente modo: costituita da 8 livelli di cui 5 di \gls{convoluzione} e 3 \gls{fully-connected}, utilizza la funzione
+La rete AlexNet è organizzata nel seguente modo: costituita da 8 livelli di cui 5 di \gls{Convolution Layer} e 3 \gls{fully-connected}, ed infine la funzione
 di attivazione \gls{ReLu}, con dimensione delle immagini in input è di \(227\times 227\), l'architettura completa con le dimensioni dei layer di \gls{convoluzione} è illustrata in \cref{fig:alexnet}\cite{alexnet}.  
 
 \begin{figure}[ht]
@@ -21,8 +21,30 @@ di attivazione \gls{ReLu}, con dimensione delle immagini in input è di \(227\ti
 
 La rete AlexNet utilizzata è già allenata per il riconoscimento di 1000 classi di soggetti (mele, gatti, tastiere, telefoni, ecc.) su un dataset di oltre 1 milione di pattern presi dal database ImageNet\cite{alexnet}.
 
+Viene usato un allenamento \(k\)-fold, in particolare con \(k=3\), nei quali i pattern vengono inseriti per ognuno in
+ordine diverso e si utilizza circa il 20\% di essi come test set.
+
 \section{Allenamento 1R}\label{allenamento-1r}
 
-La sperimentazione inizia con l'allenamento della \gls{cnn} in con un fine-tuning standard e classico, nel senso rimpiazzo gli ultimi 3 layer e poi rialleno la rete. È da prestare attenzione a i vali iperparametri, come \Gls{LearningRate} e \Gls{MiniBatchSize}.
+La sperimentazione inizia con l'allenamento della \gls{cnn} in con un fine-tuning standard e classico (denominato anche One Round Tuning, descritto in \cref{one-round-tuning}), nel senso che si rimpiazzano gli ultimi 3 layer e poi si riallena la rete. Come dataset è stato usato il dataset descritto NBI-InfFrames in \cref{descrizione-dei-dataset}. È da prestare attenzione ai vari iperparametri, come \Gls{LearningRate} e \Gls{MiniBatchSize}. In particolare è stato usato un learning rate di 0.0001 e un mini batch size di 30, il metodo di ottimizzazione è il \gls{sgd}, come data argumentation sono stati usati i valori descritti nel \cref{data-augmentation} e non è stata usata la trasfromata discreta del coseno, la Confusion matrix di questo allenamento è mostrato in \cref{fig:one-liscio}.
+
+
+\begin{figure}[ht]
+    \centering
+    \includegraphics[width=0.7\textwidth]{addestramento-rete-neurale/one-liscio.pdf}
+    \caption{Confusion matrix dell'allenamento con TL 1R senza preprocessing e con una semplice data augmentation}
+    \label{fig:one-liscio}
+\end{figure}
 
 \section{Allenamento 2R}\label{allenamento-2r}
+
+L'allenamento 2R descritto in \cref{two-round-tuning} è composto da una prima fase di allenamento con un dataset similare e poi il dataset NBI-InfFrames, entrambi descritti in  \cref{descrizione-dei-dataset}. In questo caso gli iperparametri sono:   learning rate di 0.0001 e un mini batch size di 30, il metodo di ottimizzazione è il \gls{sgd}, come data argumentation sono stati usati i valori descritti nel \cref{data-augmentation} e non è stata usata la trasfromata discreta del coseno, la Confusion matrix di questo allenamento è mostrato in \cref{fig:two-liscio}.
+
+
+
+\begin{figure}[ht]
+    \centering
+    \includegraphics[width=0.7\textwidth]{addestramento-rete-neurale/two-liscio.pdf}
+    \caption{Confusion matrix dell'allenamento con TL 2R senza preprocessing e con una semplice data augmentation}
+    \label{fig:two-liscio}
+\end{figure}

@@ -50,7 +50,7 @@
 \usepackage[
   backend=biber
   ]{biblatex}
-\usepackage{glossaries}
+\usepackage[toc]{glossaries}
 
 \DeclareMathAlphabet{\mathcal}{OMS}{cmsy}{b}{n}
 
@@ -62,13 +62,13 @@
 \setmathfont{Asana Math}
 \setmonofont[Scale=0.9]{Source Code Pro}
 
-\hypersetup{
-    colorlinks,
-    citecolor=black,
-    filecolor=black,
-    linkcolor=black,
-    urlcolor=black
-}
+%\hypersetup{
+%    colorlinks,
+%    citecolor=black,
+%    filecolor=black,
+%    linkcolor=black,
+%    urlcolor=black
+%}
 
 
 \lstset{
@@ -95,6 +95,27 @@
   ndkeywordstyle={\color{BurntOrange}\bfseries},
   sensitive=true,
   stringstyle={\color{ForestGreen}\ttfamily},
+}
+
+\newcommand{\newdefinedabbreviation}[4]{
+    \newglossaryentry{#1}{
+        text={#2},
+        long={#3},
+        name={\glsentrylong{#1} (\glsentrytext{#1})},
+        first={\glsentryname{#1}},
+        firstplural={\glsentrylong{#1}\glspluralsuffix (\glsentryname{#1}\glspluralsuffix )},
+        description={#4}
+    }
+}
+
+\newcommand{\longnewdefinedabbreviation}[4]{
+    \longnewglossaryentry{#1}{
+        text={#2},
+        long={#3},
+        name={\glsentrylong{#1} (\glsentrytext{#1})},
+        first={\glsentryname{#1}},
+        firstplural={\glsentrylong{#1}\glspluralsuffix (\glsentryname{#1}\glspluralsuffix )}
+    }{#4}
 }
 
 \addbibresource{citations.bib}
