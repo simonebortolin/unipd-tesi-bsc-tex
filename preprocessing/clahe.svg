@@ -1,0 +1,88 @@
+<?xml version="1.0" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+"http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Creator: fig2dev Version 3.2 Patchlevel 5d -->
+<!-- CreationDate: Thu Nov 24 20:05:09 2011 -->
+<!-- Magnification: 1.050 -->
+<svg	xmlns="http://www.w3.org/2000/svg"
+	xmlns:xlink="http://www.w3.org/1999/xlink"
+	width="4.8in" height="3.2in"
+	viewBox="921 921 5715 3825">
+<g style="stroke-width:.025in; fill:none">
+<!-- Line: box -->
+<rect x="944" y="944" width="5669" height="3779" rx="0" 
+style="stroke:#000000;stroke-width:16;
+stroke-linejoin:miter; stroke-linecap:butt;
+fill:#ffffff;
+"/>
+<!-- Line: box -->
+<rect x="3307" y="2598" width="1653" height="1653" rx="0" 
+style="stroke:#00d100;stroke-width:16;
+stroke-linejoin:miter; stroke-linecap:butt;
+fill:#e0ffe0;
+"/>
+<!-- Line: box -->
+<rect x="944" y="944" width="1653" height="1653" rx="0" 
+style="stroke:#0000d1;stroke-width:16;
+stroke-linejoin:miter; stroke-linecap:butt;
+fill:#e0e0ff;
+"/>
+<!-- Line: box -->
+<rect x="4251" y="1417" width="1653" height="1653" rx="0" 
+style="stroke:#d10000;stroke-width:16;
+stroke-linejoin:miter; stroke-linecap:butt;
+fill:#ffe0e0;
+"/>
+<!-- Line: box -->
+<rect x="1653" y="1653" width="236" height="236" rx="0" 
+style="stroke:#0000d1;stroke-width:16;
+stroke-linejoin:miter; stroke-linecap:butt;
+"/>
+<!-- Line -->
+<polyline points="1653,1889
+1889,1653
+" style="stroke:#0000d1;stroke-width:16;
+stroke-linejoin:miter; stroke-linecap:butt;
+"/>
+<!-- Line -->
+<polyline points="1653,1653
+1889,1889
+" style="stroke:#0000d1;stroke-width:16;
+stroke-linejoin:miter; stroke-linecap:butt;
+"/>
+<!-- Line: box -->
+<rect x="4960" y="2125" width="236" height="236" rx="0" 
+style="stroke:#d10000;stroke-width:16;
+stroke-linejoin:miter; stroke-linecap:butt;
+"/>
+<!-- Line -->
+<polyline points="4960,2362
+5196,2125
+" style="stroke:#d10000;stroke-width:16;
+stroke-linejoin:miter; stroke-linecap:butt;
+"/>
+<!-- Line -->
+<polyline points="4960,2125
+5196,2362
+" style="stroke:#d10000;stroke-width:16;
+stroke-linejoin:miter; stroke-linecap:butt;
+"/>
+<!-- Line -->
+<polyline points="4015,3543
+4251,3307
+" style="stroke:#00d100;stroke-width:16;
+stroke-linejoin:miter; stroke-linecap:butt;
+"/>
+<!-- Line -->
+<polyline points="4015,3307
+4251,3543
+" style="stroke:#00d100;stroke-width:16;
+stroke-linejoin:miter; stroke-linecap:butt;
+"/>
+<!-- Line: box -->
+<rect x="4015" y="3307" width="236" height="236" rx="0" 
+style="stroke:#00d100;stroke-width:16;
+stroke-linejoin:miter; stroke-linecap:butt;
+"/>
+</g>
+</svg>

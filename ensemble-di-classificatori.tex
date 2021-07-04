@@ -1,0 +1,27 @@
+\chapter{Ensemble di classificatori}\label{ensemble-di-classificatori}
+
+L'utilizzo di più classificatori per creare un ensemble (insieme) è frequentemente utilizzato nel Deep Learning, si basa sull’utilizzo di più
+reti, o modelli, per risolvere un problema di classificazione. L’idea di base è che utilizzando più punti di vista diversi, uniti secondo una regola, si possano raggiungere accuratezze
+più alte ed errori meno frequenti.
+
+Ogni singolo classificatore fornisce in output la propria decisione che consiste nella classe cui
+ha assegnato il pattern.\cite{unibo_maltoni_ml}\cite{zhi_enseble}. 
+
+\section{Majority Rule}\label{majority-rule}
+
+Il più semplice modo per combinare più classificatori è a livello
+di decisione, con questa metologia, ogni classificatore fornisce in output la classe alla quale ha segnato il Pattern.  Con \(n\) classificatori: ognuno vota una classe per il dato
+pattern, semplicemente assegno, il Pattern, cioè classifico il Pattern come la classe maggiormente voto.
+
+Più formalmente.
+Se \( \left\{C_{1}, C_{2}, \ldots C_{n c}\right\} \) è un insieme di \( n c \) classificatori, \( e \)
+\[
+\theta_{i j}=\left\{\begin{array}{cc}
+1 & \text { se } i \text { è la classe votata da } C_{j} \\
+0 & \text { altrimenti }
+\end{array} \quad(1 \leq i \leq s, 1 \leq j \leq n c)\right.
+\]
+Allora il pattern è assegnato alla classe \( t \) tale che:
+\[
+t=\operatornamewithlimits{argmax} _{i=1_{\ldots} s}\left\{\sum_{j=1 \ldots n c} \theta_{i j}\right\}
+\]
