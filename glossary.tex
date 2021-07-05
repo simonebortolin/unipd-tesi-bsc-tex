@@ -2,7 +2,7 @@
 
 \longnewdefinedabbreviation{cnn} {CNN} {convolutional neural network}
 {
-    Una rete neurale convoluzionale (ConvNet/CNN) è un algoritmo di Deep Learning che prendere in input un'immagine, ai vari input vengono assegnati i pesi e un bias in modo che la rete sia in grado di cogliere gli aspetti e gli oggetti dell'immagine ed essere in grado di differenziare gli uni dagli altri. Come si deduce dal nome le CNN fanno ampio uso della \gls{convoluzione}
+    Una rete neurale convoluzionale (ConvNet/CNN) è un algoritmo di Deep Learning che prende in input un'immagine, ai vari input vengono assegnati i pesi e un bias in modo che la rete sia in grado di cogliere gli aspetti e gli oggetti dell'immagine ed essere in grado di differenziare gli uni dagli altri. Come si deduce dal nome le CNN fa ampio uso della \gls{convoluzione}
 
     La pre-elaborazione richiesta in una CNN è molto più bassa rispetto ad altri algoritmi di classificazione. Mentre nei metodi primitivi i filtri sono costruiti a mano, con abbastanza addestramento, le CNN hanno la capacità di imparare questi filtri.
 
@@ -13,11 +13,11 @@
     oggetti a bassa risoluzione), ma bisogna attendere il 2012
     (AlexNet) per un radicale cambio di passo.
 
-    I problemi di una CNN nel 1998 non erano tanto in ambito matematico, problema che è stato risolto in maniera semplice, ma bensì la disponibilità di dataset e la potenza di calcolo per gestiere ed elaborare i dataset.
+    I problemi di una CNN nel 1998 non erano tanto in ambito matematico, problema che è stato risolto in maniera semplice, bensì nella disponibilità di dataset e potenza di calcolo per gestire ed elaborare i dataset.
 
-    In particolare nelle reti CNN, a differenza di quelle classiche l'accuratezza aumenta all'aumentare del dataset, e a differenza di una rete shallow dove il  plaeau è facilmente raggiungbile in una deep ci sono vari studi che indicano che non si raggiunge e la rete migliora sempre    (un asintoto orrizontale che determina la impossibilità di allenare meglio la rete).
+    In particolare nelle reti CNN, a differenza di quelle classiche l'accuratezza aumenta all'aumentare del dataset, e a differenza di una rete shallow dove il  plaeau è facilmente raggiungibile in una deep ci sono vari studi che indicano che non si raggiunge e la rete migliora sempre    (un asintoto orizzontale che determina la impossibilità di allenare meglio la rete).
 
-    In particolare il problema matematico era relativo al problema della Vanishing (or exploding) gradient che impediva l'allenamento di reti profonde. Infatti se io moltiplico tante volte un numero raggiungo un valore prossimo allo zero il risultato non cambia e la rete neurale non modifica i relativi pesi una volta raggiunto il minimo la rete neurale esce. Ma la rete neurale a ogni addestramento deve modificare i proprio pesi,  perciò non si riesce ad avere un addestramento stabile o ad avere un minimo, per esempio dopo aver raggiunto il minimo  è possibile che il valore si modifica andando a peggiorare le performance.
+    In particolare il problema matematico era relativo al problema della Vanishing (or exploding) gradient che impediva l'allenamento di reti profonde. Infatti se io moltiplico tante volte un numero raggiungo un valore prossimo allo zero il risultato non cambia e la rete neurale non modifica i relativi pesi una volta raggiunto il minimo la rete neurale esce. Ma la rete neurale a ogni addestramento deve modificare i proprio pesi,  perciò non si riesce ad avere un addestramento stabile o ad avere un minimo, per esempio dopo aver raggiunto il minimo  è possibile che il valore si modifichi andando a peggiorare le performance.
 
     Le reti CNN hanno diverse applicazioni nel riconoscimento di immagini,  video e audio, nei sistemi di raccomandazione, nell’elaborazione del
     linguaggio naturale e, recentemente, in bioinformatica.
@@ -35,15 +35,15 @@
             un livello sono collegati a ogni unità di attivazione del livello successivo. Normalmente nei modelli di
             apprendimento automatico più diffusi, gli ultimi livelli sono livelli completamente connessi
             che compilano i dati estratti dai livelli precedenti per formare l’output finale. È il secondo
-            livello più dispendioso in termini di tempo, dopo il Convolution Layer}
+            livello più dispendioso in termini di tempo, dopo il \gls{Convolution Layer}}
 }
 \longnewglossaryentry{convoluzione}
 {
     name=convoluzione}{
-    È un operatore matematico che utilizza a partire da  funzioni \(f(t)\) e \(g(t)\), restituendone una terza che rappresenta come la forma di una influisce sull’altra,  è una operazione che gode della proprietà commutativa:
+    È un operatore matematico che a partire da funzioni \(f(t)\) e \(g(t)\), restituendone una terza che rappresenta come la forma di una funzione una influisce sull’altra. È una operazione che gode della proprietà commutativa:
     \[ f ( t ) * g ( t ) = \int _ { - \infty } ^ { \infty } f ( t ) g ( \tau - t ) d \tau  = \int _ { - \infty } ^ { \infty } g ( t ) f ( \tau - t ) d \tau\]
 
-    L'operazione è tipica dell'elaborazione dei segnali e più in generale delle immagini, che nel caso di un una immagine discreta è:\[ \mathbf { I } * \mathbf{F} [ i , j ] = \sum _ { y = 1 } ^ { m } \sum _ { x = 1 } ^ { m } \left( \mathbf { I } \left[ i + \left\lceil \frac { m } { 2 } \right\rceil - y , j + \left\lceil \frac { m } { 2 } \right] - x \right] \cdot \mathbf { F } [ y , x ] \right) \]
+    L'operazione è tipica dell'elaborazione dei segnali e più in generale delle immagini,  nel caso di un una immagine discreta è:\[ \mathbf { I } * \mathbf{F} [ i , j ] = \sum _ { y = 1 } ^ { m } \sum _ { x = 1 } ^ { m } \left( \mathbf { I } \left[ i + \left\lceil \frac { m } { 2 } \right\rceil - y , j + \left\lceil \frac { m } { 2 } \right] - x \right] \cdot \mathbf { F } [ y , x ] \right) \]
     Dove \(\mathbf{F}\) è il filtro definito sulla griglia \(m \times m\), \(\mathbf{I}\) è la nostra matrice immagine, e \(\mathbf { I } * \mathbf{F}\) sono i nostri pixel filtrati.
 
     La Complessità
@@ -58,25 +58,25 @@
     moltiplicazioni e
     altrettante somme.
 
-    La soluzione è lavorare nello spazio di Fourier, ricordando che la FFT (Fast Fourier Transform) si ottiene con un procedimento \(O(n \log n)\), ricordando che dati \( f \) e \( g \) due funzioni la cui convoluzione è indicata da \( f * g \). Sia \( \mathcal { F } \) l'operatore trasformata di Fourier,  \( \mathcal { F } \{ f \} \) e \( \mathcal { F } \{ g \} \) sono le trasformate di \( f \) e \( g \) rispettivamente. Allora:
+    La soluzione è lavorare nello spazio di Fourier, ricordando che la FFT (Fast Fourier Transform) si ottiene con un procedimento \(O(n \log n)\). Sapendo che date due funzioni  \( f \) e \( g \) la cui convoluzione è indicata da \( f * g \), sia \( \mathcal { F } \) l'operatore trasformata di Fourier,  \( \mathcal { F } \{ f \} \) e \( \mathcal { F } \{ g \} \) sono le trasformate di \( f \) e \( g \) rispettivamente. Allora:
     \( \mathcal { F } \{ f * g \} = \mathcal { F } \{ f \} \cdot \mathcal { F } \{ g \} \).}
 
 
 \longnewglossaryentry{stride} {
-    name=stride} {Lo stride regola la dimensione tra pixel di ingresso e pixel in uscita, in particolare quando un filtro viene fatto scorrere sul volume di input, invece di spostarsi con passiunitari (di 1 neurone) si può utilizzare un passo (o stride) maggiore. Questa operazioneriduce la dimensione delle feature map nel volume di output e conseguentemente il numerodi connessioni. Lo stride è spesso impostato su un numero intero, anziché su una frazione oun decimale.
+    name=stride} {Questo parametro regola la dimensione tra pixel di ingresso e pixel in uscita, in particolare quando un filtro viene fatto scorrere sul volume di input, invece di spostarsi con passi unitari (di 1 neurone) si può utilizzare un passo (o stride) maggiore. Questa operazione riduce la dimensione delle feature map nel volume di output e conseguentemente il numero di connessioni. Lo stride è spesso impostato su un numero intero, anziché su una frazione o un decimale per facilitare i calcoli.
 
-    Sui livelli iniziali della rete per piccoli stride (es. 2, 4), è possibile ottenere un elevatoguadagno in eﬀicienza a discapito di una leggera penalizzazione in accuratezza.}
+    Sui primi livelli di una CNN con uno piccolo stride maggiore di uno, è possibile ottenere un elevato guadagno nell'efficienza con una piccola penalizzazione nella accuratezza.}
 
 \newglossaryentry{padding} {
     name=padding,
-    description= {Per evitare che i pixel laterali abbiano una minore influenza sull'output di una convoluzione è tipico aggiungere un zero-padding (un bordo di pixel con valore zero) per poter filtrare anche i pixel laterali dell’immagine, che altrimenti verrebbero analizzati da un numero inferiore di filtri in quanto i filtri non possono uscire dalla matrice, e portando anche un portando quindi ad un shrinking (riduzione di dimensione) dell’outpute a una perdita di informazioni}
+    description= {Per evitare che i pixel laterali abbiano una minore influenza sull'output di una convoluzione è tipico aggiungere uno zero-padding (un bordo di pixel con valore zero) per poter filtrare anche i pixel laterali dell’immagine, che altrimenti verrebbero analizzati da un numero inferiore di filtri in quanto i filtri non possono uscire dalla matrice, causando un shrinking (riduzione di dimensione) dell’output e quindi a una perdita di informazioni}
 }
 \longnewglossaryentry{Convolution Layer}
 {
     name={convolution layer}}{
-    È un layer che prende in input un tensore, come una immagine e ne torna fuori un’altra immagine dopo aver effettuato una \gls{convoluzione}. In particolare prende in input una immagine \(\operatorname{IH} \times \operatorname{IW} \times \operatorname{IC}\) e torna una feacture map definita da \(\operatorname{FH} \times \operatorname{FW} \times \operatorname{FC}\) che rappresenta il risultato all'interno del livello. 
+    È un layer che prende in input una immagine e ne torna fuori un’altra immagine dopo aver effettuato una \gls{convoluzione}. In particolare prende in input una immagine \(\operatorname{IH} \times \operatorname{IW} \times \operatorname{IC}\) e torna una feacture map definita da \(\operatorname{FH} \times \operatorname{FW} \times \operatorname{FC}\) che rappresenta il risultato all'interno del livello. 
     
-    Le operazioni all’interno del livello vengono determinate da dei filtri digitali \(L \times L\), che vengono fatti scorrere attraverso
+    Le operazioni all’interno del livello vengono determinate da filtri digitali \(L \times L\), che vengono fatti scorrere attraverso
     ogni pixel di input, calcolandone il prodotto scalare. Si possono determinare diversi
     parametri, la dimensione del filtro, l’utilizzo di \gls{padding} e di \gls{stride}, per ottenere la miglior rappresentazione dell’immagine.} 
 
@@ -86,30 +86,30 @@
     È un layer che prende in input numero \(n\) di neuroni e li unisce secondo algoritmi di
     media, massimo, per ridurre la dimensionalità dell’output finale e, raggrupando gli
     output di un gruppo di neuroni adiacenti permette di ottenere un’indipendenza spaziale
-    negli input}
+    negli input.}
 
 \longnewdefinedabbreviation{ReLu}{ReLu}{rectified linear}
 {
-    È una funzione di attivazione nata per risolvere alcuni problemi delle funzioni di attivazione usate nelle reti MLP, come la sigmoide, in quanto essa da problemi nella retroprograzione del gradiente. La funzione è definita come
+    È una funzione di attivazione nata per risolvere alcuni problemi delle funzioni di attivazione usate nelle reti MLP, come la sigmoide, in quanto essa da problemi nella retropropagazione del gradiente. La funzione è definita come
     \[f(x) = \max (0, x)\]
 
     La funzione restituisce 0 se il valore  è minore di zero
     altrimenti restituisce il numero stesso.
 }
 
-\longnewglossaryentry{LearningRate}{name={learning rate}}{La learning rate, o velocità di apprendimento è un parametro di ottimizzazione in un algoritmo di ottimizzazione, normalmente il gradient descent optimization algorithm. Il learning rate è un iperparametro che determina quanto modificare i pesi in base all'attuale errore. La scelta del tasso di apprendimento è impegnativa in quanto un valore troppo piccolo può comportare un lungo processo di allenamento che potrebbe bloccarsi, mentre un valore troppo grande può comportare l'apprendimento di una serie di pesi non ottimale troppo velocemente o un processo di allenamento instabile.
+\longnewglossaryentry{LearningRate}{name={learning rate}}{Detta anche  velocità di apprendimento è un iperparametro in un algoritmo di ottimizzazione, normalmente il \gls{gd}. Determina quanto modificare i pesi in base all'attuale errore. La scelta del tasso di apprendimento è impegnativa in quanto un valore troppo piccolo può comportare un lungo processo di allenamento che potrebbe bloccarsi, mentre un valore troppo grande può comportare l'apprendimento di una serie di pesi non ottimali o un processo di allenamento instabile.
 
     La velocità di apprendimento può essere l'iperparametro più importante durante la configurazione della rete neurale. Pertanto è fondamentale sapere come indagare gli effetti del tasso di apprendimento sulle prestazioni del modello e costruire un'intuizione sulla dinamica del tasso di apprendimento sul comportamento del modello.}
 
 \longnewglossaryentry{MiniBatchSize}{name={mini-batch size}}{
     La dimensione del batch definisce il numero di campioni che verranno analizzati attraverso la rete in un turno.
 
-    Ad esempio, supponiamo che tu abbia 1050 campioni di addestramento e desideri impostare un valore batch size uguale a 100. L'algoritmo prende i primi 100 campioni (dal 1° al 100° dal set di dati di addestramento e addestra la rete. Successivamente, prende i secondi 100 campioni (dal 101° al 200°) e addestra nuovamente la rete. Possiamo continuare a eseguire questa procedura finché non abbiamo propagato tutti i campioni attraverso la rete. Il problema potrebbe verificarsi con l'ultima serie di campioni. Nel nostro esempio, abbiamo usato 1050 che non è divisibile per 100 senza resto. La soluzione più semplice è ottenere gli ultimi 50 campioni e addestrare la rete. Si parla di Mini-batch quando la dimensione del batch è molto piccola.
+    Ad esempio, supponiamo che tu abbia 1050 campioni di addestramento e desideri impostare un valore batch size uguale a 100. L'algoritmo prende i primi 100 campioni (dal 1° al 100°) dal set di dati di addestramento e addestra la rete. Successivamente, prende i secondi 100 campioni (dal 101° al 200°) e addestra nuovamente la rete. Possiamo continuare a eseguire questa procedura finché non abbiamo propagato tutti i campioni attraverso la rete. Il problema potrebbe verificarsi con l'ultima serie di campioni. Nel nostro esempio, abbiamo usato 1050 che non è divisibile per 100 senza resto. La soluzione più semplice è ottenere gli ultimi 50 campioni e addestrare la rete. Si parla di Mini-batch quando la dimensione del batch è molto piccola.
 
     I vantaggi dell'uso di una batch size minore al numero totale dei campioni:
     \begin{itemize}
         \item Poiché si addestra la rete utilizzando meno campioni, la procedura di addestramento complessiva richiede meno memoria. Ciò è particolarmente importante se non sei in grado di inserire l'intero set di dati nella memoria della tua macchina.
-        \item In genere le reti si addestrano più velocemente con i mini-batch. Questo perché aggiorniamo i pesi dopo ogni propagazione. Nel nostro esempio abbiamo propagato 11 batch (10 di loro avevano 100 campioni e 1 aveva 50 campioni) e dopo ciascuno di essi abbiamo aggiornato i parametri della nostra rete. Se usassimo tutti i campioni durante la propagazione, faremmo solo 1 aggiornamento per il parametro di rete.
+        \item In genere le reti si addestrano più velocemente con i mini-batch. Questo perché aggiorniamo i pesi dopo ogni propagazione. Nel nostro esempio abbiamo propagato 11 batch (10 di loro avevano 100 campioni e 1 aveva 50 campioni) e dopo ciascuno di essi abbiamo aggiornato i parametri della nostra rete. Se usassimo tutti i campioni durante la propagazione, faremmo solo un aggiornamento per il parametro di rete.
     \end{itemize}
     È da sottolineare che più piccolo è il batch, meno accurata sarà la stima del gradiente.}
 \longnewglossaryentry{propagazione forward}
@@ -121,7 +121,7 @@ delle informazioni in avanti: dal livello di input a quello di output.
 Una volta addestrata (cioè fissati i pesi \(w_i\)), una rete neurale può semplicemente
 processare pattern attraverso forward propagation.
 
-Cioè si salvano i vari pesi \(w_i\) della rete in memoria e ogni volta che arriva un pattern la rete fa calcoli interni e fornisce l'output. Dopo aver addestrato la rete, il sistema è abbastanza veloce. Per esempio le reti deep  sono estremamente complesse, ci vuole un tempo assurdo per addestrarle, ma dopo averle addesstrate hanno tempi velocissimi di esecuzione.
+Cioè si salvano i vari pesi \(w_i\) della rete in memoria e ogni volta che arriva un pattern la rete fa calcoli interni e fornisce l'output. Dopo aver addestrato la rete, il sistema è abbastanza veloce. Per esempio le reti deep  sono estremamente complesse, ci vuole un elevato tempo per addestrarle, ma dopo averle addestrate hanno tempi velocissimi di esecuzione.
 
 In una rete a 3 livelli \( \left(d: n_{H}: s\right) \):
 input \( d \) neuroni, livello nascosto (hidden) \( n_{H} \) neuroni, output \( s \) neuroni.
@@ -132,7 +132,7 @@ Il \( k \)-esimo valore di output può essere calcolato come:
 
 \[ z_{k}=f\left(\sum_{j=1 \ldots n_{H}} w_{j k} \cdot y_{j}+w_{0 k}\right)=f\left(\sum_{j=1 \ldots n_{H}} w_{j k} \cdot f\left(\sum_{i=1 \ldots d} w_{i j} \cdot x_{i}+w_{0 j}\right)+w_{0 k}\right) \]
 
-Si nota come una volta noti i vari \(w_i\) le operazioni da fare per calcolare l'output sono eseguibili in un tempo proprozionale al numero di pesi e di livelli.
+Si nota come una volta noti i vari \(w_i\) le operazioni da fare per calcolare l'output sono eseguibili in un tempo proporzionale al numero di pesi e di livelli.
 }
 \longnewdefinedabbreviation{gd}{GD}{gradient descent}{
     È il principale algoritmo di error backpropagation, la minimizzazione dell’errore avviene attraverso passi in direzione opposta al gradiente.
@@ -159,5 +159,5 @@ Si nota come una volta noti i vari \(w_i\) le operazioni da fare per calcolare l
     \[ \sum _ { c = 1 \ldots s } z _ { c } \neq 1 \]
 }
 
-\longnewglossaryentry{BatchNormalization}{name={batch normalization}}{La normalizzazione batch applica una trasformazione che mantiene l'output medio vicino a 0 e la deviazione standard dell'output vicino a 1. Ciò ha l'effetto di stabilizzare il processo di apprendimento e di ridurre drasticamente il numero di periodi di addestramento necessari per addestrare reti profonde.
+\longnewglossaryentry{BatchNormalization}{name={batch normalization}}{È una trasformazione che mantiene l'output medio vicino a 0 e la deviazione standard dell'output vicino a 1. Ciò ha l'effetto di stabilizzare il processo di apprendimento e di ridurre drasticamente il numero di periodi di addestramento necessari per addestrare reti profonde.
 }
