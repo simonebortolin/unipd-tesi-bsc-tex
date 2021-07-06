@@ -1,6 +1,6 @@
 \chapter{Preprocessing}\label{preprocessing}
 
-Le immagini raw nei dataset sono sufficenti ad una \gls{cnn} per ottenere buoni risultati, ma è possibile migliorare i risultati attraverso una pre-eleaborazione delle immagini, in particolare la rimozione di artefatti,  del rumore e migliorare la qualità dell'immagine 
+Le immagini raw nei dataset sono sufficienti ad una \gls{cnn} per ottenere buoni risultati, ma è possibile migliorare i risultati attraverso una pre-eleaborazione delle immagini, in particolare la rimozione di artefatti,  del rumore e migliorare la qualità dell'immagine 
 in cui le feacture  possono essere estratte correttamente\cite{permual_contrast}
 
 \section{Contrasto}\label{contrasto}
@@ -19,7 +19,7 @@ nero al bianco, creando un'immagine di maggiore contrasto.
 L'algoritmo per l'ottimizzazione del contrasto è usato per modificare
 la gamma dei valori di colore per usare tutti i valori possibili per
 migliorare il contrasto. Per preservare l'accurata proporzione del colore
-quando viene usato un'algoritmo per la  stiratura del contrasto,
+quando viene usato un algoritmo per la  stiratura del contrasto,
 viene applicata una stiratura simile per lo stretching di tutti i canali. 
 
 Nel caso di una immagine a colori, per esempio se i canali rosso e verde sono bilanciati, ma non il canale blu viene allungato l'istogramma del canale blu su entrambi i lati per ottenere
@@ -45,7 +45,7 @@ Una volta determinato il PSNR è possibile effettuare una equalizzazione dell'is
 
 \paragraph{CLAHE}\label{clahe}
 
-Una tecnica più avanzata per migliorare il contrasto nelle immagini è la contrast limited adaptive histogram equalization (CLAHE) che a differenza della classica equalizzazione dell'istogramma divide ogni immagini in tante sottoimmagini e per ogni sottoimmagine calcola l'istogramma ed effettua il miglioramento del contrasto, come mostrato in \cref{fig:clahe}\cite{hummel_histogram}.
+Una tecnica più avanzata per migliorare il contrasto nelle immagini è la contrast limited adaptive histogram equalization (CLAHE) che a differenza della classica equalizzazione dell'istogramma divide ogni immagini in tante sotto immagini e per ogni sotto immagine calcola l'istogramma ed effettua il miglioramento del contrasto, come mostrato in \cref{fig:clahe}\cite{hummel_histogram}.
 
 
 \begin{figure}[ht]
@@ -54,6 +54,18 @@ Una tecnica più avanzata per migliorare il contrasto nelle immagini è la contr
     \caption{Metodo dell'equalizzazione dell'istogramma}
     \label{fig:clahe}
 \end{figure}
+
+\section{Gamma}\label{gamma}
+
+La correzione gamma è una correzione non lineare che viene applicata all'immagine per far apparire all'occhio umano le sfumature catturate dalle fotocamere digitali. La correzione gamma si basa sul fato che i nostri occhi non percepiscono la luce come fanno le fotocamere, l'occhio è molto più sensibile ai cambiamenti tra i toni scuri mentre il sensore della fotocamera è molto più lineare, come mostrato in \cref{fig:gamma}. L'informazione sulla gamma è semplicemente incorporata nei metadata del file e l'immagine viene codificata in maniera lineare, rendendo necessario applicare il filtro gamma in fase di decodifica, è plausibile ipotizzare che pure una CNN funzioni meglio con una immagine pre elaborata con un filtro per la gamma\cite{gamma}.
+
+\begin{figure}[ht]
+    \centering
+    \includegraphics[width=0.7\textwidth]{preprocessing/gamma.png}
+    \caption{Luminanza dell'obbiettivo fotografico e dell'occhio umano}
+    \label{fig:gamma}
+\end{figure}
+
 
 %\section{Filtro bilaterale}\label{filtro-bilaterale}
 

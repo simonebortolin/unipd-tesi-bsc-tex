@@ -1,0 +1,21 @@
+\chapter{Conclusioni}\label{conclusioni}
+
+Si nota come un semplice doppio allenamento 2R migliora  le performance generali della rete, in particolare si arriva a un 97.5\% di performance generali con un data augmentation basico. Nonostante ciò con l'inserimento di rumore le performance calano, lasciando intuire che la rete in generale prende in considerazioni alcune feature secondarie, che con il noise verrebbero meno.
+\begin{table}[ht]
+    \begin{tabular}{lllll}
+                                     & \multicolumn{2}{l}{1R}                                                   & \multicolumn{2}{l}{2R}                                                   \\
+                                     & (1)) & (2) & (1) & (2) \\
+    Semplice DA                      & 95.4\%                            & 100\%                                & 97.5\%                            & 100\%                                \\
+    Filtro Contrasto Semplice        & 96.2\%                            & 100\%                                & 96.2\%                            & 100\%                                \\
+    Filtro Contrasto con media e STD & 89.6\%                            & 91.7\%                               & 92.9\%                            & 100\%                                \\
+    CLAHE                            & 63.7\%                            & 45.8\%                               &                                   &                                      \\
+    Correzione Gamma                 & 95.0\%                            & 100\%                                &                                   &                                      \\
+    Correzione Gamma e CLAHE         & 46.0\%                            & 0\%                                  &                                   &                                      \\
+    Noise                            & 96.7\%                            & 100\%                                & 95.4\%                            & 95.0\%                               \\
+    DCT e Noise                      & 94.6\%                            & 100\%                                & 93.8\%                            & 100\%                               
+    \end{tabular}
+    \caption{Specchio riassuntivo delle performance singole dei vari metodi analizzati, (1): Divisione corretta nelle 4 classi, (2): Riconoscimento dei frame Informative}
+    \label{tab:specchio-single}
+\end{table}
+
+

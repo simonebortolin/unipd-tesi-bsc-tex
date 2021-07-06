@@ -96,7 +96,7 @@ IM = imadjust(IM,[avg-n*sigma avg+n*sigma],[]);
     \label{fig:contrast-bis}
 \end{figure}
 
-Una versione più avanzata per l'elaborazione del contrasto è il CLAHE
+Una versione più avanzata per l'elaborazione del contrasto è il CLAHE, il codice è descritto nel listato successivo e i risultati in \cref{fig:clahe}. 
 
 \begin{lstlisting}
 [X, MAP] = rgb2ind(IM, 65536);
@@ -108,17 +108,61 @@ LAB(:,:,1) = L*100;
 IM = lab2rgb(LAB);
 \end{lstlisting}
 
+\begin{figure}[ht]
+    \centering
+    \begin{subfigure}{0.45\textwidth}
+        \includegraphics[width=\textwidth]{addestramento-rete-neurale/one-clahe.pdf}
+        \caption{Allenamento 1R} 
+    \end{subfigure}
+    \caption{Confusion matrix dell'allenamento con  CLAHE}
+    \label{fig:clahe}
+\end{figure}
+
+Per effettuare un miglioramento della Gamma (descritto in \cref{gamma}) dell'immagine e renderla più simile a quella dell'occhio umano si può usare il seguente codice, i risultati sono in \cref{fig:gamma}.
+
+\begin{lstlisting}
+hgamma = vision.GammaCorrector(2.0,'Correction','De-gamma');
+
+IM= hgamma(IM);
+\end{lstlisting}
+
+\begin{figure}[ht]
+    \centering
+    \begin{subfigure}{0.45\textwidth}
+        \includegraphics[width=\textwidth]{addestramento-rete-neurale/one-gamma.pdf}
+        \caption{Allenamento senza CLAHE} 
+    \end{subfigure}
+    \begin{subfigure}{0.45\textwidth}
+        \includegraphics[width=\textwidth]{addestramento-rete-neurale/one-clahe-gamma.pdf}
+        \caption{Allenamento con CLAHE} 
+    \end{subfigure}
+    \caption{Confusion matrix dell'allenamento con ottimizzazione gamma}
+    \label{fig:clahe}
+\end{figure}
+
+Per aggiungere rumore artificiale all'immagine ed evitare che l'immagine si concentra su feature secondarie che potrebbero determinare basse prestazioni nei test set, i risultati sono in \cref{fig:noise}.
+
 \begin{lstlisting}
 IM = imnoise(IM,'salt & pepper',0.02);
 \end{lstlisting}
 
-\begin{lstlisting}
-IM= hgamma(IM);
-\end{lstlisting}
+\begin{figure}[ht]
+    \centering
+    \begin{subfigure}{0.45\textwidth}
+        \includegraphics[width=\textwidth]{addestramento-rete-neurale/one-noise.pdf}
+        \caption{Allenamento 1R} 
+    \end{subfigure}
+    \begin{subfigure}{0.45\textwidth}
+        \includegraphics[width=\textwidth]{addestramento-rete-neurale/two-noise.pdf}
+        \caption{Allenamento 2R} 
+    \end{subfigure}
+    \caption{Confusion matrix dell'allenamento con TL 1R e 2R con aggiunta di rumore artificiale}
+    \label{fig:noise}
+\end{figure}
 
 \section{Data argumentation con DCT}\label{data-argumentation-con-dct}
 
-Ci sono numerosi metodi per eseguire la DCT ed la relativa data augmentation, in particolare in \cref{fig:dct-algoritmi} sono illustrati due algoritmi, il primo che per ogni frequenza la annulla con propabilità 0.5 e la seconda che la attenua con probabilità \(z\sim U\left(-\frac{1}{2}, \frac{1}{2}\right)\):
+Ci sono numerosi metodi per eseguire la DCT ed la relativa data augmentation, in particolare in \cref{fig:dct-algoritmi} sono illustrati due algoritmi, il primo che per ogni frequenza la annulla con probabilità 0.5 e la seconda che la attenua con probabilità \(z\sim U\left(-\frac{1}{2}, \frac{1}{2}\right)\)\cite{nanni_dtc_pca}. 
 
 \begin{figure}[ht]
     \centering
@@ -127,7 +171,21 @@ Ci sono numerosi metodi per eseguire la DCT ed la relativa data augmentation, in
     \label{fig:dct-algoritmi}
 \end{figure}
 
-I risultati 
+I risultati con DTC e Noise sono illustrati nella \cref{fig:dct-noise}.
+
+\begin{figure}[ht]
+    \centering
+    \begin{subfigure}{0.45\textwidth}
+        \includegraphics[width=\textwidth]{addestramento-rete-neurale/one-dct.pdf}
+        \caption{Allenamento 1R} 
+    \end{subfigure}
+    \begin{subfigure}{0.45\textwidth}
+        \includegraphics[width=\textwidth]{addestramento-rete-neurale/two-dct.pdf}
+        \caption{Allenamento 2R} 
+    \end{subfigure}
+    \caption{Confusion matrix dell'allenamento con TL 1R e 2R con DCT e noise}
+    \label{fig:dct-noise}
+\end{figure}
 
 
 \section{Ensemble di classificatori}\label{ensemble-di-classificatori}
