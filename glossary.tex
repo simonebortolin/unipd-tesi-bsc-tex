@@ -43,8 +43,8 @@
     È un operatore matematico che a partire da funzioni \(f(t)\) e \(g(t)\), restituendone una terza che rappresenta come la forma di una funzione una influisce sull’altra. È una operazione che gode della proprietà commutativa:
     \[ f ( t ) * g ( t ) = \int _ { - \infty } ^ { \infty } f ( t ) g ( \tau - t ) d \tau  = \int _ { - \infty } ^ { \infty } g ( t ) f ( \tau - t ) \mathop{\mathrm{d} \tau}\]
 
-    L'operazione è tipica dell'elaborazione dei segnali e più in generale delle immagini,  nel caso di un una immagine discreta è:\[ \mathbf { I } * \mathbf{F} [ i , j ] = \sum _ { y = 1 } ^ { m } \sum _ { x = 1 } ^ { m } \left( \mathbf { I } \left[ i + \left\lceil \frac { m } { 2 } \right\rceil - y , j + \left\lceil \frac { m } { 2 } \right] - x \right] \cdot \mathbf { F } [ y , x ] \right) \]
-    Dove \(\mathbf{F}\) è il filtro definito sulla griglia \(m \times m\), \(\mathbf{I}\) è la nostra matrice immagine, e \(\mathbf { I } * \mathbf{F}\) sono i nostri pixel filtrati.
+    L'operazione è tipica dell'elaborazione dei segnali e più in generale delle immagini,  nel caso di un una immagine discreta è:\[ \symbfup { I } * \symbfup{F} [ i , j ] = \sum _ { y = 1 } ^ { m } \sum _ { x = 1 } ^ { m } \left( \symbfup { I } \left[ i + \left\lceil \frac { m } { 2 } \right\rceil - y , j + \left\lceil \frac { m } { 2 } \right] - x \right] \cdot \symbfup { F } [ y , x ] \right) \]
+    Dove \(\symbfup{F}\) è il filtro definito sulla griglia \(m \times m\), \(\symbfup{I}\) è la nostra matrice immagine, e \(\symbfup { I } * \symbfup{F}\) sono i nostri pixel filtrati.
 
     La Complessità
     computazionale  della convoluzione è
@@ -150,7 +150,7 @@ Si nota come una volta noti i vari \(w_i\) le operazioni da fare per calcolare l
 
     Il livello di attivazione  \( \operatorname{net}_{k} \) dei singoli neuroni si calcola nel modo consueto, ma come funzione di attivazione per il neurone \( k \)-esimo (invece di Sigmoide o ReLu) si utilizza:
     \[
-        \mathbf{z}_{k}=f\left(\operatorname{net}_{k}\right)=\frac{e^{\operatorname{net}_{k}}}{\sum_{c=1 \ldots s} e^{\operatorname{net}_{c}}}
+        \symbfup{z}_{k}=f\left(\operatorname{net}_{k}\right)=\frac{e^{\operatorname{net}_{k}}}{\sum_{c=1 \ldots s} e^{\operatorname{net}_{c}}}
     \]
     dove i valori \( z_{k} \) prodotti possono essere interpretati come probabilità: appartengono a \([0...1]\) e la loro somma è \(1\).
     Il livello SoftMax, quindi traduce  i valori di \(\operatorname{net}\) prodotti dall'ultimo livello della rete in probabilità.
