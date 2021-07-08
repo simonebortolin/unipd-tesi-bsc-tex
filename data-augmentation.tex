@@ -8,7 +8,7 @@ Con Data augmentation si intende la tecnica usata per la generazione di nuovi da
 \section{Metodi comuni di Data augmentation}\label{metodi-comuni-di-data-augmentation}
 
 Le principali operazioni sono per esempio  il ritaglio di immagini
-per l'addestramento in posizioni diverse, la rotazione delle immagini (sia leggere di qualche grado che di 90, 180, 240 gradi), modificare l'illuminazione ed il contrasto, una DA basica da applicare ad un rete neurale è la seguente \cite{nanni_dtc_pca}:
+per l'addestramento in posizioni diverse, la rotazione delle immagini (sia leggere di qualche grado che di 90, 180, 240 gradi), modificare l'illuminazione ed il contrasto, una DA basica da applicare ad un rete neurale è la seguente \cite{nanni_dct_pca}:
 \begin{itemize}
     \item L'immagine si riflette nella direzione sinistra-destra con il 50\% di probabilità. 
     \item L'immagine è riflessa in modo casuale in entrambe le direzioni sinistra-destra e in alto-basso.
@@ -22,7 +22,7 @@ per l'addestramento in posizioni diverse, la rotazione delle immagini (sia legge
 
 \section{Data augmentation con DCT}\label{data-augmentation-con-dct}
 
-In aggiunta alle trasforomazioni standard precedenti si usa anche l'approccio trattato in  \cite{nanni_dtc_pca} attraverso le modifiche nei sottospazi ottenuti attraverso le trasformazioni Discrete Cosine
+In aggiunta alle trasforomazioni standard precedenti si usa anche l'approccio trattato in  \cite{nanni_dct_pca} attraverso le modifiche nei sottospazi ottenuti attraverso le trasformazioni Discrete Cosine
 Transform (DCT). La trasformazione è basata sulla proiezione dell'immagine originale sul sottospazio DCT, sulla perturbazione del sotto spazio e della proiezione dell'immagine perturbata dal sottospazio al dominio immagine, come mostrato in \cref{fig:dct-schema}.
 
 \begin{figure}[ht]
@@ -36,12 +36,31 @@ Transform (DCT). La trasformazione è basata sulla proiezione dell'immagine orig
 \section{Discrete Cosine Transform (DCT)}\label{discrete-cosine-transform-dct}
 
 
-La Discrete Cosine Transform è una delle più importanti trasformate nell'ambito della computer vision, in particolare è in grado di rilevare le  variazioni di informazione tra un'area e quella contigua di un'immagine raster trascurando le ripetizioni, viene usata in numerosi ambiti dalla compressione delle immmagini all'elaborazione delle immagini. In particolare è simile alla  trasformata discreta di Fourier (DFT), ma fa uso solo di numeri reali \cite{syed_dct}.
+La Discrete Cosine Transform è una delle più importanti trasformate nell'ambito della computer vision, in particolare è in grado di rilevare le  variazioni di informazione tra un'area e quella contigua di un'immagine raster trascurando le ripetizioni, viene usata in numerosi ambiti dalla compressione delle immmagini all'elaborazione delle immagini. In particolare è simile alla  trasformata discreta di Fourier (DFT), ma fa uso solo di numeri reali, in particolare la DCT tipo I è definita come \cite{syed_dct} \cite{gonzalez_dip}:
 
-Ci sono numerose varianti della DTC, in particolare la DTC tipo II, che spesso è chiamata DTC e la sua inversa, la DTC tipo III che viene chiamata spesso come la IDCT. In linguaggio matematico la formula della DCT tipo II è la seguente \cite{syed_dct} \cite{nanni_dtc_pca}:
-\[\operatorname{DCTimage} ( x , y ) = \sum _ { p , q = 1 } ^ { n } a _ { p } a _ { q } \operatorname { Image } ( p , q ) \cos \left(\frac { 2 p - 1 } { 2 n }\right) \cos \left(\frac { 2 q - 1 } { 2 n }\right) \quad \operatorname{where}  a _ { p } = \left\{ \begin{array} { l } \sqrt { \frac { 1 } { n } } , n = 1 \\ \sqrt { \frac { 2 } { n } } , n > 1 \end{array} \right.\]
+\[ \operatorname{DCT}(x)=\alpha(x) \sum_{p=1}^{n} f(p) \cos \left(\frac { \pi p  (x- 1) } { 2 n }\right) \]
 
-In particolare si individuano 2 possibili algoritmi di preprocessing DTC:
-\begin{lstlisting}
-...
-\end{lstlisting}
+Per ogni \(x\in [0...n]\) con \(n\) dimensione dell'immagine. Dove \(\alpha(n)\) è definita come:
+\[\alpha(n) = \left\{ \begin{array} { l } \sqrt { \frac { 1 } { n } } , n = 1 \\ \sqrt { \frac { 2 } { n } } , n > 1 \end{array} \right.\]
+
+Similmente la trasformazione inversa è definita come \cite{syed_dct}:
+
+\[\operatorname{IDCT}(x)=\sum^{n}_{p=1} \alpha(p)\operatorname{DCT}(p) \cos \left(\frac { \pi p  (x- 1) } { 2 n }\right)\]
+
+
+Ci sono numerose varianti della DCT, in particolare la DCT tipo I che è la definizione mono dimensionale della DCT, la DCT tipo II, che spesso è chiamata DCT e la sua inversa, la DCT tipo III che viene chiamata spesso come la IDCT. In linguaggio matematico la formula della DCT tipo II è la seguente \cite{syed_dct} \cite{gonzalez_dip} \cite{nanni_dct_pca}:
+
+
+\[\operatorname{DCTimage} ( x , y ) = \alpha( x ) \alpha (y) \sum _ { (p , q) = (1,1) } ^ { (n,m) }  \operatorname { Image } ( p , q ) \cos \left(\frac { \pi p  (x-1) } { 2 n }  \right) \cos \left(\frac { \pi q  (y-1) } { 2 m }  \right) \]
+
+Per ogni \((x,y) \in [0..n]\times [0...m]\), dove \(n,m\) rappresentano la dimensione dell'immagine. Similmente la DCT tipo III o IDCT è definita come \cite{syed_dct} \cite{gonzalez_dip}:
+
+\[\operatorname{IDCTimage} ( x , y ) = \sum _ { (p , q) = (1,1) } ^ { (n,m) } \alpha( p ) \alpha (q) \operatorname { DCTimage } ( p , q ) \cos \left(\frac {  \pi p  (x-1) } { 2 n }  \right) \cos \left(\frac { \pi q  (y-1) } { 2 m }  \right) \]
+
+In particolare si individuano 2 possibili algoritmi di preprocessing DCT, che sono illustrati in \cref{fig:dct-algoritmi}.
+\begin{figure}[ht]
+    \centering
+    \includegraphics[width=1\textwidth]{addestramento-rete-neurale/Algorithm-MethodDCT.pdf}
+    \caption{Due algoritmi di data augmentation con DCT}
+    \label{fig:dct-algoritmi}
+\end{figure}

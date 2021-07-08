@@ -147,16 +147,7 @@ IM = imnoise(IM,'salt & pepper',0.02);
 
 \section{Data argumentation con DCT}\label{data-argumentation-con-dct}
 
-Ci sono numerosi metodi per eseguire la DCT ed la relativa data augmentation, in particolare in \cref{fig:dct-algoritmi} sono illustrati due algoritmi, il primo che per ogni frequenza la annulla con probabilità 0.5 e la seconda che la attenua con probabilità \(z\sim U\left(-\frac{1}{2}, \frac{1}{2}\right)\) \cite{nanni_dtc_pca}. 
-
-\begin{figure}[ht]
-    \centering
-    \includegraphics[width=1\textwidth]{addestramento-rete-neurale/Algorithm-MethodDCT.pdf}
-    \caption{Due algoritmi di data augmentation con DCT}
-    \label{fig:dct-algoritmi}
-\end{figure}
-
-I risultati con DTC e Noise sono illustrati nella \cref{fig:dct-noise}.
+Ci sono numerosi metodi per eseguire la DCT ed la relativa data augmentation, in particolare in \cref{fig:dct-algoritmi} sono illustrati due algoritmi, il primo che per ogni frequenza la annulla con probabilità 0.5 e la seconda che la attenua con probabilità \(z\sim U\left(-\frac{1}{2}, \frac{1}{2}\right)\) \cite{nanni_dtc_pca}. I risultati con DTC e Noise sono illustrati nella \cref{fig:dct-noise}.
 
 \begin{figure}[ht]
     \centering
