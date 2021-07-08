@@ -1,7 +1,7 @@
 \chapter{Preprocessing}\label{preprocessing}
 
 Le immagini raw nei dataset sono sufficienti ad una \gls{cnn} per ottenere buoni risultati, ma è possibile migliorare i risultati attraverso una pre-eleaborazione delle immagini, in particolare la rimozione di artefatti,  del rumore e migliorare la qualità dell'immagine 
-in cui le feacture  possono essere estratte correttamente\cite{permual_contrast}
+in cui le feacture  possono essere estratte correttamente \cite{permual_contrast}
 
 \section{Contrasto}\label{contrasto}
 
@@ -34,7 +34,7 @@ Le immagini monocromatiche \(m\times n\) prive di rumore I e la sua approssimazi
 
 \[ \operatorname{MSE}=\frac{1}{m n} \sum_{i=0}^{m-1} \sum_{j=0}^{n-1}[I(i, j)-K(i, j)]^{2} \]
 
-Una volta determinato il PSNR è possibile effettuare una equalizzazione dell'istogramma per aggiustare il contrasto come mostrato in \cref{fig:histogram}\cite{pandey_contrast}\cite{permual_contrast}\cite{hummel_histogram}.
+Una volta determinato il PSNR è possibile effettuare una equalizzazione dell'istogramma per aggiustare il contrasto come mostrato in \cref{fig:histogram} \cite{pandey_contrast} \cite{permual_contrast} \cite{hummel_histogram}.
 
 \begin{figure}[ht]
     \centering
@@ -45,7 +45,7 @@ Una volta determinato il PSNR è possibile effettuare una equalizzazione dell'is
 
 \paragraph{CLAHE}\label{clahe}
 
-Una tecnica più avanzata per migliorare il contrasto nelle immagini è la contrast limited adaptive histogram equalization (CLAHE) che a differenza della classica equalizzazione dell'istogramma divide ogni immagini in tante sotto immagini e per ogni sotto immagine calcola l'istogramma ed effettua il miglioramento del contrasto, come mostrato in \cref{fig:clahe}\cite{hummel_histogram}.
+Una tecnica più avanzata per migliorare il contrasto nelle immagini è la contrast limited adaptive histogram equalization (CLAHE) che a differenza della classica equalizzazione dell'istogramma divide ogni immagini in tante sotto immagini e per ogni sotto immagine calcola l'istogramma ed effettua il miglioramento del contrasto, come mostrato in \cref{fig:clahe} \cite{hummel_histogram}.
 
 
 \begin{figure}[ht]
@@ -57,7 +57,7 @@ Una tecnica più avanzata per migliorare il contrasto nelle immagini è la contr
 
 \section{Gamma}\label{gamma}
 
-La correzione gamma è una correzione non lineare che viene applicata all'immagine per far apparire all'occhio umano le sfumature catturate dalle fotocamere digitali. La correzione gamma si basa sul fato che i nostri occhi non percepiscono la luce come fanno le fotocamere, l'occhio è molto più sensibile ai cambiamenti tra i toni scuri mentre il sensore della fotocamera è molto più lineare, come mostrato in \cref{fig:gamma}. L'informazione sulla gamma è semplicemente incorporata nei metadata del file e l'immagine viene codificata in maniera lineare, rendendo necessario applicare il filtro gamma in fase di decodifica, è plausibile ipotizzare che pure una CNN funzioni meglio con una immagine pre elaborata con un filtro per la gamma\cite{gamma}.
+La correzione gamma è una correzione non lineare che viene applicata all'immagine per far apparire all'occhio umano le sfumature catturate dalle fotocamere digitali. La correzione gamma si basa sul fato che i nostri occhi non percepiscono la luce come fanno le fotocamere, l'occhio è molto più sensibile ai cambiamenti tra i toni scuri mentre il sensore della fotocamera è molto più lineare, come mostrato in \cref{fig:gamma}. L'informazione sulla gamma è semplicemente incorporata nei metadata del file e l'immagine viene codificata in maniera lineare, rendendo necessario applicare il filtro gamma in fase di decodifica, è plausibile ipotizzare che pure una CNN funzioni meglio con una immagine pre elaborata con un filtro per la gamma \cite{gamma}.
 
 \begin{figure}[ht]
     \centering
@@ -70,4 +70,4 @@ La correzione gamma è una correzione non lineare che viene applicata all'immagi
 %\section{Filtro bilaterale}\label{filtro-bilaterale}
 
 %Per la rimozione del rumore  è stato scelto un  filtro bilaterale è stato scelto per la rimozione del rumore perché conserva
-%e migliora le caratteristiche che sono utili nelle fasi di addestramento\cite{narbalata_larynge}.
+%e migliora le caratteristiche che sono utili nelle fasi di addestramento \cite{narbalata_larynge}.

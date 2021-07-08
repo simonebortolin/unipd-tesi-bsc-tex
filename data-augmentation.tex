@@ -2,13 +2,13 @@
 
 Con Data augmentation si intende la tecnica usata per la generazione di nuovi dati  per aumentare artificialmente il numero di campioni di allenamento ed è diventato una pratica comune nell'area del deep learning.
 
-È noto che l'aumento dei dati può aumentare l'invarianza di un classificatore e può agire come un regolatore nel prevenire l'overfitting nelle reti neurali, come in AlexNet (la rete utilizzata in questa tesi). Gli autori del noto AlexNet  hanno dichiarato che senza l'aumento dei dati la loro rete avrebbe sofferto di un sostanziale overfitting, che li avrebbe costretti a usare reti meno profonde\cite{alexnet}. Ma non solo le reti profonde, anche quelle meno profonde  possono essere notevolmente migliorate adottando l'aumento dei dati, tipicamente utilizzato nel deep learning\cite{dataaugmentation}.
+È noto che l'aumento dei dati può aumentare l'invarianza di un classificatore e può agire come un regolatore nel prevenire l'overfitting nelle reti neurali, come in AlexNet (la rete utilizzata in questa tesi). Gli autori del noto AlexNet  hanno dichiarato che senza l'aumento dei dati la loro rete avrebbe sofferto di un sostanziale overfitting, che li avrebbe costretti a usare reti meno profonde \cite{alexnet}. Ma non solo le reti profonde, anche quelle meno profonde  possono essere notevolmente migliorate adottando l'aumento dei dati, tipicamente utilizzato nel deep learning \cite{dataaugmentation}.
 
 
 \section{Metodi comuni di Data augmentation}\label{metodi-comuni-di-data-augmentation}
 
 Le principali operazioni sono per esempio  il ritaglio di immagini
-per l'addestramento in posizioni diverse, la rotazione delle immagini (sia leggere di qualche grado che di 90, 180, 240 gradi), modificare l'illuminazione ed il contrasto, una DA basica da applicare ad un rete neurale è la seguente\cite{nanni_dtc_pca}:
+per l'addestramento in posizioni diverse, la rotazione delle immagini (sia leggere di qualche grado che di 90, 180, 240 gradi), modificare l'illuminazione ed il contrasto, una DA basica da applicare ad un rete neurale è la seguente \cite{nanni_dtc_pca}:
 \begin{itemize}
     \item L'immagine si riflette nella direzione sinistra-destra con il 50\% di probabilità. 
     \item L'immagine è riflessa in modo casuale in entrambe le direzioni sinistra-destra e in alto-basso.
@@ -22,12 +22,12 @@ per l'addestramento in posizioni diverse, la rotazione delle immagini (sia legge
 
 \section{Data augmentation con DCT}\label{data-augmentation-con-dct}
 
-In aggiunta alle trasforomazioni standard precedenti si usa anche l'approccio trattato in \cite{nanni_dtc_pca} attraverso le modifiche nei sottospazi ottenuti attraverso le trasformazioni Discrete Cosine
+In aggiunta alle trasforomazioni standard precedenti si usa anche l'approccio trattato in  \cite{nanni_dtc_pca} attraverso le modifiche nei sottospazi ottenuti attraverso le trasformazioni Discrete Cosine
 Transform (DCT). La trasformazione è basata sulla proiezione dell'immagine originale sul sottospazio DCT, sulla perturbazione del sotto spazio e della proiezione dell'immagine perturbata dal sottospazio al dominio immagine, come mostrato in \cref{fig:dct-schema}.
 
 \begin{figure}[ht]
     \centering
-    \includegraphics[width=1\textwidth]{data-augmentation/dct-trasformazione.PNG}
+    \includegraphics[width=1\textwidth]{data-augmentation/dct-trasformazione.pdf}
     \caption{Architettura di una trasfromazione via DCT}
     \label{fig:dct-schema}
 \end{figure}
@@ -36,12 +36,12 @@ Transform (DCT). La trasformazione è basata sulla proiezione dell'immagine orig
 \section{Discrete Cosine Transform (DCT)}\label{discrete-cosine-transform-dct}
 
 
-La Discrete Cosine Transform è una delle più importanti trasformate nell'ambito della computer vision, in particolare è in grado di rilevare le  variazioni di informazione tra un'area e quella contigua di un'immagine raster trascurando le ripetizioni, viene usata in numerosi ambiti dalla compressione delle immmagini all'elaborazione delle immagini. In particolare è simile alla  trasformata discreta di Fourier (DFT), ma fa uso solo di numeri reali\cite{syed_dct}.
+La Discrete Cosine Transform è una delle più importanti trasformate nell'ambito della computer vision, in particolare è in grado di rilevare le  variazioni di informazione tra un'area e quella contigua di un'immagine raster trascurando le ripetizioni, viene usata in numerosi ambiti dalla compressione delle immmagini all'elaborazione delle immagini. In particolare è simile alla  trasformata discreta di Fourier (DFT), ma fa uso solo di numeri reali \cite{syed_dct}.
 
-Ci sono numerose varianti della DTC, in particolare la DTC tipo II, che spesso è chiamata DTC e la sua inversa, la DTC tipo III che viene chiamata spesso come la IDCT. In linguaggio matematico la formula della DCT tipo II è la seguente\cite{syed_dct}\cite{nanni_dtc_pca}:
+Ci sono numerose varianti della DTC, in particolare la DTC tipo II, che spesso è chiamata DTC e la sua inversa, la DTC tipo III che viene chiamata spesso come la IDCT. In linguaggio matematico la formula della DCT tipo II è la seguente \cite{syed_dct} \cite{nanni_dtc_pca}:
 \[\operatorname{DCTimage} ( x , y ) = \sum _ { p , q = 1 } ^ { n } a _ { p } a _ { q } \operatorname { Image } ( p , q ) \cos \left(\frac { 2 p - 1 } { 2 n }\right) \cos \left(\frac { 2 q - 1 } { 2 n }\right) \quad \operatorname{where}  a _ { p } = \left\{ \begin{array} { l } \sqrt { \frac { 1 } { n } } , n = 1 \\ \sqrt { \frac { 2 } { n } } , n > 1 \end{array} \right.\]
 
-In particolare si individuano 3 possibili algoritmi di preprocessing DTC:
+In particolare si individuano 2 possibili algoritmi di preprocessing DTC:
 \begin{lstlisting}
 ...
 \end{lstlisting}

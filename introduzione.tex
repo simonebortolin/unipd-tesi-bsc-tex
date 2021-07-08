@@ -4,9 +4,9 @@ La laringoscopia è una procedura medica utilizzata per ispezionare la laringe e
 
 In particolare ci sono due tipi di laringoscopia, quella indiretta e quella diretta. La prima fa uso di un semplice specchio e di una fonte luminosa, la seconda richiede l'uso di un laringoscopio e una anestesia.
 
-Il laringoscopio è uno strumento che grazie a una fibra ottica, una sorgente luminosa e una telecamera permette di osservare nei minimi dettagli la laringe e tutti gli elementi che la costituiscono come la epiglottide e le corde vocali\cite{giorgio_cenni_2008}. In particolare permette di aiutare a diagnosticare malattie come la laryngeal squamous cell carcinoma (SCC), la cui diagnosi precoce riduce la mortalità del paziente\cite{moccia_larynge}.
+Il laringoscopio è uno strumento che grazie a una fibra ottica, una sorgente luminosa e una telecamera permette di osservare nei minimi dettagli la laringe e tutti gli elementi che la costituiscono come la epiglottide e le corde vocali \cite{giorgio_cenni_2008}. In particolare permette di aiutare a diagnosticare malattie come la laryngeal squamous cell carcinoma (SCC), la cui diagnosi precoce riduce la mortalità del paziente \cite{moccia_larynge}.
 
-L'obiettivo di questa tesi è quello di usare algoritmi di apprendimento automatico basati sul transfer learning e sul  preprocessing di immagini  per la classificazione dei frame di una laringoscopia, in particolare la selezione degli informative-frame e lo scarto di tutti i frame non utili come frame pieni di saliva o non a fuoco. In \cref{fig:larynges} alcuni esempi di frame da tenere estratti da una laringoscopia.
+L'obiettivo di questa tesi è quello di usare algoritmi di apprendimento automatico basati sul transfer learning e sul  preprocessing di immagini  per la classificazione dei frame di una laringoscopia, in particolare ci concentriamo nella la selezione degli informative-frame e lo scarto di tutti i frame non utili: come frame pieni di saliva o non a fuoco. In \cref{fig:larynges} alcuni esempi di frame da selezionare estratti da una laringoscopia.
 
 \begin{figure}[ht]
     \centering
@@ -39,19 +39,19 @@ presentati prima a due valutatori umani. Poi, ai due valutatori è stato chiesto
 valutatori non fossero d'accordo sulla classe, a un terzo valutatore è stato
 chiesto di scegliere la classe definitiva tra le due proposte
 dai due valutatori. Questo processo è stato ripetuto fino a quando tutti i
-720 fotogrammi sono stati estratti dai video.
+720 fotogrammi sono stati estratti e classificati dai video.
 
 \begin{figure}[ht]
     \centering
     \includegraphics[width=0.9\textwidth]{introduzione/Larynge.jpg}
-    \caption{Esempio di fotogrammi endoscopici laringei di NBI-InfFrames divisi per I: informative, sfuocato: B, S: con
+    \caption[Esempio di fotogrammi endoscopici laringei di NBI-InfFrames]{Esempio di fotogrammi endoscopici laringei di NBI-InfFrames divisi per I: informative, sfuocato: B, S: con
     saliva o riflessi speculari,
     U: underexposed}
     \label{fig:larynges}
 \end{figure}
 
-Il secondo dataset è un dataset di alcuni pixel in cui è stato effettuato un cutting a mano partendo dai frame di  un video endoscopico NBI frammenti di laringe, il procedimento è mostrato nella \cref{fig:dataset2}  e in \cref{fig:dataset2ml} sono mostrati alcuni frame catalogati il dataset 2 è catalogato in base allo stato del tessuto, in particolare Blu: tessuto con intraepithelial papillary capillary loop-like vessels; Giallo: tessuto con Leukoplakia;
-Verde: tessuto sano; Rosso: tessuto con hypertrophic vessels\cite{moccia_larynge}.
+Il secondo dataset è basato sugli informative-frame del dataset precedente, in particolare è stato effettuato un ritaglio delle immagini per mostrare   alcuni dettagli del tessuto umano, il procedimento è mostrato nella \cref{fig:dataset2}. In \cref{fig:dataset2ml} sono mostrati alcuni frame catalogati il dataset 2 è catalogato in base allo stato del tessuto, in particolare Blu: tessuto con intraepithelial papillary capillary loop-like vessels; Giallo: tessuto con Leukoplakia;
+Verde: tessuto sano; Rosso: tessuto con hypertrophic vessels \cite{moccia_larynge}.
 
 \begin{figure}[ht]
     \centering
@@ -63,7 +63,7 @@ Verde: tessuto sano; Rosso: tessuto con hypertrophic vessels\cite{moccia_larynge
 \begin{figure}[ht]
     \centering
     \includegraphics[width=0.9\textwidth]{introduzione/dataset-2-ml.JPG}
-    \caption{Esempio di immagini del dataset 2, le varie classi sono suddivise in base allo stato del tessuto in relazione alla SCC.}
+    \caption[Esempio di immagini del dataset 2]{Esempio di immagini del dataset 2, le varie classi sono suddivise in base allo stato del tessuto in relazione alla SCC.}
     \label{fig:dataset2ml}
 \end{figure}
 

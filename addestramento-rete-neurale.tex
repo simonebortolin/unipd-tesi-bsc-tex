@@ -4,25 +4,10 @@
 Come già menzionato nei capitoli precedenti l’idea è quella di allenare una \gls{cnn} per la classificazione dei frame di una laringoscopia attraverso il transfer learning impiegando la tecnica del
 fine-tuning nelle due varianti (One Round Tuning e Two Round Tuning)  su una rete pre-allenata chiamata AlexNet.
 
-\section{AlexNet}\label{alexnet}
-AlexNet è la rete che ha rivoluzionato la computer vision nel 2012 essa è una \gls{cnn} sviluppata
-da Goffrey Hinton e Alex Krizhevsky dell’università di Toronto vince, con ampio margine, 
-l’ImageNet challenge: object classification and detection su milioni di immagini e 1000 classi.
-
-La rete AlexNet è organizzata nel seguente modo: costituita da 8 livelli di cui 5 di \gls{Convolution Layer} e 3 \gls{fully-connected}, ed infine la funzione
-di attivazione \gls{ReLu}, la dimensione delle immagini in input è di \(227\times 227\). L'architettura completa con le dimensioni dei layer di \gls{convoluzione} è illustrata in \cref{fig:alexnet}\cite{alexnet}.  
-
-\begin{figure}[ht]
-    \centering
-    \includegraphics[width=0.7\textwidth]{addestramento-rete-neurale/alexnet.png}
-    \caption{Architettura della \gls{cnn} AlexNet}
-    \label{fig:alexnet}
-\end{figure}
-
-La rete AlexNet utilizzata è già allenata per il riconoscimento di 1000 classi di soggetti (mele, gatti, tastiere, telefoni, ecc.) su un dataset di oltre 1 milione di pattern presi dal database ImageNet\cite{alexnet}.
 
 Viene usato un allenamento \(k\)-fold, in particolare con \(k=3\), in ogni fold i  pattern vengono elaborati con un
 ordine diverso e si utilizza circa il 20\% di essi come test set.
+
 
 \section{Allenamento 1R}\label{allenamento-1r}
 
@@ -162,7 +147,7 @@ IM = imnoise(IM,'salt & pepper',0.02);
 
 \section{Data argumentation con DCT}\label{data-argumentation-con-dct}
 
-Ci sono numerosi metodi per eseguire la DCT ed la relativa data augmentation, in particolare in \cref{fig:dct-algoritmi} sono illustrati due algoritmi, il primo che per ogni frequenza la annulla con probabilità 0.5 e la seconda che la attenua con probabilità \(z\sim U\left(-\frac{1}{2}, \frac{1}{2}\right)\)\cite{nanni_dtc_pca}. 
+Ci sono numerosi metodi per eseguire la DCT ed la relativa data augmentation, in particolare in \cref{fig:dct-algoritmi} sono illustrati due algoritmi, il primo che per ogni frequenza la annulla con probabilità 0.5 e la seconda che la attenua con probabilità \(z\sim U\left(-\frac{1}{2}, \frac{1}{2}\right)\) \cite{nanni_dtc_pca}. 
 
 \begin{figure}[ht]
     \centering

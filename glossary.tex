@@ -41,7 +41,7 @@
 {
     name=convoluzione}{
     È un operatore matematico che a partire da funzioni \(f(t)\) e \(g(t)\), restituendone una terza che rappresenta come la forma di una funzione una influisce sull’altra. È una operazione che gode della proprietà commutativa:
-    \[ f ( t ) * g ( t ) = \int _ { - \infty } ^ { \infty } f ( t ) g ( \tau - t ) d \tau  = \int _ { - \infty } ^ { \infty } g ( t ) f ( \tau - t ) d \tau\]
+    \[ f ( t ) * g ( t ) = \int _ { - \infty } ^ { \infty } f ( t ) g ( \tau - t ) d \tau  = \int _ { - \infty } ^ { \infty } g ( t ) f ( \tau - t ) \mathop{\mathrm{d} \tau}\]
 
     L'operazione è tipica dell'elaborazione dei segnali e più in generale delle immagini,  nel caso di un una immagine discreta è:\[ \mathbf { I } * \mathbf{F} [ i , j ] = \sum _ { y = 1 } ^ { m } \sum _ { x = 1 } ^ { m } \left( \mathbf { I } \left[ i + \left\lceil \frac { m } { 2 } \right\rceil - y , j + \left\lceil \frac { m } { 2 } \right] - x \right] \cdot \mathbf { F } [ y , x ] \right) \]
     Dove \(\mathbf{F}\) è il filtro definito sulla griglia \(m \times m\), \(\mathbf{I}\) è la nostra matrice immagine, e \(\mathbf { I } * \mathbf{F}\) sono i nostri pixel filtrati.
