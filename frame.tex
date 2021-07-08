@@ -43,7 +43,7 @@ Dove \(n\times m\) indica la dimensione dell'immagine quantizzata detta anche ri
 
 \begin{figure}[ht]
     \centering
-    \includegraphics[width=0.4\textwidth]{frame/Rgb-raster-image.pdf}
+    \includegraphics[width=0.27\textwidth]{frame/Rgb-raster-image.pdf}
     \caption{Immagine raster RGB}
     \label{fig:rgb-raster-image}
 \end{figure}
@@ -57,7 +57,7 @@ Intuitivamente la risoluzione indica la  misura del più piccolo dettaglio disti
     \label{fig:resolution-on-image-quality}
 \end{figure}
 
-Oltre alla risoluzione c'è un altro fattore che indica la qualità dell'immagine, dato che l'immagine è una informazione di tipo continuo, ma in un computer è possibile rappresentare solamente informazioni quantizzate a dimensione finita è necessario definire un numero di bit per canale, questo valore moltiplicato per il numero di canali (in genere 3) e moltiplicato per la risoluzione  \(n\times m\) dell'immagine calcola la dimensione in bit dell'immagine raster non compressa. L'uso di un numero di bit per canale  troppo basso porta ad una perdita di risoluzione, come mostrato in \cref{fig:bit-channel}  \cite{gonzalez_dip} \cite{spaepen_resolution}.
+Oltre alla risoluzione c'è un altro fattore che indica la qualità dell'immagine, dato che l'immagine è una informazione di tipo continuo, ma in un computer è possibile rappresentare solamente informazioni quantizzate a dimensione finita è necessario definire un numero di bit per canale, questo valore moltiplicato per la risoluzione e il numero di canali dell'immagine  \(n\times m \times d\) fornisce la dimensione in bit dell'immagine raster non compressa. L'uso di un numero di bit per canale  troppo basso porta ad una perdita di risoluzione, come mostrato in \cref{fig:bit-channel}  \cite{gonzalez_dip} \cite{spaepen_resolution}.
 
 \begin{figure}[ht]
     \centering
