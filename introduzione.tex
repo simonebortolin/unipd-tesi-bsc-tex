@@ -6,8 +6,6 @@ In particolare ci sono due tipi di laringoscopia, quella indiretta e quella dire
 
 Il laringoscopio è uno strumento che grazie a una fibra ottica, una sorgente luminosa e una telecamera permette di osservare nei minimi dettagli la laringe e tutti gli elementi che la costituiscono come la epiglottide e le corde vocali \cite{giorgio_cenni_2008}. In particolare permette di aiutare a diagnosticare malattie come la laryngeal squamous cell carcinoma (SCC), la cui diagnosi precoce riduce la mortalità del paziente \cite{moccia_larynge}.
 
-L'obiettivo di questa tesi è quello di usare algoritmi di apprendimento automatico basati sul transfer learning e sul  preprocessing di immagini  per la classificazione dei frame di una laringoscopia, in particolare ci concentriamo nella la selezione degli informative-frame e lo scarto di tutti i frame non utili: come frame pieni di saliva o non a fuoco. In \cref{fig:larynges} alcuni esempi di frame da selezionare estratti da una laringoscopia.
-
 \begin{figure}[ht]
     \centering
     \includegraphics[width=0.3\textwidth]{introduzione/Larynge-1.jpg}
@@ -19,6 +17,8 @@ L'obiettivo di questa tesi è quello di usare algoritmi di apprendimento automat
     \caption{Esempio di fotogrammi endoscopici laringei}
     \label{fig:larynges}
 \end{figure}
+
+L'obiettivo di questa tesi è quello di usare algoritmi di apprendimento automatico basati sul transfer learning e sul  preprocessing di immagini  per la classificazione dei frame di una laringoscopia, in particolare ci concentriamo nella la selezione degli informative-frame e lo scarto di tutti i frame non utili: come frame pieni di saliva o non a fuoco. In \cref{fig:larynges} alcuni esempi di frame da selezionare estratti da una laringoscopia.
 
 \section{Descrizione dei dataset}\label{descrizione-dei-dataset}
 
@@ -32,14 +32,6 @@ NBI (processore video Olympus Visera Elite S190 e
 un videoscopio rino-laringo ENF-VH) con frame rate di
 25 fps e dimensioni dell'immagine di \(1920\times 1072\) pixel.
 
-Il dataset NBI-InfFrames consiste in un totale di 720 frame, che sono equamente divisi in quattro classi: informative (I), sfuocato (B), con saliva o riflessi speculari (S) e underexposed  (U), come mostrato in \cref{fig:larynges-2}. 
-
-Per ciascuno dei 18 video endoscopici NBI, i fotogrammi video sono stati estratti a caso e
-presentati prima a due valutatori umani. Poi, ai due valutatori è stato chiesto di etichettare i fotogrammi. Nel caso in cui i due
-valutatori non fossero d'accordo sulla classe, a un terzo valutatore è stato
-chiesto di scegliere la classe definitiva tra le due proposte
-dai due valutatori. Questo processo è stato ripetuto fino a quando sono stati estratti e classificati dai video 720 fotogrammi divisi in 4 classi equidimensionale.
-
 \begin{figure}[ht]
     \centering
     \includegraphics[width=0.9\textwidth]{introduzione/Larynge.jpg}
@@ -49,8 +41,19 @@ dai due valutatori. Questo processo è stato ripetuto fino a quando sono stati e
     \label{fig:larynges-2}
 \end{figure}
 
+Il dataset NBI-InfFrames consiste in un totale di 720 frame, che sono equamente divisi in quattro classi: informative (I), sfuocato (B), con saliva o riflessi speculari (S) e underexposed  (U), come mostrato in \cref{fig:larynges-2}. 
+
+Per ciascuno dei 18 video endoscopici NBI, i fotogrammi video sono stati estratti a caso e
+presentati prima a due valutatori umani. Poi, ai due valutatori è stato chiesto di etichettare i fotogrammi. Nel caso in cui i due
+valutatori non fossero d'accordo sulla classe, a un terzo valutatore è stato
+chiesto di scegliere la classe definitiva tra le due proposte
+dai due valutatori. Questo processo è stato ripetuto fino a quando sono stati estratti e classificati dai video 720 fotogrammi divisi in 4 classi equidimensionale.
+
+
 Il secondo dataset è basato sugli informative-frame del dataset precedente, in particolare è stato effettuato un ritaglio delle immagini per mostrare   alcuni dettagli del tessuto umano, il procedimento è mostrato nella \cref{fig:dataset2}. In \cref{fig:dataset2ml} sono mostrati alcuni frame catalogati il dataset 2 è catalogato in base allo stato del tessuto, in particolare Blu: tessuto con intraepithelial papillary capillary loop-like vessels; Giallo: tessuto con Leukoplakia;
 Verde: tessuto sano; Rosso: tessuto con hypertrophic vessels \cite{moccia_larynge}.
+
+Il secondo dataset è composto da 330 immagini, e la dimensione è simile a dataset utilizzati in ricerche sullo stato di salute delle laringi come in \cite{narbalata_larynge} \cite{turkmen_larynge} di rispettivamente 120 e 70 immagini.
 
 \begin{figure}[ht]
     \centering
@@ -67,3 +70,11 @@ Verde: tessuto sano; Rosso: tessuto con hypertrophic vessels \cite{moccia_laryng
 \end{figure}
 
 \section{Lavori precedenti}\label{lavori-precedenti}
+
+Il problema del riconoscimento e classificazione di immagini è molto presente nel panorama scientifico. L'ImageNet Large Scale Visual Recognition Challenge (ILSVRC) valuta le performance dei vari algoritmi di intelligenza artificiale su una vasta scala \cite{imagenet}. I vari apporci hanno permesso di ottenere performance sempre superiori, sopratutto a partire dall'introduzione delle reti profonde.
+
+Per implementare algoritmi in grado di identificare e scartare le immagini non informative nei video endoscopici, sono stati proposti diversi approcci di apprendimento automatico (ML) approcci sono stati proposti, che sono principalmente basati su handcrafted features, come features basate sull'intensity e sui colori, in \cite{zhang_colon} sono state utilizzate caratteristiche anatomiche per la classificazione degli informative frame, mentre caratteristiche sullo stato dell'immagine come colori, sfuocatura, sono stati usati in \cite{armin_colonscopy}. 
+
+Mentre caratteristiche basate sulla rappresentazione spettrale sono trattate invece in \cite{atasoy_endoscopic} \cite{haji_wce} e in \cite{bashar_endoscopy} caratterstiche dei colori dell'immagine, come l'istogramma. Mentre nell'ambito della selezione di informative-frame nelle laringi  troviamo alcune applicazioni in \cite{moccia_workflow} \cite{moccia_larynge_2} \cite{patrini_tl}. La selezione degli informative-frame è molto utile per lavori di selezione per diagnosi precoci di malattie laringee che troviamo alcune applicazioni in \cite{moccia_larynge} \cite{turkmen_larynge} \cite{narbalata_larynge}.
+
+Questa tesi è organizzata come segue: il \cref{transfer-learning} presenta l'approccio di transfer learning utilizzato per selezionare gli informative frame, \cref{frame} spiega come funziona l'acquisizione e la rappresentazione dell'immagine in digitale, \cref{data-augmentation}  e  \cref{preprocessing} spiegano i principali metodi utilizzati per migliorare le performance. I risultati sono mostrati in \cref{addestramento-rete-neurale} e sono discussi nel \cref{conclusioni}.
