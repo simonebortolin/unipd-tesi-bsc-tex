@@ -51,6 +51,10 @@
   backend=biber
   ]{biblatex}
 \usepackage[toc]{glossaries}
+\usepackage{tikz-3dplot}
+
+\usetikzlibrary{matrix,backgrounds,3d}
+
 
 \DeclareMathAlphabet{\mathcal}{OMS}{cmsy}{b}{n}
 
@@ -194,8 +198,8 @@
 \clearpage{\pagestyle{plain}\cleardoublepage} 
 \subfile{preprocessing.tex} 
 
-\clearpage{\pagestyle{plain}\cleardoublepage} 
-\subfile{ensemble-di-classificatori.tex} 
+%\clearpage{\pagestyle{plain}\cleardoublepage} 
+%\subfile{ensemble-di-classificatori.tex} 
 
 \clearpage{\pagestyle{plain}\cleardoublepage} 
 \subfile{addestramento-rete-neurale.tex} 
@@ -207,7 +211,7 @@
 \printglossary[title=Glossario]
 
 \clearpage{\pagestyle{plain}\cleardoublepage}
-\nocite{*}
+%\nocite{*}
 
 \printbibliography[
 heading=bibintoc,
