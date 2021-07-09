@@ -4,7 +4,7 @@ Il laringoscopio fornisce una serie di immagini (detti anche frame) in sequenza 
 
 \section{Acquisizione dei frame}\label{acquisizione-dei-frame}
 
-L'acquisizione digitale delle immagini digitalizza solamente lo spettro delle radiazioni elettromagnetiche visibili dall'occhio, detta anche luce, che per comodità, lo spettro dei colori è diviso in sei grandi regioni: viola (0.43 \(\mu m\)), blu, verde, giallo, arancione e rosso (0.79 \(\mu m\). A differenza del resto del resto dello spettro elettromagnetico lo spettro della luce non termina bruscamente al variare della lunghezza d'onda, ma invece ogni tonalità di colore si fonde dolcemente in
+L'acquisizione digitale delle immagini digitalizza solamente lo spettro delle radiazioni elettromagnetiche visibili dall'occhio, detta anche luce, che per comodità, lo spettro dei colori è diviso in sei grandi regioni: viola (0.43 \(\mu \)m), blu, verde, giallo, arancione e rosso (0.79 \(\mu \)m). A differenza del resto del resto dello spettro elettromagnetico lo spettro della luce non termina bruscamente al variare della lunghezza d'onda, ma invece ogni tonalità di colore si fonde dolcemente in
 la successiva, come mostrato in \cref{fig:spettro-onde} \cite{gonzalez_dip}.
 
 \begin{figure}[ht]
@@ -40,41 +40,44 @@ La relativa rappresenta matematica di una immagine quantizzata è:
 \[ f(x, y)=\left[\begin{array}{cccc}f(1,1) & f(1,2) & \cdots & f(1, m) \\ f(2,1) & f(2,2) & \cdots & f(2, m) \\ \vdots & \vdots & & \vdots \\ f(n,1) & f(n,1) & \cdots & f(n,m)\end{array}\right] \]
 
 Dove \(n\times m\) indica la dimensione dell'immagine quantizzata detta anche risoluzione, il valore è determinato in base alla precisione del sensore e se l'immagine ha subito post elaborazioni, come un crop. In particolare si definisce pixel  (o anche dot) ogni elemento dell'immagine quantizzata \(f(x, y)\). Si definisce raster la griglia ortogonale di pixel che costituisce una immagine. Il pixel può essere un unico valore scalare che quindi rappresenta una scala di grigi oppure essere un array di 3 scalari che indicano le tonalità di colore, come mostrato nella figura \cref{fig:rgb-raster-image}. In notazione matematica il numero di canali di colore viene spesso aggiunto alla risoluzione nel seguente formato: \(n\times m \times c\) ottenendo quindi una matrice a più dimensioni, detta anche tensore \cite{gonzalez_dip}. La relativa rappresenta matematica di una immagine quantizzata a colori è:
-
+\\
 \begin{figure}[ht]
     \centering
 \tdplotsetmaincoords{75}{20}
 \begin{tikzpicture}[tdplot_main_coords]
-    \begin{scope}[canvas is xz plane at y=2,transform shape]
+    \begin{scope}[canvas is xz plane at y=2,transform shape,remember picture,overlay]
       \node[inner sep=0pt,text=blue,opacity=0.8] (mat1)
-      {$\displaystyle\begin{bmatrix*}[r]
+      {\(\displaystyle\begin{bmatrix*}[c]
         f_b(1,1) & f_b(1,2) & \cdots & f_b(1, m) \\ f_b(2,1) & f_b(2,2) & \cdots & f_b(2, m) \\ \vdots & \vdots & & \vdots \\ f_b(n,1) & f_b(n,1) & \cdots & f_b(n,m) \\
-      \end{bmatrix*}$};
+      \end{bmatrix*}\)};
+
       \begin{scope}[on background layer]
        \fill[blue,opacity=0.2] (mat1.south west) coordinate (blb) -- (mat1.south east) coordinate (brb) -- (mat1.north  east) coordinate (trb) -- (mat1.north  west) coordinate (tlb);
       \end{scope} 
     \end{scope}
     %
     \begin{scope}[canvas is xz plane at y=0,transform shape]
-      \node[inner sep=0pt,text=green!70!black,opacity=0.8] (mat2) {$\displaystyle
-      \begin{bmatrix*}[r]
+      \node[inner sep=0pt,text=green!70!black,opacity=0.8] (mat2) {\(\displaystyle
+      \begin{bmatrix*}[c]
         f_g(1,1) & f_g(1,2) & \cdots & f_g(1, m) \\ f_g(2,1) & f_g(2,2) & \cdots & f_g(2, m) \\ \vdots & \vdots & & \vdots \\ f_g(n,1) & f_g(n,1) & \cdots & f_g(n,m) \\
-      \end{bmatrix*}$};
+      \end{bmatrix*}\)};
+      
       \begin{scope}[on background layer]
        \fill[green!70!black,opacity=0.2] (mat2.south west) coordinate (blb) -- (mat2.south east) coordinate (brb) -- (mat2.north  east) coordinate (trb) -- (mat2.north  west) coordinate (tlb);
       \end{scope} 
     \end{scope}
     %
     \begin{scope}[canvas is xz plane at y=-2,transform shape]
-      \node[inner sep=0pt,text=red,opacity=0.8] (mat3) {$\displaystyle
-      \begin{bmatrix*}[r]
+      \node[inner sep=0pt,text=red,opacity=0.8] (mat3) {\(\displaystyle
+      \begin{bmatrix*}[c]
         f_r(1,1) & f_r(1,2) & \cdots & f_r(1, m) \\ f_r(2,1) & f_r(2,2) & \cdots & f_r(2, m) \\ \vdots & \vdots & & \vdots \\ f_r(n,1) & f_r(n,1) & \cdots & f_r(n,m) \\
-      \end{bmatrix*}$};
+      \end{bmatrix*}\)};
+      
       \begin{scope}[on background layer]
-       \fill[red,opacity=0.2]
+        \fill[red,opacity=0.2]
        (mat3.south west) coordinate (blb) -- (mat3.south east) coordinate (brb) -- (mat3.north  east) coordinate (trb) -- (mat3.north  west) coordinate (tlb);
-      \end{scope} 
-    \end{scope}
+    \end{scope} 
+\end{scope}
     %\foreach \X in {tl,tr,br}
     %{\draw[thin,orange] (\X f) -- (\X b);}
     %\begin{scope}[on background layer]
