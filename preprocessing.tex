@@ -3,6 +3,17 @@
 Le immagini raw nei dataset sono sufficienti ad una \gls{cnn} per ottenere buoni risultati, ma è possibile migliorare i risultati attraverso una pre-eleaborazione delle immagini, in particolare la rimozione di artefatti,  del rumore e migliorare la qualità dell'immagine 
 in cui le feacture  possono essere estratte correttamente \cite{permual_contrast}.
 
+\section{Riduzione della risoluzione}\label{riduzione-della-risoluzione}
+
+La rete AlexNet richiede in input una immagine di dimension \(227 \times 227 \times 3\) \cite{alexnet}, dato che le immagini del dataset hanno risoluzione maggiore è stato necessario ridimensionarle alla risoluzione richiesta da AlexNet, questo causa una perdita di qualità dell'immagine, in \cref{fig:resize} si notano due frame: a sinistra con la dimensione originale e a destra ridimensionati, si nota come nonostante la figura ridimensionata è abbastanza accettabile per una elaborazione, nonostante i pixel son ben visibili \cite{gonzalez_dip}.
+
+\begin{figure}[ht]
+    \centering
+    \includegraphics[width=0.7\textwidth]{preprocessing/resize.pdf}
+    \caption{Frame del laringoscopio a dimensione intera e ridimensionata}
+    \label{fig:resize}
+\end{figure}
+
 \section{Contrasto}\label{contrasto}
 
 Il contrasto è la differenza tra la massima e la minima
@@ -32,7 +43,7 @@ L'equalizzazione dell'istogramma si può basare, per esempio sul peak signal-to-
 Il PSNR è ben definito semplicemente attraverso l'errore quadratico medio (MSE).
 Le immagini monocromatiche \(m\times n\) prive di rumore I e la sua approssimazione rumorosa K è definita dal MSE:
 
-\[ \operatorname{MSE}=\frac{1}{m n} \sum_{i=0}^{m-1} \sum_{j=0}^{n-1}[I(i, j)-K(i, j)]^{2} \]
+\[ \operatorname{MSE}=\frac{1}{m n} \sum_{i=1}^{m} \sum_{j=1}^{n}[\mathrm{I}(i, j)-\mathrm{K}(i, j)]^{2} \]
 
 Una volta determinato il PSNR è possibile effettuare una equalizzazione dell'istogramma per aggiustare il contrasto come mostrato in \cref{fig:histogram} \cite{pandey_contrast} \cite{permual_contrast} \cite{hummel_histogram}.
 

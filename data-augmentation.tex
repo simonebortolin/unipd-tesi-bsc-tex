@@ -8,16 +8,28 @@ Con Data augmentation si intende la tecnica usata per la generazione di nuovi da
 \section{Metodi comuni di Data augmentation}\label{metodi-comuni-di-data-augmentation}
 
 Le principali operazioni sono per esempio  il ritaglio di immagini
-per l'addestramento in posizioni diverse, la rotazione delle immagini (sia leggere di qualche grado che di 90, 180, 240 gradi), modificare l'illuminazione ed il contrasto, una DA basica da applicare ad un rete neurale è la seguente \cite{nanni_dct_pca}:
+per l'addestramento in posizioni diverse, la rotazione delle immagini (sia leggere di qualche grado che di 90, 180, 240 gradi). Queste trasformazioni geometriche usate per modificare la disposizione spaziale dei pixel in una 
+immagine sono anche chiamate trasformazioni rubber-sheet (foglio malleabile) perché 
+possono essere viste come analoghe alla "stampa" di un'immagine su un foglio malleabile dove è possibile stirarlo e piegarlo. La trasformazione delle coordinate può essere espressa come:
+\[ \left[\begin{array}{l}x^{\prime} \\ y^{\prime}\end{array}\right]=\symbfup{T}\left[\begin{array}{l}x \\ y\end{array}\right]=\left[\begin{array}{ll}t_{11} & t_{12} \\ t_{21} & t_{22}\end{array}\right]\left[\begin{array}{l}x \\ y\end{array}\right] \]
+Dove \((x,y)\)  sono le coordinate dei pixel nell'immagine originale, \((x^{\prime},y^{\prime})\)  le 
+coordinate dei pixel corrispondenti dell'immagine trasformata, \(\symbfup{T}\) la matrice di trasformazione, per poter effettuare tutte le trasformazioni rubber-sheet è necessario usare un piano affine che aggiunga una dimensionalità:
+\[ \left[\begin{array}{l}x^{\prime} \\ y^{\prime} \\ 1\end{array}\right]=\symbfup{A}\left[\begin{array}{l}x \\ y \\ 1\end{array}\right]=\left[\begin{array}{ccc}a_{11} & a_{12} & a_{13} \\ a_{21} & a_{22} & a_{23} \\ 0 & 0 & 1\end{array}\right]\left[\begin{array}{l}x \\ y \\ 1\end{array}\right] \]
+
+In questo caso la matrice \(\symbfup{A}\) è la nostra matrice affine di trasformazione, che può scalare, ruotare o specchiare un'immagine, una DA basica da applicare a un rete neurale è la seguente \cite{nanni_dct_pca} \cite{gonzalez_dip}:
 \begin{itemize}
-    \item L'immagine si riflette nella direzione sinistra-destra con il 50\% di probabilità. 
+    \item L'immagine si riflette nella direzione sinistra-destra con il 50\% di probabilità. La matrice di trasformazione \(\symbfup{A}\) è:
+    \[\symbfup{A} = \left[\begin{array}{lll}\pm 1 & 0 & 0 \\ 0 & 1 & 0 \\ 0 & 0 & 1\end{array}\right]\]
     \item L'immagine è riflessa in modo casuale in entrambe le direzioni sinistra-destra e in alto-basso.
+    \[\symbfup{A} = \left[\begin{array}{lll}1 & 0 & 0 \\ 0 & \pm 1 & 0 \\ 0 & 0 & 1\end{array}\right]\]
     \item Dalla trasformazione precedente l'immagine viene scalata lungo entrambi gli assi di due diversi fattori che sono
     campionati casualmente dalla distribuzione uniforme tra \([1...2]\).
+    \[\symbfup{A} = \left[\begin{array}{lll}\pm z_x & 0 & 0 \\ 0 & \pm z_y & 0 \\ 0 & 0 & 1\end{array}\right] \quad z_x, z_y \sim U(1,2)\]
     \item Combina tutte le trasformazioni precedenti  e aggiunge la rotazione e la traslazione dell'immagine in entrambe le
     direzioni. La rotazione viene effettuata utilizzando un angolo che viene campionato casualmente dall'intervallo
     \([-10...10]\), mentre la traslazione consiste nello spostare l'immagine di un certo numero di pixel
     campionati casualmente da \([0...5]\).
+    \[\symbfup{A} = \left[ \begin{array} { lll } \cos \theta & - \sin \theta & 0 \\ \sin \theta & \cos \theta & t_x \\ 0 & t_y & 1 \end{array} \right] \quad z_x, z_y \in U(1,2) \quad \theta \sim U(-10,10) \quad t_x, t_y \sim U(0,5)\]
 \end{itemize}
 
 \section{Data augmentation con DCT}\label{data-augmentation-con-dct}
