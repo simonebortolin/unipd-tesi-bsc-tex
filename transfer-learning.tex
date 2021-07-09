@@ -40,7 +40,7 @@ funzionalità riguardanti l'estrazione di caratteristiche di basso livello
 
 \section{Fine-Tuning}\label{fine-tuning}
 
-Nell'approccio fine-tuning del Transfer Learning si parte con una rete pre addestrata su un problema simile e:
+Nell'approccio fine-tuning del Transfer Learning si parte con una rete preaddestrata su un problema simile e:
 \begin{enumerate}
     \item Si rimpiazza il livello di output con un nuovo livello di output \gls{SoftMax} (adeguando il numero di classi) ed altri livelli finali, come i \gls{fully-connected}.
     \item Come valori iniziali dei pesi si utilizzano quelli della rete pre-trained, tranne che per le connessioni tra il penultimo e ultimo livello i cui pesi sono inizializzati random.
@@ -52,7 +52,7 @@ In generale, tutti i pesi sono allenabili, cioè in  ogni nuovo allenamento essi
 In particolare si possono individuare numerosi approcci per il fine-tuning, tra cui il classico one round:
 \paragraph {One round tuning (1R)} \label{one-round-tuning}
 
-È l'approccio standard per il fine-tuning di una rete pre addestrata: la rete viene inizializzata secondo i pesi ottenuti dall'allenamento con il dataset ImageNet e riaddestrata utilizzando il training set del problema target. I pesi degli strati di classificazione vengono azzerati, i pesi dei primi stati non vengono forzati a rimanere stabili e infine viene usato lo stesso learning rate per tutti gli strati \cite{lumini_plankton}. 
+È l'approccio standard per il fine-tuning di una rete preaddestrata: la rete viene inizializzata secondo i pesi ottenuti dall'allenamento con il dataset ImageNet e riaddestrata utilizzando il training set del problema target. I pesi degli strati di classificazione vengono azzerati, i pesi dei primi stati non vengono forzati a rimanere stabili e infine viene usato lo stesso learning rate per tutti gli strati \cite{lumini_plankton}. 
 
 \paragraph{Two rounds tuning (2R)} \label{two-round-tuning}
 
