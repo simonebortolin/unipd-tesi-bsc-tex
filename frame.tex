@@ -23,7 +23,7 @@ La maggior parte delle immagini che ci interessano sono generate dalla combinazi
     \label{fig:scena-acquisizione}
 \end{figure}
 
-In paticolare una laringoscopia NBI (Narrow binding Imaging)  sfrutta l’emissione una luce bianca a banda stretta assorbita principalmente dall’ emoglobina che permette  di visualizzare la vascolarizzazione delle lesioni laringee e della mucosa circostante \cite{giorgio_cenni_2008}. 
+In paticolare una laringoscopia NBI (Narrow binding Imaging)  sfrutta l’emissione una luce bianca a banda stretta assorbita principalmente dall’ emoglobina che permette  di visualizzare la vascolarizzazione delle lesioni laringee e della mucosa circostante \cite{giorgio_cenni_2008}.
 
 \section{Digitalizzazione dei frame}\label{digitalizzazione-dei-frame}
 
@@ -39,52 +39,52 @@ Per la digitalizzazione delle immagini l'idea è semplice le radiazioni elettrom
 La relativa rappresenta matematica di una immagine quantizzata è:
 \[ f(x, y)=\left[\begin{array}{cccc}f(1,1) & f(1,2) & \cdots & f(1, m) \\ f(2,1) & f(2,2) & \cdots & f(2, m) \\ \vdots & \vdots & & \vdots \\ f(n,1) & f(n,1) & \cdots & f(n,m)\end{array}\right] \]
 
-Dove \(n\times m\) indica la dimensione dell'immagine quantizzata detta anche risoluzione, il valore è determinato in base alla precisione del sensore e se l'immagine ha subito post elaborazioni, come un crop. In particolare si definisce pixel  (o anche dot) ogni elemento dell'immagine quantizzata \(f(x, y)\). Si definisce raster la griglia ortogonale di pixel che costituisce una immagine. Il pixel può essere un unico valore scalare che quindi rappresenta una scala di grigi oppure essere un array di 3 scalari che indicano le tonalità di colore, come mostrato nella figura \cref{fig:rgb-raster-image}. In notazione matematica il numero di canali di colore viene spesso aggiunto alla risoluzione nel seguente formato: \(n\times m \times c\) ottenendo quindi una matrice a più dimensioni, detta anche tensore \cite{gonzalez_dip}. La relativa rappresenta matematica di una immagine quantizzata a colori è:
-\\
+Dove \(n\times m\) indica la dimensione dell'immagine quantizzata detta anche risoluzione, il valore è determinato in base alla precisione del sensore e se l'immagine ha subito post elaborazioni, come un crop. In particolare si definisce pixel  (o anche dot) ogni elemento dell'immagine quantizzata \(f(x, y)\). Si definisce raster la griglia ortogonale di pixel che costituisce una immagine. Il pixel può essere un unico valore scalare che quindi rappresenta una scala di grigi oppure essere un array di 3 scalari che indicano le tonalità di colore, come mostrato nella figura \cref{fig:rgb-raster-image}. In notazione matematica il numero di canali di colore viene spesso aggiunto alla risoluzione nel seguente formato: \(n\times m \times c\) ottenendo quindi una matrice a più dimensioni, detta anche tensore \cite{gonzalez_dip}. La relativa rappresenta matematica di una immagine quantizzata a colori con codifica RGB è:
+
 \begin{figure}[ht]
     \centering
-\tdplotsetmaincoords{75}{20}
-\begin{tikzpicture}[tdplot_main_coords]
-    \begin{scope}[canvas is xz plane at y=2,transform shape,remember picture,overlay]
-      \node[inner sep=0pt,text=blue,opacity=0.8] (mat1)
-      {\(\displaystyle\begin{bmatrix*}[c]
-        f_b(1,1) & f_b(1,2) & \cdots & f_b(1, m) \\ f_b(2,1) & f_b(2,2) & \cdots & f_b(2, m) \\ \vdots & \vdots & & \vdots \\ f_b(n,1) & f_b(n,1) & \cdots & f_b(n,m) \\
-      \end{bmatrix*}\)};
+    \tdplotsetmaincoords{75}{20}
+    \begin{tikzpicture}[tdplot_main_coords]
+        \begin{scope}[canvas is xz plane at y=2,transform shape]
+            \node[inner sep=0pt,text=blue,opacity=0.8] (mat1)
+            {\(\displaystyle\begin{bmatrix*}[c]
+                    f_b(1,1) & f_b(1,2) & \cdots & f_b(1, m) \\ f_b(2,1) & f_b(2,2) & \cdots & f_b(2, m) \\ \vdots & \vdots & & \vdots \\ f_b(n,1) & f_b(n,1) & \cdots & f_b(n,m) \\
+                \end{bmatrix*}\)};
 
-      \begin{scope}[on background layer]
-       \fill[blue,opacity=0.2] (mat1.south west) coordinate (blb) -- (mat1.south east) coordinate (brb) -- (mat1.north  east) coordinate (trb) -- (mat1.north  west) coordinate (tlb);
-      \end{scope} 
-    \end{scope}
-    %
-    \begin{scope}[canvas is xz plane at y=0,transform shape]
-      \node[inner sep=0pt,text=green!70!black,opacity=0.8] (mat2) {\(\displaystyle
-      \begin{bmatrix*}[c]
-        f_g(1,1) & f_g(1,2) & \cdots & f_g(1, m) \\ f_g(2,1) & f_g(2,2) & \cdots & f_g(2, m) \\ \vdots & \vdots & & \vdots \\ f_g(n,1) & f_g(n,1) & \cdots & f_g(n,m) \\
-      \end{bmatrix*}\)};
-      
-      \begin{scope}[on background layer]
-       \fill[green!70!black,opacity=0.2] (mat2.south west) coordinate (blb) -- (mat2.south east) coordinate (brb) -- (mat2.north  east) coordinate (trb) -- (mat2.north  west) coordinate (tlb);
-      \end{scope} 
-    \end{scope}
-    %
-    \begin{scope}[canvas is xz plane at y=-2,transform shape]
-      \node[inner sep=0pt,text=red,opacity=0.8] (mat3) {\(\displaystyle
-      \begin{bmatrix*}[c]
-        f_r(1,1) & f_r(1,2) & \cdots & f_r(1, m) \\ f_r(2,1) & f_r(2,2) & \cdots & f_r(2, m) \\ \vdots & \vdots & & \vdots \\ f_r(n,1) & f_r(n,1) & \cdots & f_r(n,m) \\
-      \end{bmatrix*}\)};
-      
-      \begin{scope}[on background layer]
-        \fill[red,opacity=0.2]
-       (mat3.south west) coordinate (blb) -- (mat3.south east) coordinate (brb) -- (mat3.north  east) coordinate (trb) -- (mat3.north  west) coordinate (tlb);
-    \end{scope} 
-\end{scope}
-    %\foreach \X in {tl,tr,br}
-    %{\draw[thin,orange] (\X f) -- (\X b);}
-    %\begin{scope}[on background layer]
-    % \draw[thin,orange] (blf) -- (blb);
-    %\end{scope}
-  \node[left] at (mat2.west) {\(f(x,y,k)=\quad \quad\)};
-  \end{tikzpicture}
+            \begin{scope}[on background layer]
+                \fill[blue,opacity=0.2] (mat1.south west) coordinate (blb) -- (mat1.south east) coordinate (brb) -- (mat1.north  east) coordinate (trb) -- (mat1.north  west) coordinate (tlb);
+            \end{scope}
+        \end{scope}
+        %
+        \begin{scope}[canvas is xz plane at y=0,transform shape]
+            \node[inner sep=0pt,text=green!70!black,opacity=0.8] (mat2) {\(\displaystyle
+                \begin{bmatrix*}[c]
+                    f_g(1,1) & f_g(1,2) & \cdots & f_g(1, m) \\ f_g(2,1) & f_g(2,2) & \cdots & f_g(2, m) \\ \vdots & \vdots & & \vdots \\ f_g(n,1) & f_g(n,1) & \cdots & f_g(n,m) \\
+                \end{bmatrix*}\)};
+
+            \begin{scope}[on background layer]
+                \fill[green!70!black,opacity=0.2] (mat2.south west) coordinate (blb) -- (mat2.south east) coordinate (brb) -- (mat2.north  east) coordinate (trb) -- (mat2.north  west) coordinate (tlb);
+            \end{scope}
+        \end{scope}
+        %
+        \begin{scope}[canvas is xz plane at y=-2,transform shape]
+            \node[inner sep=0pt,text=red,opacity=0.8] (mat3) {\(\displaystyle
+                \begin{bmatrix*}[c]
+                    f_r(1,1) & f_r(1,2) & \cdots & f_r(1, m) \\ f_r(2,1) & f_r(2,2) & \cdots & f_r(2, m) \\ \vdots & \vdots & & \vdots \\ f_r(n,1) & f_r(n,1) & \cdots & f_r(n,m) \\
+                \end{bmatrix*}\)};
+
+            \begin{scope}[on background layer]
+                \fill[red,opacity=0.2]
+                (mat3.south west) coordinate (blb) -- (mat3.south east) coordinate (brb) -- (mat3.north  east) coordinate (trb) -- (mat3.north  west) coordinate (tlb);
+            \end{scope}
+        \end{scope}
+        %\foreach \X in {tl,tr,br}
+        %{\draw[thin,orange] (\X f) -- (\X b);}
+        %\begin{scope}[on background layer]
+        % \draw[thin,orange] (blf) -- (blb);
+        %\end{scope}
+        \node[left] at (mat2.west) {\(f(x,y,k)=\quad \quad\)};
+    \end{tikzpicture}
 \end{figure}
 
 \begin{figure}[ht]
@@ -111,8 +111,3 @@ Oltre alla risoluzione c'è un altro fattore che indica la qualità dell'immagin
     \caption{Effetto del numero di bit per canale sulla qualità dell'immagine}
     \label{fig:bit-channel}
 \end{figure}
-
-
-
-
-

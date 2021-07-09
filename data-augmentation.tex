@@ -51,11 +51,11 @@ Similmente la trasformazione inversa è definita come \cite{syed_dct}:
 Ci sono numerose varianti della DCT, in particolare la DCT tipo I che è la definizione mono dimensionale della DCT, la DCT tipo II, che spesso è chiamata DCT e la sua inversa, la DCT tipo III che viene chiamata spesso come la IDCT. In linguaggio matematico la formula della DCT tipo II è la seguente \cite{syed_dct} \cite{gonzalez_dip} \cite{nanni_dct_pca}:
 
 
-\[\operatorname{DCTimage} ( x , y ) = \alpha( x ) \alpha (y) \sum _ { (p , q) = (1,1) } ^ { (n,m) }  \operatorname { Image } ( p , q ) \cos \left(\frac { \pi p  (x-1) } { 2 n }  \right) \cos \left(\frac { \pi q  (y-1) } { 2 m }  \right) \]
+\[\operatorname{DCTimage} ( x , y ) = \alpha( x ) \alpha (y) \sum _ { \mathclap{(p , q) = (1,1)} } ^ { \mathclap{(n,m)} }  \operatorname { Image } ( p , q ) \cos \left(\frac { \pi p  (x-1) } { 2 n }  \right) \cos \left(\frac { \pi q  (y-1) } { 2 m }  \right) \]
 
 Per ogni \((x,y) \in [0..n]\times [0...m]\), dove \(n,m\) rappresentano la dimensione dell'immagine. Similmente la DCT tipo III o IDCT è definita come \cite{syed_dct} \cite{gonzalez_dip}:
 
-\[\operatorname{IDCTimage} ( x , y ) = \sum _ { (p , q) = (1,1) } ^ { (n,m) } \alpha( p ) \alpha (q) \operatorname { DCTimage } ( p , q ) \cos \left(\frac {  \pi p  (x-1) } { 2 n }  \right) \cos \left(\frac { \pi q  (y-1) } { 2 m }  \right) \]
+\[\operatorname{IDCTimage} ( x , y ) = \sum _ { \mathclap{(p , q) = (1,1) }} ^ {  \mathclap{(n,m) }} \alpha( p ) \alpha (q) \operatorname { DCTimage } ( p , q ) \cos \left(\frac {  \pi p  (x-1) } { 2 n }  \right) \cos \left(\frac { \pi q  (y-1) } { 2 m }  \right) \]
 
 In particolare si individuano 2 possibili algoritmi di preprocessing DCT, che sono illustrati in \cref{fig:dct-algoritmi}.
 \begin{figure}[ht]
