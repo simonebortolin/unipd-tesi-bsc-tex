@@ -1,14 +1,24 @@
 \chapter{Transfer Learning}\label{transfer-learning}
 
-Con Transfer Learning si intente l'azione di riutilizzare una rete preaddestrata, come una rete addestrata con un milione di immagini in mille classi, per altri scopi senza dover riaddestrare la rete da zero. Senza nessuna azione di riaddestramento della rete la classificazione di una immagine non darà il risultato sperato, quindi almeno in parte la rete è da riaddestrare in quanto la rete classicifica per ciò che è stata allenata. La struttura di una rete neurale, come AlexNet, è tale da poterla riutilizzare senza problemi. 
+Con Transfer Learning si intente l'azione di riutilizzare una rete preaddestrata, per esempio addestrata con un milione di immagini in mille classi, per altri scopi senza dover addestrare la rete da zero. La rete necessita di un secondo allenamneto per cogliere le feature e classificare correttamente i pattern. La struttura di una rete neurale, come AlexNet, è realizzata in maniera da facilitare il riutilizzo. 
+
+L'utilizzo del transfer learning è molto utilizzato nella computer vision, in quanto permette l'uso della conoscenza acquisita per un
+compito, come riconoscere le immagini del dataset ImageNet, per risolvere quelli correlati, come riconoscere immagini di un altro dataset. Si basa sul fatto che
+funzionalità riguardanti l'estrazione di caratteristiche di basso livello
+(per esempio, bordi, forme e angoli) possono essere condivise tra i vari compiti di una rete, nel nostro caso: classificare le immagini in 1000 classi o classificare immagini sfuocate e non sfuocate \cite{patrini_tl}.
 
 \section{AlexNet}\label{alexnet}
-AlexNet è la rete che ha rivoluzionato la computer vision nel 2012 essa è una \gls{cnn} sviluppata
-da Goffrey Hinton e Alex Krizhevsky dell’università di Toronto vince, con ampio margine, 
+AlexNet è la rete che ha rivoluzionato la computer vision nel 2012. Essa è una \gls{cnn} sviluppata
+da Goffrey Hinton e Alex Krizhevsky dell’università di Toronto. Vince, con ampio margine, 
 l’ImageNet challenge: object classification and detection su milioni di immagini e 1000 classi.
 
-La rete AlexNet è organizzata nel seguente modo: costituita da 8 livelli di cui 5 di \gls{Convolution Layer} e 3 \gls{fully-connected}, ed infine la funzione
-di attivazione \gls{ReLu}, la dimensione delle immagini in input è di \(227\times 227\). L'architettura completa con le dimensioni dei layer di \gls{convoluzione} è illustrata in \cref{fig:alexnet} \cite{alexnet}.  
+La rete AlexNet è organizzata nel seguente modo: è costituita da 8 livelli:
+\begin{itemize}
+    \item 5 \gls{Convolution Layer},
+    \item 3 livelli \gls{fully-connected},
+    \item la funzione di attivazione \gls{ReLu}.
+\end{itemize}
+La dimensione delle immagini in input è di \(227\times 227\). L'architettura completa con le dimensioni dei layer di \gls{convoluzione} è illustrata in \cref{fig:alexnet} \cite{alexnet}.  
 
 \begin{figure}[ht]
     \centering
@@ -21,7 +31,7 @@ La rete AlexNet utilizzata è già allenata per il riconoscimento di 1000 classi
 
 \section{Riutilizzo di una rete neurale preaddestrata}\label{riutilizzo-di-una-rete-neurale-preaddestrata}
 
-Per riutilizzare una rete preaddestrata si parte dalla rete e si rimuovono i 3 livelli \gls{fully-connected}, cioè quelli di classificazione finale e si lasciano quelli di feacture extractor. La rete senza i livelli finali è può essere usata per feacture extractor. Per esempio si può usare una SVM per la classificazione finale, oppure si possono riaggiungere layer dello stesso tipo di quelli originali ovviamente riadattati al numero di classi del programma, come in \cref{fig:alexnet-tl}, a differenza dei layer originali essi non hanno i pesi inizializzati, questa tecnica si chiama fine-tuning. È una tecnica molto usata in quanto il training di \gls{cnn} complesse (es. AlexNet) su dataset di grandi dimensioni (es. ImageNet) può richiedere giorni/settimane di elaborazione su un computer, anche se eseguito su hardware dedicato. Una volta che la rete è stata addestrata, il tempo richiesto per la classificazione di un  pattern (\gls{propagazione forward} o inference) è in genere inferiore \cite{yosinski_tl} \cite{unibo_maltoni_ml}.
+Per riutilizzare una rete preaddestrata si parte dalla rete e si rimuovone l'ultimo livello \gls{fully-connected} ed il livello \gls{SoftMax}, cioè quelli di classificazione finale e si lasciano quelli di feacture extractor. La rete senza i livelli finali è può essere usata solamente per estrarre le feacture. Per esempio si può usare una SVM per la classificazione finale, oppure si possono  aggiungere alla rete nuovi layer dello stesso tipo di quelli rimossi, ovviamente riadattati al numero di classi del programma, come in \cref{fig:alexnet-tl}. A differenza del layer originali il nuovo  livello \gls{fully-connected} non ha i \gls{pesi} inizializzati. Questa tecnica si chiama fine-tuning, è una tecnica molto usata in quanto il training di \gls{cnn} complesse (es. AlexNet) su dataset di grandi dimensioni (es. ImageNet) può richiedere giorni/settimane di elaborazione su un computer, anche se eseguito su hardware dedicato. Una volta che la rete è stata addestrata, il tempo richiesto per la classificazione di un  pattern (\gls{propagazione forward} o inference) è in genere inferiore \cite{yosinski_tl} \cite{unibo_maltoni_ml}.
 
 \begin{figure}[ht]
     \centering
@@ -30,24 +40,18 @@ Per riutilizzare una rete preaddestrata si parte dalla rete e si rimuovono i 3 l
     \label{fig:alexnet-tl}
 \end{figure}
 
-In genere è da sottolineare che addestrare da zero una rete neurale porta a risultati migliori, ma richiede una potenza di calcolo molto più  elevata, oltre che dei dataset molto grandi, per evitare l'\gls{overfitting}. L'addestramento di una \gls{cnn} funziona molto bene su grandi insiemi di dati, tuttavia su piccoli insiemi di dati non riesce a raggiungere guadagni significativi e proprio in questo caso viene utilizzato il transfer learning \cite{joel_tl}.
-
-Il transfer learning è un metodo molto utilizzato nella computer vision, in quanto permette l'uso della conoscenza acquisita per un
-compito, come riconoscere le immagini del dataset ImageNet, per risolvere quelli correlati, come riconoscere immagini di un altro dataset. Si basa sul fatto che
-funzionalità riguardanti l'estrazione di caratteristiche di basso livello
-(per esempio, bordi, forme e angoli) possono essere condivise tra i vari compiti di una rete, nel nostro caso: classificare le immagini in 1000 classi o classificare immagini sfuocate e non sfuocate \cite{patrini_tl}.
-
+È da sottolineare che nel caso in cui si dispone una elevata potenza di calcolo e grandi dataset addestrare da zero una rete neurale porta a risultati migliori in quanto l'addestramento di una \gls{cnn} funziona molto bene su grandi insiemi di dati, tuttavia su piccoli insiemi di dati non riesce a raggiungere guadagni significativi e proprio in questo caso viene utilizzato il transfer learning \cite{joel_tl}.
 
 \section{Fine-Tuning}\label{fine-tuning}
 
 Nell'approccio fine-tuning del Transfer Learning si parte con una rete preaddestrata su un problema simile e:
 \begin{enumerate}
     \item Si rimpiazza il livello di output con un nuovo livello di output \gls{SoftMax} (adeguando il numero di classi) ed altri livelli finali, come i \gls{fully-connected}.
-    \item Come valori iniziali dei pesi si utilizzano quelli della rete pre-trained, tranne che per le connessioni tra il penultimo e ultimo livello i cui pesi sono inizializzati random.
+    \item Come valori iniziali dei \gls{pesi} si utilizzano quelli della rete pre-trained, tranne che per le connessioni tra il penultimo e ultimo livello i cui pesi sono inizializzati random.
     \item Si eseguono nuove iterazioni di addestramento per ottimizzare i pesi rispetto alle peculiarità del nuovo dataset (non è necessario che il dataset sia di grandi dimensioni, ma per migliorare le prestazioni si usa data augmentation e preprocessing).
 \end{enumerate}
 
-In generale, tutti i pesi sono allenabili, cioè in  ogni nuovo allenamento essi possono cambiare normalmente attraverso l'algoritmo di ottimizzazione \gls{gd}. In alcuni lavori essi vengono tenuti fissi durante la fase di fine-tuning. L'unico livello integrato che ha pesi non allenabili è il livello di \gls{BatchNormalization} \cite{team_keras_nodate} \cite{lumini_plankton}.
+In generale, tutti i \gls{pesi} sono allenabili, cioè in  ogni nuovo allenamento essi possono cambiare normalmente attraverso l'algoritmo di ottimizzazione \gls{gd}. In alcuni lavori, essi vengono tenuti fissi durante la fase di fine-tuning. L'unico livello integrato che ha pesi non allenabili è il livello di \gls{BatchNormalization} \cite{team_keras_nodate} \cite{lumini_plankton}.
 
 In particolare si possono individuare numerosi approcci per il fine-tuning, tra cui il classico one round:
 \paragraph {One round tuning (1R)} \label{one-round-tuning}
@@ -67,15 +71,13 @@ L'idea alla base di questo metodo è di insegnare in primo luogo alla rete a ric
     \label{fig:tl_2rt}
 \end{figure}
 
-In particolare per ottenere buoni risultati con il fine-tuning è importante diminuire la velocità di apprendimento (cioè il fattore learning rate che modifica i pesi), e se necessario congelare alcuni livelli preaddestrati che potrebbero essere alterati in maniera sostanziale abbassando le performance.
+In particolare per ottenere buoni risultati con il fine-tuning è importante diminuire la velocità di apprendimento (cioè il fattore learning rate che modifica i pesi) e se necessario congelare alcuni livelli preaddestrati che potrebbero essere alterati in maniera sostanziale abbassando le performance.
 
-Se la velocità di apprendimento è troppo alta i risultati peggiorano a casua del gradient descent, in particolare questo può portare a uno stato in cui la rete neurale non riesce a trovare il minimo globale ma solo locale \cite{joel_ft_tl_lfs} \cite{joel_tl}.
+Se la velocità di apprendimento è troppo alta i risultati peggiorano a causa del \gls{gd}, in particolare questo può portare a uno stato in cui la rete neurale non riesce a convergere \cite{joel_ft_tl_lfs} \cite{joel_tl}.
 
 \section{Data preprocessing e data augmentation}\label{data-pre-processing-e-augmentation-processing}
 
-La fase di pre-elaborazione è utile nelle immagini delle laringi per rimuovere diversi tipi di rumori, questo vale ancora di più nel caso di transfer learning in quanto la dimensione del dataset di allenamento è in genere molto inferiore a di quello originale. E che numerosi classi hanno un significato meno generale o più generale \cite{joel_tl}. In particolare i metodi di preprocessing di immagini sono trattati in \cref{preprocessing}.
-
-Per ottenere prestazioni più elevate nell'accuratezza, la rete neurale richiede grandi insiemi di dati in quanto le performance della \gls{cnn} con piccoli set di dati si deteriora  a causa dell'\gls{overfitting} \cite{joel_tl} in particolare i metodi di data augmentation di immagini sono trattati in \cref{data-augmentation}.
+La fase di pre elaborazione è utile nelle immagini delle laringi per rimuovere diversi tipi di rumori, questo vale ancora di più nel caso di transfer learning in quanto la dimensione del dataset di allenamento è in genere molto inferiore a di quello originale. E le classi del nostro dataset hanno un significato diverso rispetto a quelle di ImageNet e più generale \cite{joel_tl}. In particolare i metodi di preprocessing di immagini sono trattati in \cref{preprocessing}. In \cref{data-augmentation} sono trattati invece i metodi di data augmentation di immagini per creare nuovi pattern simili a quelli presenti nel dataset.
 
 
 

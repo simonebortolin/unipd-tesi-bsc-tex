@@ -1,11 +1,11 @@
 \chapter{Frame}\label{frame}
 
-Il laringoscopio fornisce una serie di immagini (detti anche frame) in sequenza che formano un video, non tutti i frame che escono dal laringoscopio sono utili a capire lo stato di salute della laringe di una persona in quanto non sono a fuoco, o sono sfuocate o contengono. Ogni frame contiene una serie una matrice di pixel, se l'immagine è a colori per ogni insieme di pixel sono associati tre colori in codifica RGB (red, green, blue) o HSL (hue, saturation, lightness) in alternativa ad ogni pixel è associato un unico valore, che rappresenta la tonalità di grigio \cite{gonzalez_dip}.
+Il laringoscopio fornisce una serie di immagini (detti anche frame) in sequenza che formano un video, non tutti i frame che escono dal laringoscopio sono utili a capire lo stato di salute della laringe di una persona in quanto non sono a fuoco, contengono saliva, riflessi speculari o sono underexposed. Ogni frame contiene una serie una matrice di pixel, se l'immagine è a colori per ogni insieme di pixel sono associati tre colori in codifica RGB (red, green, blue) o HSL/V (hue, saturation, lightness/value) altrimenti a ogni pixel è associato un unico valore, che rappresenta la tonalità di grigio \cite{gonzalez_dip}.
 
 \section{Acquisizione dei frame}\label{acquisizione-dei-frame}
 
-L'acquisizione digitale delle immagini digitalizza solamente lo spettro delle radiazioni elettromagnetiche visibili dall'occhio, detta anche luce, che per comodità, lo spettro dei colori è diviso in sei grandi regioni: viola (0.43 \(\mu \)m), blu, verde, giallo, arancione e rosso (0.79 \(\mu \)m). A differenza del resto del resto dello spettro elettromagnetico lo spettro della luce non termina bruscamente al variare della lunghezza d'onda, ma invece ogni tonalità di colore si fonde dolcemente in
-la successiva, come mostrato in \cref{fig:spettro-onde} \cite{gonzalez_dip}.
+L'acquisizione digitale delle immagini digitalizza solamente lo spettro delle radiazioni elettromagnetiche visibili dall'occhio, detta anche luce, che per comodità, è diviso in sei grandi regioni: viola (0.43 \(\mu \)m), blu, verde, giallo, arancione e rosso (0.79 \(\mu \)m). A differenza del resto del resto dello spettro elettromagnetico, lo spettro della luce non termina bruscamente al variare della lunghezza d'onda, ma invece ogni tonalità di colore si fonde dolcemente con
+la successiva tonalità, come mostrato in \cref{fig:spettro-onde} \cite{gonzalez_dip}.
 
 \begin{figure}[ht]
     \centering
@@ -14,7 +14,7 @@ la successiva, come mostrato in \cref{fig:spettro-onde} \cite{gonzalez_dip}.
     \label{fig:spettro-onde}
 \end{figure}
 
-La maggior parte delle immagini che ci interessano sono generate dalla combinazione di una o più fonti di illuminazione e la riflessione o l'assorbimento di energia da quella fonte da parte degli elementi della "scena" che vengono ripresi. A seconda della natura della fonte, l'energia di illuminazione viene riflessa o trasmessa dagli oggetti, come mostrato in \cref{fig:scena-acquisizione} \cite{gonzalez_dip}.
+La maggior parte delle immagini che ci interessano sono generate dalla combinazione di una o più fonti di illuminazione. A seconda della natura della fonte, l'energia di illuminazione viene riflessa o trasmessa dagli oggetti, come mostrato in \cref{fig:scena-acquisizione} \cite{gonzalez_dip}.
 
 \begin{figure}[ht]
     \centering
@@ -27,7 +27,7 @@ In paticolare una laringoscopia NBI (Narrow binding Imaging)  sfrutta l’emissi
 
 \section{Digitalizzazione dei frame}\label{digitalizzazione-dei-frame}
 
-Per la digitalizzazione delle immagini l'idea è semplice le radiazioni elettromagnetiche che in entrata vengono trasformate in una tensione dal sensore e viene digitalizzata la forma d'onda in uscita dal sensore, per digitalizzare l'onda è necessario effettuare un campionamento ed una quantizzazione, come mostrato in \cref{fig:campionamento-quantizzazione} \cite{gonzalez_dip}.
+Per la digitalizzazione delle immagini l'idea è semplice: le radiazioni elettromagnetiche  vengono trasformate in una tensione dal sensore, e  viene digitalizzata la forma d'onda in uscita dal sensore, per digitalizzare l'onda è necessario effettuare un campionamento e una quantizzazione, come mostrato in \cref{fig:campionamento-quantizzazione} \cite{gonzalez_dip}.
 
 \begin{figure}[ht]
     \centering

@@ -1,11 +1,11 @@
 \chapter{Preprocessing}\label{preprocessing}
 
-Le immagini raw nei dataset sono sufficienti ad una \gls{cnn} per ottenere buoni risultati, ma è possibile migliorare i risultati attraverso una pre-eleaborazione delle immagini, in particolare la rimozione di artefatti,  del rumore e migliorare la qualità dell'immagine 
+Le immagini raw nei dataset sono sufficienti ad una \gls{cnn} per ottenere buoni risultati, ma è possibile migliorarli attraverso una pre eleaborazione delle immagini, in particolare la rimozione di artefatti,  del rumore e migliorare la qualità dell'immagine 
 in cui le feacture  possono essere estratte correttamente \cite{permual_contrast}.
 
 \section{Riduzione della risoluzione}\label{riduzione-della-risoluzione}
 
-La rete AlexNet richiede in input una immagine di dimension \(227 \times 227 \times 3\) \cite{alexnet}, dato che le immagini del dataset hanno risoluzione maggiore è stato necessario ridimensionarle alla risoluzione richiesta da AlexNet, questo causa una perdita di qualità dell'immagine, in \cref{fig:resize} si notano due frame: a sinistra con la dimensione originale e a destra ridimensionati, si nota come nonostante la figura ridimensionata è abbastanza accettabile per una elaborazione, nonostante i pixel son ben visibili \cite{gonzalez_dip}.
+La rete AlexNet richiede in input una immagine di dimensione \(227 \times 227 \times 3\) \cite{alexnet}, dato che le immagini del dataset hanno risoluzione maggiore è stato necessario ridimensionarle alla risoluzione richiesta da AlexNet, questo causa una perdita d'informazione e di qualità dell'immagine, in \cref{fig:resize} si notano due frame: a sinistra con la dimensione originale e a destra ridimensionati, si nota come la figura ridimensionata è abbastanza accettabile per una elaborazione e i pixel son ben visibili \cite{gonzalez_dip}.
 
 \begin{figure}[ht]
     \centering

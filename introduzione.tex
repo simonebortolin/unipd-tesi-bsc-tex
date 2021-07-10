@@ -23,8 +23,8 @@ L'obiettivo di questa tesi è quello di usare algoritmi di apprendimento automat
 \section{Descrizione dei dataset}\label{descrizione-dei-dataset}
 
 L'addestramento della rete è stato effettuato  sul dataset
-NBI-InfFrames  che
-è stato costruito frame presi da da 18 video endoscopici NBI, riferiti a
+NBI-InfFrames. Il dataset
+è stato realizzato a partire dai frame di 18 video endoscopici NBI, presi dalle laringoscopie di
 18 diversi pazienti affetti da carcinoma a cellule squamose
 (SCC). Tutti i video sono stati acquisiti con un sistema endoscopico
 NBI (processore video Olympus Visera Elite S190 e
@@ -42,8 +42,9 @@ un videoscopio rino-laringo ENF-VH) con frame rate di
 
 Il dataset NBI-InfFrames contiene 720 frame, che sono equamente divisi in quattro classi: informative (I), sfuocato (B), con saliva o riflessi speculari (S) e underexposed  (U), come mostrato in \cref{fig:larynges-2}. 
 
-Dato il relativo basso numero di immagini, il fatto che il numero di pattern per ogni classe è omogeneo, cioè che i frame sono equamente distribuiti tra le classi porta al fatto che il modello di apprendimento si focalizza su tutte le classi e non solo sulla classe prevalente, come per esempio gli informative-frame, e ignorare gli eventi rari, le altre classi.
-Una classe con più occorrenze di frame rispetto alle altre può portare a principalemente due problemi: il modello di addestramento non riesce ad ottenere risultati ottimizzati  poiché l'algoritmo non tiene conto delle classi poco numerose. Nel caso in cui riesce a trovare un modello di separazione tra le classi c'è il rischio di overfitting nelle classi con meno dati in quanto impara tutte le feature a memoria. Inoltre è difficile trovare altri dati per convalidare ed effettuare dei test, proprio per il motivo che è un caso raro \cite{chatterjee_deep_2018}.
+Dato il basso numero di immagini, il fatto che il dataset è diviso in maniera omogenea tra le 4 classi fa si che il modello di apprendimento si focalizza su tutte le classi e non solo sulla classe predominate, come per esempio gli informative-frame, e ignorare le classi poco diffuse.
+
+Quando c'è eterogeneità tra il numero di patter per classi il modello di addestramento non riesce ad ottenere risultati ottimizzati in quanto l'algoritmo non tiene conto delle classi poco numerose. Nel caso nonostante ciò riesce a trovare un modello di separazione tra le classi c'è il rischio di overfitting nelle classi con meno dati in quanto impara tutte le feature a memoria. Inoltre è difficile trovare altri dati per convalidare ed effettuare dei test \cite{chatterjee_deep_2018}.
 
 Per ciascuno dei 18 video endoscopici NBI, i fotogrammi video sono stati estratti a caso e
 presentati prima a due valutatori umani. Poi, ai due valutatori è stato chiesto di etichettare i fotogrammi. Nel caso in cui i due
@@ -72,10 +73,10 @@ Il secondo dataset è composto da 330 immagini, e la dimensione è simile a data
 
 \section{Lavori precedenti}\label{lavori-precedenti}
 
-Il problema del riconoscimento e classificazione di immagini è molto presente nel panorama scientifico. L'ImageNet Large Scale Visual Recognition Challenge (ILSVRC) valuta le performance dei vari algoritmi di intelligenza artificiale su una vasta scala \cite{imagenet}. I vari apporci hanno permesso di ottenere performance sempre superiori, sopratutto a partire dall'introduzione delle reti profonde.
+Il problema  della classificazione delle immagini e della selezione degli informative-frame è molto presente nel panorama scientifico. L'ImageNet Large Scale Visual Recognition Challenge (ILSVRC) valuta le performance dei vari algoritmi di intelligenza artificiale su una vasta scala, ma non sulla selezione degli informative frame \cite{imagenet}. Le varie soluzioni hanno permesso di ottenere performance sempre superiori, sopratutto a partire dall'introduzione delle reti profonde, che possono essere utilizzate anche per la selezione degli informative-frame.
 
-Per implementare algoritmi in grado di identificare e scartare le immagini non informative nei video endoscopici, sono stati proposti diversi approcci di apprendimento automatico (ML) approcci sono stati proposti, che sono principalmente basati su handcrafted features, come features basate sull'intensity e sui colori, in \cite{zhang_colon} sono state utilizzate caratteristiche anatomiche per la classificazione degli informative frame, mentre caratteristiche sullo stato dell'immagine come colori, sfuocatura, sono stati usati in \cite{armin_colonscopy}. 
+Per implementare algoritmi in grado di identificare e scartare le immagini non informative nei video endoscopici, sono stati proposti diversi approcci di apprendimento automatico (ML), che sono principalmente basati su handcrafted features, come features basate sull'intensity e sui colori, in \citeauthor{zhang_colon} \cite{zhang_colon} sono state utilizzate caratteristiche anatomiche per la classificazione degli informative frame, mentre caratteristiche sullo stato dell'immagine come colori, sfuocatura, sono stati usati in \citeauthor{armin_colonscopy} \cite{armin_colonscopy}. 
 
-Mentre caratteristiche basate sulla rappresentazione spettrale sono trattate invece in \cite{atasoy_endoscopic} \cite{haji_wce} e in \cite{bashar_endoscopy} caratterstiche dei colori dell'immagine, come l'istogramma. Mentre nell'ambito della selezione di informative-frame nelle laringi  troviamo alcune applicazioni in \cite{moccia_workflow} \cite{moccia_larynge_2} e \cite{patrini_tl}. La selezione degli informative-frame è molto utile per lavori di selezione per diagnosi precoci di malattie laringee che troviamo alcune applicazioni in \cite{moccia_larynge} \cite{turkmen_larynge} e \cite{narbalata_larynge}.
+Caratteristiche basate sulla rappresentazione spettrale sono trattate invece in \citeauthor{atasoy_endoscopic} \cite{atasoy_endoscopic}, \citeauthor{haji_wce} \cite{haji_wce} e in \citeauthor{bashar_endoscopy} \cite{bashar_endoscopy} caratterstiche dei colori dell'immagine, come l'istogramma. Nell'ambito della selezione di informative-frame nelle laringi  troviamo alcune applicazioni in \citeauthor{moccia_workflow} \cite{moccia_workflow} \citeauthor{moccia_larynge_2} \cite{moccia_larynge_2} e \citeauthor{patrini_tl} \cite{patrini_tl}. La selezione degli informative-frame è molto utile per lavori di selezione per diagnosi precoci di malattie laringee che troviamo alcune applicazioni in \citeauthor{moccia_larynge} \cite{moccia_larynge} \citeauthor{turkmen_larynge} \cite{turkmen_larynge} e \citeauthor{narbalata_larynge} \cite{narbalata_larynge}.
 
 Questa tesi è organizzata come segue: il \cref{transfer-learning} presenta l'approccio di transfer learning utilizzato per selezionare gli informative frame, \cref{frame} spiega come funziona l'acquisizione e la rappresentazione dell'immagine in digitale, \cref{data-augmentation}  e  \cref{preprocessing} spiegano i principali metodi utilizzati per migliorare le performance. I risultati sono mostrati in \cref{addestramento-rete-neurale} e sono discussi nel \cref{conclusioni}.

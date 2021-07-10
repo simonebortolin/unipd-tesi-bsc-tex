@@ -4,7 +4,7 @@
 {
     Una rete neurale convoluzionale (ConvNet/CNN) è un algoritmo di Deep Learning che prende in input un'immagine, ai vari input vengono assegnati i pesi e un bias in modo che la rete sia in grado di cogliere gli aspetti e gli oggetti dell'immagine ed essere in grado di differenziare gli uni dagli altri. Come si deduce dal nome le CNN fa ampio uso della \gls{convoluzione}
 
-    La pre-elaborazione richiesta in una CNN è molto più bassa rispetto ad altri algoritmi di classificazione. Mentre nei metodi primitivi i filtri sono costruiti a mano, con abbastanza addestramento, le CNN hanno la capacità di imparare questi filtri.
+    La pre elaborazione richiesta in una CNN è molto più bassa rispetto ad altri algoritmi di classificazione. Mentre nei metodi primitivi i filtri sono costruiti a mano, con abbastanza addestramento, le CNN hanno la capacità di imparare questi filtri.
 
     L'architettura di una CNN è molto simile a quella del modello di connettività dei neuroni nel cervello umano ed è stata ispirata all'organizzazione della corteccia visiva. I singoli neuroni rispondono agli stimoli solo in una regione ristretta del campo visivo noto come campo recettivo. Un insieme di tali campi si sovrappone per coprire l'intera area visiva.
 
@@ -161,3 +161,5 @@ Si nota come una volta noti i vari \(w_i\) le operazioni da fare per calcolare l
 
 \longnewglossaryentry{BatchNormalization}{name={batch normalization}}{È una trasformazione che mantiene l'output medio vicino a 0 e la deviazione standard dell'output vicino a 1. Ciò ha l'effetto di stabilizzare il processo di apprendimento e di ridurre drasticamente il numero di periodi di addestramento necessari per addestrare reti profonde.
 }
+
+\newglossaryentry{pesi}{name={pesi},description={Detti anche sinapsi è il valore di quanto è importante una determinata feature in ingresso al neurone, i pesi vengono modificati da un algoritmo di back propagation come il \gls{sgd}}}
