@@ -14,9 +14,9 @@ ordine diverso e si utilizza circa il 20\% di essi come test set.
 La sperimentazione inizia con l'allenamento della \gls{cnn} con un fine-tuning standard e classico (denominato anche One Round Tuning, descritto in \cref{one-round-tuning}), nel senso che si rimpiazzano gli ultimi 3 layer e poi si riallena la rete. Come dataset è stato usato il dataset descritto NBI-InfFrames in \cref{descrizione-dei-dataset}. È da prestare attenzione ai vari iperparametri, come \Gls{LearningRate} e \Gls{MiniBatchSize}. In particolare è stato usato un learning rate di 0.0001 e un mini batch size di 30, il metodo di ottimizzazione è lo \gls{sgd}, come data augmentation sono stati usati i valori descritti nel \cref{data-augmentation}, in questo caso non è stata usata la discrete cousene transform. La confusion matrix di questo allenamento è mostrato in \cref{fig:result-one-liscio}.
 
 
-\begin{figure}[ht]
+\begin{figure}[H]
     \centering
-    \includegraphics[width=0.45\textwidth]{addestramento-rete-neurale/one-liscio.pdf}
+    \includegraphics[width=0.49\textwidth]{addestramento-rete-neurale/one-liscio.pdf}
     \caption{Confusion matrix dell'allenamento con TL 1R senza preprocessing e con una semplice data augmentation}
     \label{fig:result-one-liscio}
 \end{figure}
@@ -26,9 +26,9 @@ La sperimentazione inizia con l'allenamento della \gls{cnn} con un fine-tuning s
 L'allenamento 2R descritto in \cref{two-round-tuning} è composto da una prima fase di allenamento con un dataset similare e poi il dataset NBI-InfFrames, entrambi descritti in  \cref{descrizione-dei-dataset}. In questo caso gli iperparametri sono:   learning rate di 0.0001 e un mini batch size di 30, il metodo di ottimizzazione è il \gls{sgd}, come data argumentation sono stati usati i valori descritti nel \cref{data-augmentation} e non è stata usata la discrete cousene transform. La confusion matrix di questo allenamento è mostrato in \cref{fig:result-two-liscio}.
 
 
-\begin{figure}[ht]
+\begin{figure}[H]
     \centering
-    \includegraphics[width=0.45\textwidth]{addestramento-rete-neurale/two-liscio.pdf}
+    \includegraphics[width=0.49\textwidth]{addestramento-rete-neurale/two-liscio.pdf}
     \caption{Confusion matrix dell'allenamento con TL 2R senza preprocessing e con una semplice data augmentation}
     \label{fig:result-two-liscio}
 \end{figure}
@@ -44,13 +44,13 @@ IM=imadjust(IM,[.2 .3 0; .6 .7 1],[]);
 
 In figura \cref{fig:result-contrast} sono presenti le confusion matrix dei risultati ottenuti con la modifica del contrasto.
 
-\begin{figure}[ht]
+\begin{figure}[H]
     \centering
-    \begin{subfigure}{0.45\textwidth}
+    \begin{subfigure}{0.49\textwidth}
         \includegraphics[width=\textwidth]{addestramento-rete-neurale/one-contrast.pdf}
         \caption{Allenamento 1R} 
     \end{subfigure}
-    \begin{subfigure}{0.45\textwidth}
+    \begin{subfigure}{0.49\textwidth}
         \includegraphics[width=\textwidth]{addestramento-rete-neurale/two-contrast.pdf}
         \caption{Allenamento 2R} 
     \end{subfigure}
@@ -67,13 +67,13 @@ sigma = std2(Idouble);
 IM = imadjust(IM,[avg-n*sigma avg+n*sigma],[]);
 \end{lstlisting}
 
-\begin{figure}[ht]
+\begin{figure}[H]
     \centering
-    \begin{subfigure}{0.45\textwidth}
+    \begin{subfigure}{0.49\textwidth}
         \includegraphics[width=\textwidth]{addestramento-rete-neurale/one-contrast-bis.pdf}
         \caption{Allenamento 1R} 
     \end{subfigure}
-    \begin{subfigure}{0.45\textwidth}
+    \begin{subfigure}{0.49\textwidth}
         \includegraphics[width=\textwidth]{addestramento-rete-neurale/two-contrast-bis.pdf}
         \caption{Allenamento 2R} 
     \end{subfigure}
@@ -93,9 +93,9 @@ LAB(:,:,1) = L*100;
 IM = lab2rgb(LAB);
 \end{lstlisting}
 
-\begin{figure}[ht]
+\begin{figure}[H]
     \centering
-    \begin{subfigure}{0.45\textwidth}
+    \begin{subfigure}{0.49\textwidth}
         \includegraphics[width=\textwidth]{addestramento-rete-neurale/one-clahe.pdf}
         \caption{Allenamento 1R} 
     \end{subfigure}
@@ -111,13 +111,13 @@ hgamma = vision.GammaCorrector(2.0,'Correction','De-gamma');
 IM= hgamma(IM);
 \end{lstlisting}
 
-\begin{figure}[ht]
+\begin{figure}[H]
     \centering
-    \begin{subfigure}{0.45\textwidth}
+    \begin{subfigure}{0.49\textwidth}
         \includegraphics[width=\textwidth]{addestramento-rete-neurale/one-gamma.pdf}
         \caption{Allenamento senza CLAHE} 
     \end{subfigure}
-    \begin{subfigure}{0.45\textwidth}
+    \begin{subfigure}{0.49\textwidth}
         \includegraphics[width=\textwidth]{addestramento-rete-neurale/one-clahe-gamma.pdf}
         \caption{Allenamento con CLAHE} 
     \end{subfigure}
@@ -131,13 +131,13 @@ Per aggiungere rumore artificiale all'immagine ed evitare che l'immagine si conc
 IM = imnoise(IM,'salt & pepper',0.02);
 \end{lstlisting}
 
-\begin{figure}[ht]
+\begin{figure}[H]
     \centering
-    \begin{subfigure}{0.45\textwidth}
+    \begin{subfigure}{0.49\textwidth}
         \includegraphics[width=\textwidth]{addestramento-rete-neurale/one-noise.pdf}
         \caption{Allenamento 1R} 
     \end{subfigure}
-    \begin{subfigure}{0.45\textwidth}
+    \begin{subfigure}{0.49\textwidth}
         \includegraphics[width=\textwidth]{addestramento-rete-neurale/two-noise.pdf}
         \caption{Allenamento 2R} 
     \end{subfigure}
@@ -147,19 +147,43 @@ IM = imnoise(IM,'salt & pepper',0.02);
 
 \section{Data argumentation con DCT}\label{data-argumentation-con-dct}
 
-Ci sono numerosi metodi per eseguire la DCT ed la relativa data augmentation, in particolare in \cref{discrete-cosine-transform-dct} sono illustrati due algoritmi, il primo che per ogni frequenza la annulla con probabilità 0.5 e la seconda che la attenua con probabilità \(z\sim U\left(-\frac{1}{2}, \frac{1}{2}\right)\) \cite{nanni_dct_pca}. I risultati con DCT e Noise sono illustrati nella \cref{fig:result-dct-noise}.
+Ci sono numerosi metodi per eseguire la DCT ed la relativa data augmentation, in particolare in \cref{discrete-cosine-transform-dct} sono illustrati due algoritmi, il primo che per ogni frequenza la annulla con probabilità 0.5 e la seconda che la attenua con probabilità \(z\sim U\left(-\frac{1}{2}, \frac{1}{2}\right)\) \cite{nanni_dct_pca}. I risultati con DCT e Noise sono illustrati nelle confusion matrix della \cref{fig:result-dct-noise}.
 
-\begin{figure}[ht]
+\begin{figure}[H]
     \centering
-    \begin{subfigure}{0.45\textwidth}
+    \begin{subfigure}{0.49\textwidth}
         \includegraphics[width=\textwidth]{addestramento-rete-neurale/one-dct.pdf}
         \caption{Allenamento 1R} 
     \end{subfigure}
-    \begin{subfigure}{0.45\textwidth}
+    \begin{subfigure}{0.49\textwidth}
         \includegraphics[width=\textwidth]{addestramento-rete-neurale/two-dct.pdf}
         \caption{Allenamento 2R} 
     \end{subfigure}
     \caption{Confusion matrix dell'allenamento con TL 1R e 2R con DCT e noise}
     \label{fig:result-dct-noise}
 \end{figure}
+
+
+\section{Risultati}\label{risultati}
+
+In \cref{tab:specchio-single} c'è uno specchio riassuntivo dei vari risultati ottenuti in questa sperimentazione, riassumento le confusion matrix dei paragrafi precedenti.
+
+\begin{table}[H]
+    \centering
+    \begin{tabular}{l|cc|cc}
+                                     & \multicolumn{2}{c|}{1R}                                                   & \multicolumn{2}{c}{2R}                                                   \\
+                                     & (1) & (2) & (1) & (2) \\ \midrule
+    Semplice DA                      & 95.4\%                            & 100\%                                & 97.5\%                            & 100\%                                \\
+    Filtro Contrasto Semplice        & 96.2\%                            & 100\%                                & 96.2\%                            & 100\%                                \\
+    Filtro Contrasto con media e STD & 89.6\%                            & 91.7\%                               & 92.9\%                            & 100\%                                \\
+    CLAHE                            & 63.7\%                            & 45.8\%                               &                                   &                                      \\
+    Correzione Gamma                 & 95.0\%                            & 100\%                                &                                   &                                      \\
+    Correzione Gamma e CLAHE         & 46.0\%                            & 0\%                                  &                                   &                                      \\
+    Noise                            & 96.7\%                            & 100\%                                & 95.4\%                            & 95.0\%                               \\
+    DCT e Noise                      & 94.6\%                            & 100\%                                & 93.8\%                            & 100\%                             
+    \end{tabular}
+    \caption{Specchio riassuntivo delle performance singole dei vari metodi analizzati, (1): Divisione corretta nelle 4 classi, (2): Riconoscimento dei frame Informative}
+    \label{tab:specchio-single}
+\end{table}
+
 
