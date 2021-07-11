@@ -1,17 +1,17 @@
 \chapter{Addestramento rete neurale}\label{addestramento-rete-neurale}
 
 
-Come già menzionato nei capitoli precedenti l’idea è quella di allenare una \gls{cnn} per la classificazione dei frame di una laringoscopia attraverso il transfer learning impiegando la tecnica del
+Come già menzionato nei capitoli precedenti l’idea è quella di allenare una \gls{cnn} per la classificazione dei frame di una laringoscopia attraverso il transfer learning. Utilizzando la tecnica del
 fine-tuning nelle due varianti (One Round Tuning e Two Round Tuning)  su una rete pre-allenata chiamata AlexNet.
 
 
-Viene usato un allenamento \(k\)-fold, in particolare con \(k=3\), in ogni fold i  pattern vengono elaborati con un
-ordine diverso e si utilizza circa il 20\% di essi come test set.
+Viene usato un addestramento \(k\)-fold, in particolare con \(k=3\), in ogni fold i  pattern vengono elaborati con un
+ordine diverso e si utilizza circa il 2/3 di essi come test set.
 
 
 \section{Allenamento 1R}\label{allenamento-1r}
 
-La sperimentazione inizia con l'allenamento della \gls{cnn} con un fine-tuning standard e classico (denominato anche One Round Tuning, descritto in \cref{one-round-tuning}), nel senso che si rimpiazzano gli ultimi 3 layer e poi si riallena la rete. Come dataset è stato usato il dataset descritto NBI-InfFrames in \cref{descrizione-dei-dataset}. È da prestare attenzione ai vari iperparametri, come \Gls{LearningRate} e \Gls{MiniBatchSize}. In particolare è stato usato un learning rate di 0.0001 e un mini batch size di 30, il metodo di ottimizzazione è lo \gls{sgd}, come data augmentation sono stati usati i valori descritti nel \cref{data-augmentation}, in questo caso non è stata usata la discrete cousene transform. La confusion matrix di questo allenamento è mostrato in \cref{fig:result-one-liscio}.
+La sperimentazione inizia con l'allenamento della \gls{cnn} con un fine-tuning standard e classico (denominato anche One Round Tuning, descritto in \cref{one-round-tuning}), nel senso che si rimpiazzano gli ultimi 3 layer e poi si riallena la rete. Come dataset è stato usato il dataset descritto NBI-InfFrames in \cref{descrizione-dei-dataset}. È da prestare attenzione ai vari iperparametri, come \Gls{LearningRate} e \Gls{MiniBatchSize}. In particolare, è stato usato un learning rate di 0.0001 e un mini batch size di 30, il metodo di ottimizzazione è lo \gls{sgd}. Come data augmentation sono stati usati i valori descritti nel \cref{data-augmentation}, in questo caso non è stata usata la discrete cousene transform. La confusion matrix di questo allenamento è mostrato in \cref{fig:result-one-liscio}.
 
 
 \begin{figure}[H]
@@ -58,7 +58,7 @@ In figura \cref{fig:result-contrast} sono presenti le confusion matrix dei risul
     \label{fig:result-contrast}
 \end{figure}
 
-Dato che nella preelaborazione precedente si usa un filtro hardcoded, lo step successivo è modificare il  contrasto in base alla media e alla derivazione standard dell'immagine, con \lstinline{n} un iperparametro che indica quanto modificare il contrasto. In \cref{fig:result-contrast-bis}  la confusion matrix con i risulati ottenuti con una correzione contrasto dinamica.
+Dato che nella preelaborazione precedente si usa un filtro hardcoded, lo step successivo è modificare il  contrasto in base alla media e alla derivazione standard dell'immagine (con \lstinline{n} un iperparametro che indica quanto modificare il contrasto). In \cref{fig:result-contrast-bis}  la confusion matrix con i risulati ottenuti con una correzione contrasto dinamica.
 \begin{lstlisting}
 n = 0.5;  
 Idouble = im2double(IM); 
@@ -147,7 +147,7 @@ IM = imnoise(IM,'salt & pepper',0.02);
 
 \section{Data argumentation con DCT}\label{data-argumentation-con-dct}
 
-Ci sono numerosi metodi per eseguire la DCT ed la relativa data augmentation, in particolare in \cref{discrete-cosine-transform-dct} sono illustrati due algoritmi, il primo che per ogni frequenza la annulla con probabilità 0.5 e la seconda che la attenua con probabilità \(z\sim U\left(-\frac{1}{2}, \frac{1}{2}\right)\) \cite{nanni_dct_pca}. I risultati con DCT e Noise sono illustrati nelle confusion matrix della \cref{fig:result-dct-noise}.
+Ci sono numerosi metodi per eseguire la DCT ed la relativa data augmentation, in particolare in \cref{discrete-cosine-transform-dct} sono illustrati due algoritmi. Il primo che per ogni frequenza la annulla con probabilità 0.5 e la seconda che la attenua con probabilità \(z\sim U\left(-\frac{1}{2}, \frac{1}{2}\right)\) \cite{nanni_dct_pca}. I risultati con DCT e Noise sono illustrati nelle confusion matrix della \cref{fig:result-dct-noise}.
 
 \begin{figure}[H]
     \centering

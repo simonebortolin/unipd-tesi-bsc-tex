@@ -1,14 +1,14 @@
 \chapter{Data augmentation}\label{data-augmentation}
 
-Con Data augmentation si intende la tecnica usata per la generazione di nuovi dati  per aumentare artificialmente il numero di campioni di allenamento ed è diventato una pratica comune nell'area del deep learning.
+Con Data augmentation si intende la tecnica usata per la generazione di nuovi dati  al fine di aumentare artificialmente il numero di campioni di allenamento ed è diventato una pratica comune nell'area del deep learning.
 
-È noto che l'aumento dei dati può aumentare l'invarianza di un classificatore e può agire come un regolatore nel prevenire l'overfitting nelle reti neurali, come in AlexNet (la rete utilizzata in questa tesi). Gli autori del noto AlexNet  hanno dichiarato che senza l'aumento dei dati la loro rete avrebbe sofferto di un sostanziale overfitting, che li avrebbe costretti a usare reti meno profonde \cite{alexnet}. Ma non solo le reti profonde, anche quelle meno profonde  possono essere notevolmente migliorate adottando l'aumento dei dati, tipicamente utilizzato nel deep learning \cite{dataaugmentation}.
+È noto che l'aumento dei dati può aumentare l'invarianza di un classificatore e può agire come un regolatore nel prevenire l'overfitting nelle reti neurali, come in AlexNet (la rete utilizzata in questa tesi). Gli autori del noto AlexNet  hanno dichiarato che senza l'aumento dei dati la loro rete avrebbe sofferto di un sostanziale overfitting, che li avrebbe costretti a usare reti meno profonde \cite{alexnet}. Ma non solo le reti profonde, anche quelle meno profonde  possono essere notevolmente migliorate adottando l'aumento dei dati \cite{dataaugmentation}.
 
 
 \section{Metodi comuni di Data augmentation}\label{metodi-comuni-di-data-augmentation}
 
 Le principali operazioni sono per esempio  il ritaglio di immagini
-per l'addestramento in posizioni diverse, la rotazione delle immagini (sia leggere di qualche grado che di 90, 180, 240 gradi). Queste trasformazioni geometriche usate per modificare la disposizione spaziale dei pixel in una 
+per l'addestramento in posizioni diverse, la rotazione delle immagini (sia leggere di qualche grado che di 90, 180, 240 gradi), ecc. Queste trasformazioni geometriche usate per modificare la disposizione spaziale dei pixel in una 
 immagine sono anche chiamate trasformazioni rubber-sheet (foglio malleabile) perché 
 possono essere viste come analoghe alla "stampa" di un'immagine su un foglio malleabile dove è possibile stirarlo e piegarlo. La trasformazione delle coordinate può essere espressa come:
 \[ \left[\begin{array}{l}x^{\prime} \\ y^{\prime}\end{array}\right]=\symbfup{T}\left[\begin{array}{l}x \\ y\end{array}\right]=\left[\begin{array}{ll}t_{11} & t_{12} \\ t_{21} & t_{22}\end{array}\right]\left[\begin{array}{l}x \\ y\end{array}\right] \]
@@ -34,8 +34,8 @@ In questo caso la matrice \(\symbfup{A}\) è la nostra matrice affine di trasfor
 
 \section{Data augmentation con DCT}\label{data-augmentation-con-dct}
 
-In aggiunta alle trasforomazioni standard precedenti si usa anche l'approccio trattato in  \cite{nanni_dct_pca} attraverso le modifiche nei sottospazi ottenuti attraverso le trasformazioni Discrete Cosine
-Transform (DCT). La trasformazione è basata sulla proiezione dell'immagine originale sul sottospazio DCT, sulla perturbazione del sotto spazio e della proiezione dell'immagine perturbata dal sottospazio al dominio immagine, come mostrato in \cref{fig:dct-schema}.
+In aggiunta alle trasformazioni standard precedenti si usa anche l'approccio trattato in  \cite{nanni_dct_pca} attraverso le modifiche nei sottospazi ottenuti tramite le trasformazioni Discrete Cosine
+Transform (DCT). La trasformazione è basata sulla proiezione dell'immagine originale sul sottospazio DCT, sulla perturbazione del sotto spazio e dalla proiezione dell'immagine perturbata dal sottospazio al dominio immagine, come mostrato in \cref{fig:dct-schema}.
 
 \begin{figure}[ht]
     \centering
@@ -48,7 +48,7 @@ Transform (DCT). La trasformazione è basata sulla proiezione dell'immagine orig
 \section{Discrete Cosine Transform (DCT)}\label{discrete-cosine-transform-dct}
 
 
-La Discrete Cosine Transform è una delle più importanti trasformate nell'ambito della computer vision, in particolare è in grado di rilevare le  variazioni di informazione tra un'area e quella contigua di un'immagine raster trascurando le ripetizioni, viene usata in numerosi ambiti dalla compressione delle immmagini all'elaborazione delle immagini. In particolare è simile alla  trasformata discreta di Fourier (DFT), ma fa uso solo di numeri reali, in particolare la DCT tipo I è definita come \cite{syed_dct} \cite{gonzalez_dip}:
+La Discrete Cosine Transform è una delle più importanti trasformate nell'ambito della computer vision, in particolare è in grado di rilevare le  variazioni di informazione tra un'area e quella contigua di un'immagine raster trascurando le ripetizioni. Viene usata in numerosi ambiti dalla compressione delle immmagini all'elaborazione delle immagini. In particolare è simile alla  trasformata discreta di Fourier (DFT), ma fa uso solo di numeri reali, in particolare la DCT tipo I è definita come \cite{syed_dct} \cite{gonzalez_dip}:
 
 \[ \operatorname{DCT}(x)=\alpha(x) \sum_{p=1}^{n} f(p) \cos \left(\frac { \pi p  (x- 1) } { 2 n }\right) \]
 
@@ -60,7 +60,7 @@ Similmente la trasformazione inversa è definita come \cite{syed_dct}:
 \[\operatorname{IDCT}(x)=\sum^{n}_{p=1} \alpha(p)\operatorname{DCT}(p) \cos \left(\frac { \pi p  (x- 1) } { 2 n }\right)\]
 
 
-Ci sono numerose varianti della DCT, in particolare la DCT tipo I che è la definizione mono dimensionale della DCT, la DCT tipo II, che spesso è chiamata DCT e la sua inversa, la DCT tipo III che viene chiamata spesso come la IDCT. In linguaggio matematico la formula della DCT tipo II è la seguente \cite{syed_dct} \cite{gonzalez_dip} \cite{nanni_dct_pca}:
+Ci sono numerose varianti della DCT, in particolare la DCT tipo I che è la definizione mono dimensionale della DCT; la DCT tipo II, che spesso è chiamata DCT e la sua inversa: la DCT tipo III che viene chiamata spesso come la IDCT. In linguaggio matematico la formula della DCT tipo II è la seguente \cite{syed_dct} \cite{gonzalez_dip} \cite{nanni_dct_pca}:
 
 
 \[\operatorname{DCTimage} ( x , y ) = \alpha( x ) \alpha (y) \sum _ { \mathclap{(p , q) = (1,1)} } ^ { \mathclap{(n,m)} }  \operatorname { Image } ( p , q ) \cos \left(\frac { \pi p  (x-1) } { 2 n }  \right) \cos \left(\frac { \pi q  (y-1) } { 2 m }  \right) \]
