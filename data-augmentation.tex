@@ -16,7 +16,7 @@ Dove \((x,y)\)  sono le coordinate dei pixel nell'immagine originale, \((x^{\pri
 coordinate dei pixel corrispondenti dell'immagine trasformata, \(\symbfup{T}\) la matrice di trasformazione, per poter effettuare tutte le trasformazioni rubber-sheet è necessario usare un piano affine che aggiunga una dimensionalità:
 \[ \left[\begin{array}{l}x^{\prime} \\ y^{\prime} \\ 1\end{array}\right]=\symbfup{A}\left[\begin{array}{l}x \\ y \\ 1\end{array}\right]=\left[\begin{array}{ccc}a_{11} & a_{12} & a_{13} \\ a_{21} & a_{22} & a_{23} \\ 0 & 0 & 1\end{array}\right]\left[\begin{array}{l}x \\ y \\ 1\end{array}\right] \]
 
-In questo caso la matrice \(\symbfup{A}\) è la nostra matrice affine di trasformazione, che può scalare, ruotare o specchiare un'immagine, una DA basica da applicare a un rete neurale è la seguente \cite{nanni_dct_pca} \cite{gonzalez_dip}:
+In questo caso la matrice \(\symbfup{A}\) è la nostra matrice affine di trasformazione, che può scalare, ruotare o specchiare un'immagine, una DA basica da applicare a una rete neurale è la seguente \cite{nanni_dct_pca} \cite{gonzalez_dip}:
 \begin{itemize}
     \item L'immagine si riflette nella direzione sinistra-destra con il 50\% di probabilità. La matrice di trasformazione \(\symbfup{A}\) è:
     \[\symbfup{A} = \left[\begin{array}{lll}\pm 1 & 0 & 0 \\ 0 & 1 & 0 \\ 0 & 0 & 1\end{array}\right]\]

@@ -53,6 +53,14 @@
 \usepackage[toc,ucmark=true]{glossaries}
 \usepackage{tikz-3dplot}
 \usepackage{booktabs}
+\usepackage{fancyhdr}
+    \pagestyle{fancy}
+    \fancyhead{}
+    %\fancyhead[LE,RO]{\thepage}
+    \fancyhead[LO]{\rightmark}
+    \fancyhead[RE]{\leftmark}
+
+    \setlength{\headheight}{12pt}
 
 \usetikzlibrary{matrix,backgrounds,3d,positioning}
 

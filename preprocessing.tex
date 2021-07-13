@@ -1,11 +1,11 @@
 \chapter{Preprocessing}\label{preprocessing}
 
-Le immagini raw nei dataset sono sufficienti ad una \gls{cnn} per ottenere buoni risultati, ma è possibile migliorarli attraverso una pre eleaborazione delle immagini: la rimozione di artefatti,  del rumore e migliorare la qualità dell'immagine 
+Le immagini raw nei dataset sono sufficienti ad una \gls{cnn} per ottenere buoni risultati, ma è possibile migliorarli attraverso una pre elaborazione delle immagini: la rimozione di artefatti,  del rumore e migliorare la qualità dell'immagine 
 in cui le feacture  possono essere estratte correttamente \cite{permual_contrast}.
 
 \section{Riduzione della risoluzione}\label{riduzione-della-risoluzione}
 
-La rete AlexNet richiede in input una immagine di dimensione \(227 \times 227 \times 3\) \cite{alexnet}, dato che le immagini del dataset hanno risoluzione maggiore è stato necessario ridimensionarle alla risoluzione richiesta da AlexNet, questo causa una perdita d'informazione e di qualità dell'immagine, in \cref{fig:resize} si notano due frame: a sinistra con la dimensione originale e a destra ridimensionati, si nota come la figura ridimensionata è abbastanza accettabile per una elaborazione e i pixel son ben visibili \cite{gonzalez_dip}.
+La rete AlexNet richiede in input una immagine di dimensione \(227 \times 227 \times 3\) \cite{alexnet}, dato che le immagini del dataset hanno risoluzione maggiore è stato necessario ridimensionarle alla risoluzione richiesta da AlexNet, questo causa una perdita d'informazione e di qualità dell'immagine, in \cref{fig:resize} si notano due frame: a sinistra con la dimensione originale e a destra ridimensionati, si nota come la figura ridimensionata è abbastanza accettabile per una elaborazione e i pixel sono ben visibili \cite{gonzalez_dip}.
 
 \begin{figure}[ht]
     \centering
@@ -43,7 +43,7 @@ viene applicata una stiratura simile per lo stretching di tutti i canali \cite{s
 Nel caso di una immagine a colori, per esempio, se i canali rosso e verde sono bilanciati, ma non il canale blu, viene allungato l'istogramma del canale blu su entrambi i lati per ottenere
 istogramma ben distribuito \cite{sunaryo_preprocessing}.
 
-L'equalizzazione dell'istogramma si può basare, per esempio, sul peak signal-to-noise ratio (PSNR), cheè un indicatore di qualità dell'immagine  calcolato usando l'equazione:
+L'equalizzazione dell'istogramma si può basare, per esempio, sul peak signal-to-noise ratio (PSNR), che è un indicatore di qualità dell'immagine  calcolato usando l'equazione:
 
 \[ \operatorname{PSNR}=10 \cdot \log _{10}\left(\frac{\operatorname{MAX}_{1}^{2}}{\operatorname{MSE}}\right) \]
 
@@ -91,7 +91,7 @@ La correzione gamma è una correzione non lineare che viene applicata all'immagi
 \begin{figure}[ht]
     \centering
     \includegraphics[width=0.5\textwidth]{preprocessing/gamma.png}
-    \caption{Luminanza dell'obbiettivo fotografico e dell'occhio umano}
+    \caption{Luminanza dell'obiettivo fotografico e dell'occhio umano}
     \label{fig:gamma}
 \end{figure}
 
