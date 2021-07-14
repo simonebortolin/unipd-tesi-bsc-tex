@@ -174,10 +174,11 @@
 
 
 \clearpage{\pagestyle{plain}\cleardoublepage}
+\pdfbookmark{\contentsname}{abs}
 \subfile{abstract.tex}
 
 \clearpage{\pagestyle{plain}\cleardoublepage}
-\pdfbookmark{\listfigurename}{tof}
+\pdfbookmark{\contentsname}{toc}
 \tableofcontents %Indice
 
 \clearpage{\pagestyle{plain}\cleardoublepage}
@@ -217,6 +218,7 @@
 \subfile{conclusioni.tex} 
 
 \clearpage{\pagestyle{plain}\cleardoublepage}
+\pdfbookmark{\contentsname}{gls}
 \printglossary[title=Glossario]
 
 \clearpage{\pagestyle{plain}\cleardoublepage}
