@@ -42,9 +42,9 @@ un videoscopio rino-laringo ENF-VH) con frame rate di
 
 Il dataset NBI-InfFrames contiene 720 frame, che sono equamente divisi in quattro classi: informative (I), sfuocato (B), con saliva o riflessi speculari (S) e underexposed  (U), come mostrato in \cref{fig:larynges-2}. 
 
-Dato il basso numero di immagini, il fatto che il dataset sia diviso in maniera omogenea tra le 4 classi fa sì che il modello di apprendimento si focalizzi su tutte le classi e non solo sulla classe predominate, come per esempio gli informative-frame, e ignorando le classi poco diffuse.
+Dato il basso numero di immagini, il fatto che il dataset sia diviso in maniera omogenea tra le 4 classi fa sì che il modello di apprendimento si focalizzi su tutte le classi e non solo sulla classe predominante, come per esempio gli informative-frame, e ignorando le classi poco diffuse.
 
-Quando c'è eterogeneità tra il numero di pattern per classi il modello di addestramento non riesce ad ottenere risultati ottimizzati in quanto l'algoritmo non tiene conto delle classi poco numerose. Nel caso in cui il modello non riesce a trovare un modello di separazione tra le classi c'è il rischio di overfitting nelle classi con meno dati in quanto impara tutte le feature a memoria. Inoltre è difficile trovare altri dati per convalidare ed effettuare dei test \cite{chatterjee_deep_2018}.
+Quando c'è eterogeneità tra il numero di pattern per classi il modello di addestramento non riesce ad ottenere risultati ottimizzati in quanto l'algoritmo non tiene conto delle classi poco numerose. Nel caso in cui il modello non riesca a trovare un modello di separazione tra le classi c'è il rischio di overfitting nelle classi con meno dati in quanto impara tutte le feature a memoria. Inoltre è difficile trovare altri dati per convalidare ed effettuare dei test \cite{chatterjee_deep_2018}.
 
 Per ciascuno dei 18 video endoscopici NBI, i fotogrammi video sono stati estratti a caso e
 presentati prima a due valutatori umani. Poi, ai due valutatori è stato chiesto di etichettare i fotogrammi. Nel caso in cui i due
@@ -73,7 +73,7 @@ Il secondo dataset è composto da 330 immagini, e la dimensione è simile a data
 
 \section{Lavori precedenti}\label{lavori-precedenti}
 
-Il problema  della classificazione delle immagini e della selezione degli informative-frame è molto presente nel panorama scientifico. L'ImageNet Large Scale Visual Recognition Challenge (ILSVRC) valuta le performance dei vari algoritmi di intelligenza artificiale su una vasta scala, ma non sulla selezione degli informative frame \cite{imagenet}. Le varie soluzioni hanno permesso di ottenere performance sempre superiori, sopratutto a partire dall'introduzione delle reti profonde, che possono essere utilizzate anche per la selezione degli informative-frame.
+Il problema  della classificazione delle immagini e della selezione degli informative-frame è molto presente nel panorama scientifico. L'ImageNet Large Scale Visual Recognition Challenge (ILSVRC) valuta le performance dei vari algoritmi di intelligenza artificiale su una vasta scala, ma non sulla selezione degli informative frame \cite{imagenet}. Le varie soluzioni hanno permesso di ottenere performance sempre superiori, soprattutto a partire dall'introduzione delle reti profonde, che possono essere utilizzate anche per la selezione degli informative-frame.
 
 Per implementare algoritmi in grado di identificare e scartare le immagini non informative nei video endoscopici, sono stati proposti diversi approcci di apprendimento automatico (ML), che sono principalmente basati su handcrafted features, come features basate sull'intensity e sui colori, in \citeauthor{zhang_colon} \cite{zhang_colon} sono state utilizzate caratteristiche anatomiche per la classificazione degli informative frame, mentre caratteristiche sullo stato dell'immagine come colori, sfuocatura, sono stati usati in \citeauthor{armin_colonscopy} \cite{armin_colonscopy}. 
 

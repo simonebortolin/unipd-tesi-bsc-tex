@@ -125,7 +125,7 @@ IM= hgamma(IM);
     \label{fig:result-gamma}
 \end{figure}
 
-Per aggiungere rumore artificiale all'immagine ed evitare che l'immagine si concreta su feature secondarie che potrebbero determinare basse prestazioni nei test set, i risultati sono in \cref{fig:result-noise}.
+Per aggiungere rumore artificiale all'immagine ed evitare che l'immagine si concentra su feature secondarie che potrebbero determinare basse prestazioni nei test set, i risultati sono in \cref{fig:result-noise}.
 
 \begin{lstlisting}
 IM = imnoise(IM,'salt & pepper',0.02);
@@ -147,7 +147,7 @@ IM = imnoise(IM,'salt & pepper',0.02);
 
 \section{Data argumentation con DCT}\label{data-argumentation-con-dct}
 
-Ci sono numerosi metodi per eseguire la DCT e la relativa data augmentation, in particolare in \cref{discrete-cosine-transform-dct} sono illustrati due algoritmi. Il primo che per ogni frequenza la annulla con probabilità 0.5 e la seconda che la attenua con probabilità \(z\sim U\left(-\frac{1}{2}, \frac{1}{2}\right)\) \cite{nanni_dct_pca}. I risultati con DCT e Noise sono illustrati nelle confusion matrix della \cref{fig:result-dct-noise}.
+Ci sono numerosi metodi per eseguire la DCT e la relativa data augmentation, in particolare in \cref{discrete-cosine-transform-dct} sono illustrati due algoritmi. Il primo che per ogni frequenza la annulla con probabilità 0.5 e il secondo che la attenua con probabilità \(z\sim U\left(-\frac{1}{2}, \frac{1}{2}\right)\) \cite{nanni_dct_pca} la frequenza. I risultati con DCT e Noise sono illustrati nelle confusion matrix della \cref{fig:result-dct-noise}.
 
 \begin{figure}[H]
     \centering
@@ -182,7 +182,7 @@ In \cref{tab:specchio-single} c'è uno specchio riassuntivo dei vari risultati o
     Noise                            & 96.7\%                            & 100\%                                & 95.4\%                            & 95.0\%                               \\
     DCT e Noise                      & 94.6\%                            & 100\%                                & 93.8\%                            & 100\%                             
     \end{tabular}
-    \caption{Specchio riassuntivo delle performance singole dei vari metodi analizzati, (1): Divisione corretta nelle 4 classi, (2): Riconoscimento dei frame Informative}
+    \caption[Specchio riassuntivo delle performance singole dei vari metodi analizzati]{Specchio riassuntivo delle performance singole dei vari metodi analizzati, (1): Divisione corretta nelle 4 classi, (2): Riconoscimento dei frame Informative}
     \label{tab:specchio-single}
 \end{table}
 
